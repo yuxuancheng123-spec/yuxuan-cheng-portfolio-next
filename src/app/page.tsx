@@ -41,19 +41,13 @@ const research = [
   "Navigating Diversity: The Role of Network Crafting in Resource Enrichment Across Work and Home.",
 ];
 
-const writing = [
-  "Synthetic media governance",
-  "AIGC actor authorization",
-  "AI compliance and risk assessment",
-];
-
 const flow = ["Policy", "Evidence", "Controls", "Audit"];
 
 function projectSize(size: string) {
-  if (size === "large") return "lg:col-span-2 lg:row-span-2 min-h-[330px]";
-  if (size === "tall") return "min-h-[330px]";
-  if (size === "wide") return "lg:col-span-2 min-h-[240px]";
-  return "min-h-[240px]";
+  if (size === "large") return "min-h-[350px]";
+  if (size === "tall") return "min-h-[350px]";
+  if (size === "wide") return "min-h-[350px]";
+  return "min-h-[350px]";
 }
 
 function projectTone(tone: string) {
@@ -243,7 +237,7 @@ export default function Home() {
 
           <article
             id="research"
-            className="rounded-[28px] bg-white p-6 shadow-sm shadow-black/[0.04] lg:col-span-2"
+            className="rounded-[28px] bg-white p-6 shadow-sm shadow-black/[0.04] lg:col-span-3"
           >
             <p className="text-sm font-semibold text-black/45">Research</p>
             <div className="mt-6 divide-y divide-black/8">
@@ -257,23 +251,9 @@ export default function Home() {
               ))}
             </div>
           </article>
-
-          <article className="overflow-hidden rounded-[28px] bg-white p-6 shadow-sm shadow-black/[0.04]">
-            <p className="text-sm font-semibold text-black/45">Writing</p>
-            <div className="mt-6 flex flex-col gap-2">
-              {writing.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full bg-[#f4f4f1] px-3.5 py-2.5 text-sm font-semibold text-black/65"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </article>
         </section>
 
-        <section id="work" className="mt-2.5 grid gap-3 lg:grid-cols-4">
+        <section id="work" className="mt-2.5 grid gap-3 lg:grid-cols-3">
           {projects.map((project) => (
             <article
               key={project.title}

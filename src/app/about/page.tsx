@@ -51,12 +51,32 @@ const notes = [
   },
 ];
 
+function lifeCardTone(visual: string) {
+  if (visual === "film") {
+    return "bg-[radial-gradient(circle_at_78%_18%,rgba(244,114,182,0.28),transparent_30%),linear-gradient(135deg,#fff7ed,#fff1f2)]";
+  }
+  if (visual === "play") {
+    return "bg-[radial-gradient(circle_at_76%_20%,rgba(34,197,94,0.22),transparent_32%),linear-gradient(135deg,#f8fafc,#ecfeff)]";
+  }
+  if (visual === "project") {
+    return "bg-[radial-gradient(circle_at_78%_18%,rgba(59,130,246,0.22),transparent_34%),linear-gradient(135deg,#eff6ff,#eef2ff)]";
+  }
+  if (visual === "coffee") {
+    return "bg-[radial-gradient(circle_at_76%_20%,rgba(217,119,6,0.2),transparent_30%),linear-gradient(135deg,#fff7ed,#f5f5f4)]";
+  }
+  if (visual === "research") {
+    return "bg-[radial-gradient(circle_at_76%_18%,rgba(20,184,166,0.22),transparent_32%),linear-gradient(135deg,#f5f3ff,#ecfeff)]";
+  }
+  return "bg-[radial-gradient(circle_at_76%_18%,rgba(14,165,233,0.2),transparent_32%),linear-gradient(135deg,#f0fdfa,#f8fafc)]";
+}
+
 function LifeCardPattern({ visual }: { visual: string }) {
   if (visual === "film") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.12]">
-        <div className="absolute right-6 top-16 h-24 w-36 rotate-6 rounded-2xl border-2 border-black" />
-        <div className="absolute right-10 top-20 grid h-16 w-28 grid-cols-4 gap-1">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+        <div className="absolute -right-6 -top-4 h-28 w-28 rounded-full border-[18px] border-black/20" />
+        <div className="absolute right-6 top-16 h-24 w-36 rotate-6 rounded-2xl border-2 border-black bg-white/60" />
+        <div className="absolute right-10 top-20 grid h-16 w-28 grid-cols-4 gap-1.5">
           {Array.from({ length: 12 }).map((_, index) => (
             <span key={index} className="rounded-sm bg-black" />
           ))}
@@ -67,19 +87,23 @@ function LifeCardPattern({ visual }: { visual: string }) {
 
   if (visual === "play") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.12]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+        <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-black/10" />
         <div className="absolute right-10 top-12 h-28 w-28 rounded-full border-2 border-black" />
         <div className="absolute right-[5.9rem] top-12 h-28 w-px bg-black" />
         <div className="absolute right-10 top-[6.45rem] h-px w-28 bg-black" />
-        <div className="absolute bottom-8 left-8 h-12 w-24 rounded-full border-2 border-black" />
+        <div className="absolute bottom-8 left-8 h-12 w-24 rounded-full border-2 border-black bg-white/55" />
+        <div className="absolute bottom-12 left-14 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-12 left-24 h-3 w-3 rounded-full bg-black" />
       </div>
     );
   }
 
   if (visual === "project") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.13]">
-        <div className="absolute right-7 top-14 h-28 w-24 rotate-3 rounded-2xl border-2 border-black bg-white" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+        <div className="absolute -right-7 top-6 h-20 w-28 rounded-2xl bg-black/10" />
+        <div className="absolute right-7 top-14 h-28 w-24 rotate-3 rounded-2xl border-2 border-black bg-white/70" />
         <div className="absolute right-12 top-20 h-2 w-14 rounded-full bg-black" />
         <div className="absolute right-12 top-28 h-2 w-10 rounded-full bg-black" />
         <div className="absolute right-12 top-36 h-8 w-14 rounded-xl border-2 border-black" />
@@ -89,18 +113,21 @@ function LifeCardPattern({ visual }: { visual: string }) {
 
   if (visual === "coffee") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.12]">
-        <div className="absolute right-10 top-20 h-20 w-20 rounded-b-3xl rounded-t-lg border-2 border-black" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-black/10" />
+        <div className="absolute right-10 top-20 h-20 w-20 rounded-b-3xl rounded-t-lg border-2 border-black bg-white/55" />
         <div className="absolute right-6 top-28 h-8 w-8 rounded-full border-2 border-black" />
         <div className="absolute left-8 top-12 h-5 w-5 rounded-full bg-black" />
         <div className="absolute left-16 top-20 h-8 w-8 rounded-full border-2 border-black" />
+        <div className="absolute left-20 top-12 h-4 w-4 rounded-full bg-black" />
       </div>
     );
   }
 
   if (visual === "research") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.13]">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+        <div className="absolute -right-10 -top-8 h-32 w-32 rounded-full bg-black/10" />
         <div className="absolute right-10 top-16 h-3 w-3 rounded-full bg-black" />
         <div className="absolute right-24 top-24 h-3 w-3 rounded-full bg-black" />
         <div className="absolute right-14 top-36 h-3 w-3 rounded-full bg-black" />
@@ -113,7 +140,8 @@ function LifeCardPattern({ visual }: { visual: string }) {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 opacity-[0.12]">
+    <div className="pointer-events-none absolute inset-0 opacity-[0.2]">
+      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-black/10" />
       <div className="absolute right-8 top-14 grid h-28 w-28 grid-cols-4 gap-2">
         {Array.from({ length: 16 }).map((_, index) => (
           <span key={index} className="rounded-full bg-black" />
@@ -184,6 +212,7 @@ export default function AboutPage() {
 
         <aside className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div className="relative min-h-[210px] overflow-hidden rounded-[30px] bg-[#1f2825] p-6 text-white shadow-sm shadow-black/[0.04] sm:col-span-2">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(45,212,191,0.35),transparent_28%),radial-gradient(circle_at_24%_86%,rgba(255,255,255,0.12),transparent_32%),linear-gradient(120deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:auto,auto,28px_28px]" />
             <div className="absolute right-6 top-6 grid h-16 w-16 place-items-center rounded-[20px] bg-white/10 text-base font-bold backdrop-blur">
               YC
             </div>
@@ -214,7 +243,7 @@ export default function AboutPage() {
             );
 
             const className =
-              "relative aspect-[1.05/1] min-h-[178px] overflow-hidden rounded-[30px] bg-white p-5 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10";
+              `relative aspect-[1.05/1] min-h-[178px] overflow-hidden rounded-[30px] p-5 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 ${lifeCardTone(note.visual)}`;
 
             return note.external ? (
               <a
