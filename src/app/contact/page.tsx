@@ -29,6 +29,7 @@ const contactCards = [
     mark: "{}",
     href: "https://github.com/yuxuancheng123-spec",
     visual: "github",
+    wideOnTablet: true,
   },
 ];
 
@@ -48,10 +49,10 @@ function cardTone(visual: string) {
 function ContactMotif({ visual }: { visual: string }) {
   if (visual === "email") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
-        <div className="absolute right-8 top-20 h-28 w-40 rounded-[26px] border-2 border-black bg-white/40" />
-        <div className="absolute right-8 top-20 h-28 w-40 rounded-[26px] border-b-2 border-black [clip-path:polygon(0_0,50%_55%,100%_0,100%_100%,0_100%)]" />
-        <div className="absolute bottom-8 left-9 text-[7rem] font-semibold leading-none text-black">
+      <div className="pointer-events-none absolute inset-0 origin-top-right opacity-[0.1] md:scale-[0.86] md:opacity-[0.12] xl:scale-100 xl:opacity-[0.16]">
+        <div className="absolute right-7 top-[4.5rem] h-20 w-[7.5rem] rounded-[22px] border-2 border-black bg-white/40 md:right-8 md:top-20 md:h-24 md:w-36 xl:h-28 xl:w-40 xl:rounded-[26px]" />
+        <div className="absolute right-7 top-[4.5rem] h-20 w-[7.5rem] rounded-[22px] border-b-2 border-black [clip-path:polygon(0_0,50%_55%,100%_0,100%_100%,0_100%)] md:right-8 md:top-20 md:h-24 md:w-36 xl:h-28 xl:w-40 xl:rounded-[26px]" />
+        <div className="absolute right-9 top-8 text-[4.5rem] font-semibold leading-none text-black md:text-[5.5rem] xl:text-[7rem]">
           @
         </div>
         <div className="absolute right-40 top-12 h-10 w-16 rounded-full border-2 border-black" />
@@ -62,7 +63,7 @@ function ContactMotif({ visual }: { visual: string }) {
 
   if (visual === "linkedin") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
+      <div className="pointer-events-none absolute inset-0 origin-top-right opacity-[0.1] md:scale-[0.88] md:opacity-[0.12] xl:scale-100 xl:opacity-[0.16]">
         <div className="absolute right-9 top-16 h-24 w-32 rounded-[24px] border-2 border-black bg-white/45" />
         <div className="absolute right-28 top-[5.75rem] h-5 w-5 rounded-full bg-black" />
         <div className="absolute right-16 top-24 h-2 w-12 rounded-full bg-black" />
@@ -78,7 +79,7 @@ function ContactMotif({ visual }: { visual: string }) {
 
   if (visual === "github") {
     return (
-      <div className="pointer-events-none absolute inset-0 opacity-[0.15]">
+      <div className="pointer-events-none absolute inset-0 origin-top-right opacity-[0.1] md:scale-[0.88] md:opacity-[0.12] xl:scale-100 xl:opacity-[0.15]">
         <div className="absolute right-9 top-16 text-7xl font-semibold leading-none text-black">
           &lt;/&gt;
         </div>
@@ -93,7 +94,7 @@ function ContactMotif({ visual }: { visual: string }) {
   }
 
   return (
-    <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
+    <div className="pointer-events-none absolute inset-0 origin-top-right opacity-[0.1] md:scale-[0.88] md:opacity-[0.12] xl:scale-100 xl:opacity-[0.16]">
       <div className="absolute right-9 top-[3.75rem] h-32 w-24 rotate-3 rounded-[22px] border-2 border-black bg-white/50" />
       <div className="absolute right-16 top-20 rounded-md bg-red-500 px-2 py-1 text-xs font-bold text-white">
         PDF
@@ -112,7 +113,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#f4f4f1] text-[#181916]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(20,184,166,0.12),transparent_30%),linear-gradient(rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:auto,80px_80px,80px_80px]" />
 
-      <div className="relative mx-auto w-full max-w-[1320px] px-4 py-4 pb-24 sm:px-6 sm:py-6">
+      <div className="relative mx-auto w-full max-w-[1320px] px-4 py-4 pb-36 sm:px-6 sm:py-6 md:pb-32 xl:pb-24">
         <section className="mb-3 rounded-[28px] bg-white p-6 shadow-sm shadow-black/[0.04] sm:p-8">
           <p className="text-sm font-semibold text-black/45">Contact</p>
           <h1 className="mt-3 max-w-3xl text-4xl font-medium leading-[0.98] tracking-[-0.015em] sm:text-6xl">
@@ -120,7 +121,7 @@ export default function ContactPage() {
           </h1>
         </section>
 
-        <section className="grid gap-3 md:grid-cols-4">
+        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           {contactCards.map((card) => {
             const isExternal = card.href.startsWith("http");
             const isEmail = card.visual === "email";
@@ -131,14 +132,16 @@ export default function ContactPage() {
                 href={card.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className={`group relative overflow-hidden rounded-[28px] p-5 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 sm:p-6 ${
+                className={`group relative overflow-hidden rounded-[28px] p-5 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 md:p-5 xl:p-6 ${
                   card.featured
-                    ? "min-h-[270px] md:col-span-2"
-                    : "min-h-[230px]"
+                    ? "min-h-[220px] md:col-span-2 md:min-h-[230px] xl:min-h-[270px]"
+                    : `min-h-[205px] md:min-h-[210px] xl:min-h-[230px] ${
+                        card.wideOnTablet ? "md:col-span-2 xl:col-span-1" : ""
+                      }`
                 } ${cardTone(card.visual)}`}
               >
                 <ContactMotif visual={card.visual} />
-                <div className="relative flex h-full min-h-[190px] flex-col justify-between">
+                <div className="relative flex h-full min-h-[165px] flex-col justify-between md:min-h-[170px] xl:min-h-[190px]">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-sm font-semibold text-black/42">
@@ -162,7 +165,7 @@ export default function ContactPage() {
                     <h2
                       className={`max-w-full font-medium leading-[1.02] tracking-[-0.026em] text-black/88 ${
                         isEmail
-                          ? "[overflow-wrap:anywhere] text-[clamp(1.75rem,4.2vw,3.35rem)]"
+                          ? "[overflow-wrap:anywhere] text-[clamp(1.65rem,3.2vw,2.55rem)]"
                           : "text-[clamp(1.45rem,2.2vw,2rem)]"
                       }`}
                     >
