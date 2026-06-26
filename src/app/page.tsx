@@ -61,17 +61,17 @@ function ProjectVisual({ icon, visual }: { icon: string; visual: string }) {
   if (visual === "document") {
     return (
       <>
-        <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
-          <div className="absolute left-6 top-28 h-24 w-36 rounded-2xl border border-black/60" />
-          <div className="absolute left-9 top-34 h-2 w-28 rounded-full bg-black" />
-          <div className="absolute left-9 top-40 h-2 w-20 rounded-full bg-black" />
-          <div className="absolute bottom-9 right-7 grid w-44 grid-cols-3 gap-1.5">
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.1] xl:opacity-[0.12]">
+          <div className="absolute bottom-16 right-8 h-20 w-32 rounded-2xl border border-black/60" />
+          <div className="absolute bottom-28 right-12 h-2 w-24 rounded-full bg-black" />
+          <div className="absolute bottom-[5.75rem] right-12 h-2 w-16 rounded-full bg-black" />
+          <div className="absolute bottom-8 right-7 grid w-40 grid-cols-3 gap-1.5 xl:w-44">
             {Array.from({ length: 9 }).map((_, index) => (
               <span key={index} className="h-3 rounded-sm bg-black" />
             ))}
           </div>
         </div>
-        <div className="absolute right-5 top-16 h-44 w-52 rotate-3 rounded-[24px] bg-white/70 p-5 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.03]">
+        <div className="pointer-events-none absolute right-[-2.25rem] top-14 z-0 h-40 w-48 rotate-3 rounded-[24px] bg-white/62 p-5 opacity-75 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.02] xl:right-[-3.25rem] xl:top-12 xl:h-44 xl:w-52 2xl:right-[-4rem]">
           <div className="mb-4 flex items-center justify-between">
             <span className="h-7 w-7 rounded-lg bg-red-500 text-center text-[10px] font-bold leading-7 text-white">
               PDF
@@ -95,24 +95,24 @@ function ProjectVisual({ icon, visual }: { icon: string; visual: string }) {
   if (visual === "dashboard") {
     return (
       <>
-        <div className="pointer-events-none absolute inset-0 opacity-[0.18]">
-          <div className="absolute left-6 top-28 flex gap-1.5">
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.1] xl:opacity-[0.12]">
+          <div className="absolute bottom-28 right-9 flex gap-1">
             {["Govern", "Map", "Measure", "Manage"].map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-black px-2 py-1 text-[9px] font-bold"
+                className="rounded-full border border-black px-1.5 py-1 text-[8px] font-bold"
               >
                 {item}
               </span>
             ))}
           </div>
-          <div className="absolute bottom-10 right-8 space-y-2">
-            <div className="h-2 w-40 rounded-full bg-black" />
-            <div className="h-2 w-28 rounded-full bg-black" />
+          <div className="absolute bottom-9 right-8 space-y-2">
             <div className="h-2 w-36 rounded-full bg-black" />
+            <div className="h-2 w-28 rounded-full bg-black" />
+            <div className="h-2 w-32 rounded-full bg-black" />
           </div>
         </div>
-        <div className="absolute right-5 top-16 h-44 w-60 -rotate-2 rounded-[24px] bg-white/70 p-4 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.03]">
+        <div className="pointer-events-none absolute right-[-3.75rem] top-14 z-0 h-40 w-56 -rotate-2 rounded-[24px] bg-white/62 p-4 opacity-75 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.02] xl:right-[-4.5rem] xl:top-[3.25rem] xl:h-44 xl:w-60 2xl:right-[-5.25rem]">
           <div className="mb-4 flex items-center justify-between">
             <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-bold text-amber-900">
               {icon}
@@ -140,10 +140,10 @@ function ProjectVisual({ icon, visual }: { icon: string; visual: string }) {
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-0 opacity-[0.17]">
-        <div className="absolute left-7 top-28 h-28 w-28 rounded-full border-2 border-black" />
-        <div className="absolute left-14 top-36 h-14 w-14 rounded-full bg-black" />
-        <div className="absolute bottom-10 right-8 rounded-full border border-black px-3 py-1 text-[10px] font-bold">
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.1] xl:opacity-[0.12]">
+        <div className="absolute right-9 top-[7.5rem] h-24 w-24 rounded-full border-2 border-black xl:h-28 xl:w-28" />
+        <div className="absolute right-16 top-[9.5rem] h-12 w-12 rounded-full bg-black xl:h-14 xl:w-14" />
+        <div className="absolute bottom-9 right-8 rounded-full border border-black px-3 py-1 text-[10px] font-bold">
           AI LABEL
         </div>
         <div className="absolute bottom-16 right-20 flex items-center gap-2 rounded-full border border-black px-3 py-1 text-[10px] font-bold">
@@ -151,7 +151,7 @@ function ProjectVisual({ icon, visual }: { icon: string; visual: string }) {
           CONSENT
         </div>
       </div>
-      <div className="absolute right-5 top-16 h-44 w-52 -rotate-3 rounded-[24px] bg-white/70 p-5 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.03]">
+      <div className="pointer-events-none absolute right-[-2.25rem] top-14 z-0 h-40 w-48 -rotate-3 rounded-[24px] bg-white/62 p-5 opacity-75 shadow-xl shadow-black/10 transition duration-500 group-hover:rotate-0 group-hover:scale-[1.02] xl:right-[-3.25rem] xl:top-12 xl:h-44 xl:w-52 2xl:right-[-4rem]">
         <div className="relative h-full overflow-hidden rounded-[20px] bg-gradient-to-br from-teal-50 to-white">
           <div className="absolute inset-x-7 top-9 h-20 rounded-full border border-teal-200/80" />
           <div className="absolute left-1/2 top-11 grid h-20 w-20 -translate-x-1/2 place-items-center rounded-full bg-black text-lg font-bold text-white">
@@ -260,19 +260,20 @@ export default function Home() {
               className={`${projectSize(project.size)} group relative overflow-hidden rounded-[28px] bg-gradient-to-br ${projectTone(project.tone)} p-6 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10`}
             >
               <div className="absolute inset-x-6 top-20 h-px bg-black/10" />
-              <div className="absolute right-5 top-5 rounded-xl bg-white/75 px-2.5 py-1.5 text-[11px] font-bold text-black/55 shadow-sm">
+              <div className="absolute right-5 top-5 z-20 rounded-xl bg-white/75 px-2.5 py-1.5 text-[11px] font-bold text-black/55 shadow-sm">
                 {project.tag}
               </div>
               <ProjectVisual icon={project.icon} visual={project.visual} />
-              <div className="relative flex h-full min-h-[190px] flex-col justify-between">
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[66%] bg-gradient-to-r from-white/38 via-white/20 to-transparent opacity-80" />
+              <div className="relative z-10 flex h-full min-h-[190px] flex-col justify-between">
                 <span className="w-fit rounded-full bg-white/70 px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-black/50">
                   Selected project
                 </span>
-                <div className="max-w-xl pt-20">
+                <div className="max-w-[95%] pt-20 xl:max-w-[62%] 2xl:max-w-[60%]">
                   <h2 className="text-2xl font-medium leading-[1.02] tracking-[-0.018em] sm:text-3xl">
                     {project.title}
                   </h2>
-                  <p className="mt-3 max-w-lg text-base leading-6 text-black/62">
+                  <p className="mt-3 max-w-lg text-base leading-6 text-black/62 xl:max-w-full">
                     {project.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
