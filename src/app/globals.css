@@ -3,8 +3,12 @@
 :root {
   --background: #f4f4f1;
   --foreground: #181916;
-  --yc-font-sans: "Avenir Next", Avenir, "SF Pro Display", "SF Pro Text",
-    -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  /* Font switch notes:
+     Geist = clean technical portfolio; Inter = safe professional fallback;
+     Satoshi = more editorial if self-hosted later; Neue Montreal-style only if locally licensed. */
+  --yc-font-sans: var(--font-geist-sans), "Avenir Next", Avenir,
+    "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
   --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono",
     monospace;
 }
@@ -20,6 +24,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--yc-font-sans);
+  line-height: 1.45;
 }
 
 html {

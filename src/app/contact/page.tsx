@@ -2,24 +2,110 @@ import Link from "next/link";
 
 const contactCards = [
   {
+    label: "Primary contact",
+    title: "yuxuancheng123@gmail.com",
+    mark: "@",
+    href: "mailto:yuxuancheng123@gmail.com",
+    visual: "email",
+    featured: true,
+  },
+  {
     label: "Learn more",
     title: "View CV",
     mark: "CV",
     href: "https://yuxuancheng123-spec.github.io/yuxuan-cheng-portfolio/assets/Kenny_Cheng_Resume.pdf",
+    visual: "cv",
   },
   {
     label: "Connect",
     title: "LinkedIn",
     mark: "in",
     href: "https://www.linkedin.com/in/yuxuan-cheng-86743631a",
+    visual: "linkedin",
   },
   {
-    label: "Say Hi",
-    title: "yuxuancheng123@gmail.com",
-    mark: "@",
-    href: "mailto:yuxuancheng123@gmail.com",
+    label: "Code",
+    title: "GitHub",
+    mark: "{}",
+    href: "https://github.com/yuxuancheng123-spec",
+    visual: "github",
   },
 ];
+
+function cardTone(visual: string) {
+  if (visual === "email") {
+    return "bg-[radial-gradient(circle_at_80%_10%,rgba(20,184,166,0.16),transparent_30%),linear-gradient(135deg,#ffffff,#eefaf7)]";
+  }
+  if (visual === "linkedin") {
+    return "bg-[radial-gradient(circle_at_78%_14%,rgba(59,130,246,0.16),transparent_30%),linear-gradient(135deg,#ffffff,#eff6ff)]";
+  }
+  if (visual === "github") {
+    return "bg-[radial-gradient(circle_at_78%_14%,rgba(24,24,27,0.12),transparent_30%),linear-gradient(135deg,#ffffff,#f4f4f5)]";
+  }
+  return "bg-[radial-gradient(circle_at_78%_14%,rgba(239,68,68,0.12),transparent_30%),linear-gradient(135deg,#ffffff,#fff7ed)]";
+}
+
+function ContactMotif({ visual }: { visual: string }) {
+  if (visual === "email") {
+    return (
+      <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
+        <div className="absolute right-8 top-20 h-28 w-40 rounded-[26px] border-2 border-black bg-white/40" />
+        <div className="absolute right-8 top-20 h-28 w-40 rounded-[26px] border-b-2 border-black [clip-path:polygon(0_0,50%_55%,100%_0,100%_100%,0_100%)]" />
+        <div className="absolute bottom-8 left-9 text-[7rem] font-semibold leading-none text-black">
+          @
+        </div>
+        <div className="absolute right-40 top-12 h-10 w-16 rounded-full border-2 border-black" />
+        <div className="absolute right-32 top-[4.7rem] h-px w-20 rotate-[18deg] bg-black" />
+      </div>
+    );
+  }
+
+  if (visual === "linkedin") {
+    return (
+      <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
+        <div className="absolute right-9 top-16 h-24 w-32 rounded-[24px] border-2 border-black bg-white/45" />
+        <div className="absolute right-28 top-[5.75rem] h-5 w-5 rounded-full bg-black" />
+        <div className="absolute right-16 top-24 h-2 w-12 rounded-full bg-black" />
+        <div className="absolute right-16 top-32 h-2 w-16 rounded-full bg-black" />
+        <div className="absolute bottom-9 left-9 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-20 left-24 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-[3.25rem] left-40 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-[5.1rem] left-12 h-px w-20 -rotate-[32deg] bg-black" />
+        <div className="absolute bottom-[4.5rem] left-28 h-px w-16 rotate-[18deg] bg-black" />
+      </div>
+    );
+  }
+
+  if (visual === "github") {
+    return (
+      <div className="pointer-events-none absolute inset-0 opacity-[0.15]">
+        <div className="absolute right-9 top-16 text-7xl font-semibold leading-none text-black">
+          &lt;/&gt;
+        </div>
+        <div className="absolute bottom-11 left-10 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-20 left-24 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-14 left-40 h-3 w-3 rounded-full bg-black" />
+        <div className="absolute bottom-[5.1rem] left-12 h-px w-20 -rotate-[32deg] bg-black" />
+        <div className="absolute bottom-[4.8rem] left-28 h-px w-16 rotate-[20deg] bg-black" />
+        <div className="absolute right-12 bottom-12 h-16 w-28 rounded-2xl border-2 border-black bg-white/50" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="pointer-events-none absolute inset-0 opacity-[0.16]">
+      <div className="absolute right-9 top-[3.75rem] h-32 w-24 rotate-3 rounded-[22px] border-2 border-black bg-white/50" />
+      <div className="absolute right-16 top-20 rounded-md bg-red-500 px-2 py-1 text-xs font-bold text-white">
+        PDF
+      </div>
+      <div className="absolute right-[3.75rem] top-[8.5rem] h-2 w-14 rounded-full bg-black" />
+      <div className="absolute right-[3.75rem] top-[10.5rem] h-2 w-10 rounded-full bg-black" />
+      <div className="absolute bottom-11 left-10 h-12 w-12 rounded-full border-2 border-black" />
+      <div className="absolute bottom-[4.25rem] left-[3.55rem] h-5 w-0.5 bg-black" />
+      <div className="absolute bottom-12 left-[3.1rem] h-3 w-3 rotate-45 border-b-2 border-r-2 border-black" />
+    </div>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -34,31 +120,59 @@ export default function ContactPage() {
           </h1>
         </section>
 
-        <section className="grid gap-3 md:grid-cols-3">
-          {contactCards.map((card) => (
-            <a
-              key={card.title}
-              href={card.href}
-              target={card.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                card.href.startsWith("http") ? "noopener noreferrer" : undefined
-              }
-              className="group relative min-h-[360px] overflow-hidden rounded-[28px] bg-white p-6 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10"
-            >
-              <div className="absolute right-6 top-6 grid h-12 w-12 place-items-center rounded-full border border-black/10 text-xl text-black/45 transition group-hover:rotate-12 group-hover:bg-black group-hover:text-white">
-                ↗
-              </div>
-              <p className="text-lg font-semibold text-black/45">{card.label}</p>
-              <div className="absolute bottom-7 left-7 right-7 flex items-center gap-4">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-[#f4f4f1] text-sm font-bold text-black/70">
-                  {card.mark}
-                </span>
-                <h2 className="break-words text-3xl font-medium tracking-[-0.018em]">
-                  {card.title}
-                </h2>
-              </div>
-            </a>
-          ))}
+        <section className="grid gap-3 md:grid-cols-4">
+          {contactCards.map((card) => {
+            const isExternal = card.href.startsWith("http");
+            const isEmail = card.visual === "email";
+
+            return (
+              <a
+                key={card.title}
+                href={card.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className={`group relative overflow-hidden rounded-[28px] p-5 shadow-sm shadow-black/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 sm:p-6 ${
+                  card.featured
+                    ? "min-h-[270px] md:col-span-2"
+                    : "min-h-[230px]"
+                } ${cardTone(card.visual)}`}
+              >
+                <ContactMotif visual={card.visual} />
+                <div className="relative flex h-full min-h-[190px] flex-col justify-between">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-sm font-semibold text-black/42">
+                        {card.label}
+                      </p>
+                      {isEmail ? (
+                        <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-teal-700/75">
+                          Email
+                        </p>
+                      ) : null}
+                    </div>
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-black/10 bg-white/60 text-lg text-black/48 shadow-sm shadow-black/[0.03] transition group-hover:rotate-12 group-hover:bg-black group-hover:text-white">
+                      ↗
+                    </span>
+                  </div>
+
+                  <div className="flex items-end gap-3">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/72 text-sm font-bold text-black/70 shadow-sm shadow-black/[0.03]">
+                      {card.mark}
+                    </span>
+                    <h2
+                      className={`max-w-full font-medium leading-[1.02] tracking-[-0.026em] text-black/88 ${
+                        isEmail
+                          ? "[overflow-wrap:anywhere] text-[clamp(1.75rem,4.2vw,3.35rem)]"
+                          : "text-[clamp(1.45rem,2.2vw,2rem)]"
+                      }`}
+                    >
+                      {card.title}
+                    </h2>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
         </section>
       </div>
 

@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
+
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Yuxuan Cheng | AI Governance Portfolio",
@@ -14,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#f4f4f1]">{children}</body>
+      <body
+        className={`${geistSans.variable} min-h-full flex flex-col bg-[#f4f4f1]`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
