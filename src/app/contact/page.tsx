@@ -11,7 +11,7 @@ const contactCards = [
     label: "Connect",
     title: "LinkedIn",
     mark: "in",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/yuxuan-cheng-86743631a",
   },
   {
     label: "Say Hi",
