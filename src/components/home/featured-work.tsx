@@ -7,7 +7,7 @@ import { featuredProjects } from "@/data/portfolio";
 
 export function FeaturedWork() {
   return (
-    <section id="work" className="yc-section scroll-mt-8">
+    <section id="work" className="yc-section yc-section-compact scroll-mt-8">
       <Reveal>
         <div className="mb-7 sm:mb-9">
           <h2 className="yc-section-title">Featured work</h2>
@@ -18,7 +18,7 @@ export function FeaturedWork() {
         </div>
       </Reveal>
 
-      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-12 lg:auto-rows-[minmax(200px,auto)] lg:gap-4">
+      <div className="grid grid-flow-row-dense grid-cols-1 gap-3.5 md:grid-cols-12 lg:auto-rows-[minmax(300px,auto)] lg:gap-4">
         {featuredProjects.map((project, index) => (
           <Reveal
             key={project.title}

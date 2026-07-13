@@ -47,6 +47,10 @@ button {
   padding-top: clamp(4.5rem, 8vw, 7.5rem);
 }
 
+.yc-section-compact {
+  padding-top: clamp(3.25rem, 4.5vw, 4rem);
+}
+
 .yc-section-title {
   max-width: 14ch;
   font-size: clamp(2.6rem, 5.2vw, 5.8rem);
@@ -101,6 +105,47 @@ button {
 .yc-button-secondary:hover {
   border-color: rgba(23, 34, 42, 0.24);
   background: rgba(255, 255, 255, 0.9);
+}
+
+.yc-editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  border-bottom: 1px solid rgba(23, 34, 42, 0.28);
+  padding: 0.25rem 0 0.4rem;
+  color: var(--yc-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 260ms ease, color 260ms ease;
+}
+
+.yc-editorial-link-mark {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 1px solid rgba(23, 34, 42, 0.15);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: transform 260ms ease, background-color 260ms ease,
+    color 260ms ease;
+}
+
+.yc-editorial-link:hover {
+  border-color: var(--yc-accent);
+  color: var(--yc-accent);
+}
+
+.yc-editorial-link:hover .yc-editorial-link-mark {
+  transform: translate(2px, -2px);
+  background: var(--yc-ink);
+  color: #f7faf8;
+}
+
+.yc-editorial-link:focus-visible {
+  outline: 2px solid var(--yc-accent);
+  outline-offset: 4px;
 }
 
 .reveal {

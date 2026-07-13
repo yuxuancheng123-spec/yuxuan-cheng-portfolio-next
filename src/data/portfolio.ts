@@ -9,8 +9,6 @@ export type PortfolioProject = {
   external?: boolean;
   size: ProjectSize;
   visual: ProjectVisual;
-  image?: string;
-  imageAlt?: string;
   artifactHref?: string;
 };
 
@@ -24,9 +22,6 @@ export const featuredProjects: PortfolioProject[] = [
     external: true,
     size: "hero",
     visual: "actor",
-    image: "/images/ai-actor-cover.jpg",
-    imageAlt:
-      "Abstract glass portrait and identity evidence representing synthetic actor governance",
   },
   {
     title: "China AI Compliance Evidence Framework",
@@ -36,9 +31,6 @@ export const featuredProjects: PortfolioProject[] = [
     href: "/projects/china-ai-compliance",
     size: "standard",
     visual: "china",
-    image: "/images/china-evidence-cover.jpg",
-    imageAlt:
-      "Editorial arrangement of evidence documents, structured data, and an archival seal",
     artifactHref: "/china-compliance.pdf",
   },
   {
@@ -49,9 +41,6 @@ export const featuredProjects: PortfolioProject[] = [
     href: "/#contact",
     size: "wide",
     visual: "nist",
-    image: "/images/nist-rmf-cover.jpg",
-    imageAlt:
-      "Abstract modular system representing AI risk controls and governance functions",
   },
   {
     title: "Network Crafting Research",
@@ -70,14 +59,12 @@ export const featuredProjects: PortfolioProject[] = [
     href: "/about",
     size: "about",
     visual: "journey",
-    image: "/images/about-lifestyle.jpg",
-    imageAlt:
-      "Research notebook, headphones, and iced coffee beside a Hong Kong city view",
   },
 ];
 
 export const researchWriting = [
   {
+    year: "2026",
     type: "Research",
     title: "Network Crafting and Workgroup Diversity",
     description:
@@ -85,26 +72,30 @@ export const researchWriting = [
     href: "/research",
   },
   {
-    type: "Framework",
-    title: "China AIGC Compliance Evidence",
-    description:
-      "Turning governance requirements into request-level, machine-readable records.",
-    href: "/projects/china-ai-compliance",
-  },
-  {
+    year: "2026",
     type: "Writing",
-    title: "Synthetic Media Governance",
+    title: "Why AI Short Dramas Became a Hotspot for Face Theft",
     description:
-      "Consent, provenance, disclosure, and platform accountability for AI actors.",
+      "A platform-governance view of likeness abuse, rapid production, and commercial distribution.",
     href: "https://github.com/yuxuancheng123-spec/ai-generated-actor-compliance",
     external: true,
   },
   {
-    type: "Tool",
-    title: "NIST AI RMF Control Review",
+    year: "2026",
+    type: "Writing",
+    title: "From Post-hoc Enforcement to Permission-first Infrastructure",
     description:
-      "A practical route from risk mapping to missing-control analysis.",
-    href: "/#contact",
+      "Why consent records and identity controls need to exist before synthetic media is generated.",
+    href: "https://github.com/yuxuancheng123-spec/china-aigc-compliance-evidence",
+    external: true,
+  },
+  {
+    year: "2026",
+    type: "Research",
+    title: "AI Awareness, Job Crafting, and the Future of Work",
+    description:
+      "Exploring how people adapt their roles, networks, and opportunities around AI at work.",
+    href: "/research",
   },
 ];
 
@@ -112,21 +103,21 @@ export const personalNotes = [
   {
     label: "Based in",
     value: "Hong Kong / Shenzhen",
-    tone: "blue",
+    visual: "map",
   },
   {
     label: "Researching",
     value: "AI governance and organizational behavior",
-    tone: "mist",
+    visual: "notes",
   },
   {
     label: "Favorite film",
     value: "La La Land",
-    tone: "rose",
+    visual: "film",
   },
   {
     label: "Usually",
     value: "Apex, CS2, and an iced Americano",
-    tone: "green",
+    visual: "play",
   },
 ];

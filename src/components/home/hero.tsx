@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[560px] flex-col justify-between overflow-hidden rounded-[30px] border border-black/[0.06] bg-[#e7eef2] px-5 pb-7 pt-5 sm:min-h-[610px] sm:px-8 sm:pb-10 sm:pt-7 lg:min-h-[650px] lg:px-12 lg:pb-12"
+      className="relative flex min-h-[520px] flex-col justify-between overflow-hidden rounded-[30px] border border-black/[0.06] bg-[#e7eef2] px-5 pb-7 pt-5 sm:min-h-[560px] sm:px-8 sm:pb-9 sm:pt-7 lg:min-h-[590px] lg:px-12 lg:pb-10"
     >
       <div className="hero-field" aria-hidden="true">
         <span className="hero-orbit hero-orbit-one" />
@@ -14,7 +14,7 @@ export function Hero() {
         <span className="hero-paper hero-paper-two" />
       </div>
 
-      <div className="relative flex items-center justify-between">
+      <div className="relative flex shrink-0 items-center justify-between">
         <Link
           href="/"
           className="text-sm font-semibold tracking-[-0.01em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#315f82]"
@@ -26,9 +26,9 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="relative max-w-[1100px]">
+      <div className="relative max-w-[1260px] shrink-0">
         <Reveal>
-          <h1 className="balance max-w-[18ch] text-[clamp(3.15rem,7.2vw,7.35rem)] font-medium leading-[0.91] tracking-[-0.055em] text-[#17222a]">
+          <h1 className="balance max-w-[22ch] text-[clamp(2.55rem,6.25vw,6.2rem)] font-medium leading-[0.95] tracking-[-0.052em] text-[#17222a] sm:leading-[0.93]">
             Yuxuan Cheng explores how policy, evidence, and technical controls
             can make AI systems more accountable.
           </h1>
@@ -39,12 +39,14 @@ export function Hero() {
               Working across AI governance, privacy engineering, organizational
               behavior, and synthetic media.
             </p>
-            <div className="flex shrink-0 flex-wrap gap-2.5">
-              <a className="yc-button yc-button-primary" href="#work">
-                View work <span aria-hidden="true">↓</span>
+            <div className="flex shrink-0 flex-wrap items-center gap-5">
+              <a className="yc-editorial-link" href="#work">
+                <span>View work</span>
+                <span className="yc-editorial-link-mark" aria-hidden="true">↓</span>
               </a>
-              <Link className="yc-button yc-button-secondary" href="/contact">
-                Contact
+              <Link className="yc-editorial-link" href="/contact">
+                <span>Contact</span>
+                <span className="yc-editorial-link-mark" aria-hidden="true">↗</span>
               </Link>
             </div>
           </div>
