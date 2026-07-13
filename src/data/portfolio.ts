@@ -18,8 +18,7 @@ export const featuredProjects: PortfolioProject[] = [
     description:
       "A working review system for consent, identity risk, labeling, and synthetic media evidence.",
     type: "Synthetic media",
-    href: "https://yuxuancheng123-spec.github.io/ai-generated-actor-compliance/web/",
-    external: true,
+    href: "/work/ai-generated-actor-compliance",
     size: "hero",
     visual: "actor",
   },
@@ -28,7 +27,7 @@ export const featuredProjects: PortfolioProject[] = [
     description:
       "A machine-readable evidence pipeline for China-facing AIGC platforms.",
     type: "Framework",
-    href: "/projects/china-ai-compliance",
+    href: "/work/china-ai-compliance-evidence",
     size: "standard",
     visual: "china",
     artifactHref: "/china-compliance.pdf",
@@ -38,7 +37,7 @@ export const featuredProjects: PortfolioProject[] = [
     description:
       "Control maturity and missing-evidence analysis across Govern, Map, Measure, and Manage.",
     type: "Governance tool",
-    href: "/#contact",
+    href: "/work/nist-ai-rmf-dashboard",
     size: "wide",
     visual: "nist",
   },
@@ -47,7 +46,7 @@ export const featuredProjects: PortfolioProject[] = [
     description:
       "How people reshape workplace networks to access resources across work and home.",
     type: "Organizational behavior",
-    href: "/research",
+    href: "/research/network-crafting",
     size: "research",
     visual: "network",
   },
@@ -69,7 +68,7 @@ export const researchWriting = [
     title: "Network Crafting and Workgroup Diversity",
     description:
       "Examining resource enrichment across work and home through network crafting.",
-    href: "/research",
+    href: "/research/network-crafting",
   },
   {
     year: "2026",
@@ -77,8 +76,7 @@ export const researchWriting = [
     title: "Why AI Short Dramas Became a Hotspot for Face Theft",
     description:
       "A platform-governance view of likeness abuse, rapid production, and commercial distribution.",
-    href: "https://github.com/yuxuancheng123-spec/ai-generated-actor-compliance",
-    external: true,
+    href: "/writing/ai-short-drama-face-theft",
   },
   {
     year: "2026",
@@ -86,8 +84,7 @@ export const researchWriting = [
     title: "From Post-hoc Enforcement to Permission-first Infrastructure",
     description:
       "Why consent records and identity controls need to exist before synthetic media is generated.",
-    href: "https://github.com/yuxuancheng123-spec/china-aigc-compliance-evidence",
-    external: true,
+    href: "/writing/permission-first-infrastructure",
   },
   {
     year: "2026",
@@ -95,7 +92,7 @@ export const researchWriting = [
     title: "AI Awareness, Job Crafting, and the Future of Work",
     description:
       "Exploring how people adapt their roles, networks, and opportunities around AI at work.",
-    href: "/research",
+    href: "/research/ai-awareness-job-crafting",
   },
 ];
 

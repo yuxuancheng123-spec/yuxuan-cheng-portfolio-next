@@ -35,16 +35,7 @@ function EditorialEntry({
   const className =
     "block border-t border-black/8 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#315f82]";
 
-  return item.external ? (
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-    >
-      {content}
-    </a>
-  ) : (
+  return (
     <Link href={item.href} className={className}>
       {content}
     </Link>
@@ -53,7 +44,7 @@ function EditorialEntry({
 
 export function ResearchWriting() {
   return (
-    <section className="yc-section">
+    <section id="research-writing" className="yc-section scroll-mt-8">
       <Reveal>
         <h2 className="yc-section-title max-w-4xl">Research and writing</h2>
       </Reveal>

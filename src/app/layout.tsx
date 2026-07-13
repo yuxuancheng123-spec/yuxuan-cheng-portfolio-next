@@ -9,6 +9,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yuxuan-cheng-portfolio-next.vercel.app"),
   title: "Yuxuan Cheng | AI Governance Portfolio",
   description:
     "Personal portfolio for AI governance, privacy engineering, synthetic media compliance, and responsible AI systems.",
