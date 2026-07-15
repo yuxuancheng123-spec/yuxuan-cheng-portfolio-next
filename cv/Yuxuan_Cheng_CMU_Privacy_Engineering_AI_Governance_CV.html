@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Yuxuan Cheng | CMU Privacy Engineering & AI Governance CV</title>
+    <style>
+      @page { size: A4; margin: 11mm 15mm; }
+      * { box-sizing: border-box; }
+      body { color: #17222a; font-family: Arial, Helvetica, sans-serif; font-size: 8.35pt; line-height: 1.2; margin: 0; }
+      h1 { font-size: 21pt; letter-spacing: .03em; margin: 0; text-align: center; }
+      .contact { color: #52626c; font-size: 8.1pt; margin: 3px 0 9px; text-align: center; }
+      h2 { border-bottom: 1px solid #17222a; font-size: 9.5pt; letter-spacing: .08em; margin: 10px 0 4px; padding-bottom: 2px; text-transform: uppercase; }
+      h3, p { margin: 0; }
+      .profile { font-size: 8.6pt; line-height: 1.3; }
+      .entry { break-inside: avoid; page-break-inside: avoid; margin: 0 0 4px; }
+      .row { display: flex; gap: 14px; justify-content: space-between; }
+      .row > :last-child { flex: 0 0 auto; text-align: right; }
+      .org { font-weight: 700; }
+      .role { font-style: italic; }
+      ul { margin: 1px 0 0; padding-left: 13px; }
+      li { margin: 1px 0; }
+      .skills { columns: 2; column-gap: 24px; }
+      .skills p { break-inside: avoid; margin: 0 0 3px; }
+      .experience { break-before: page; page-break-before: always; }
+      a { color: inherit; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>YUXUAN CHENG</h1>
+      <p class="contact">Hong Kong / Shenzhen &nbsp;|&nbsp; yuxuancheng123@gmail.com &nbsp;|&nbsp; linkedin.com/in/yuxuan-cheng-86743631a &nbsp;|&nbsp; github.com/yuxuancheng123-spec</p>
+    </header>
+
+    <section>
+      <h2>Profile</h2>
+      <p class="profile">Interdisciplinary AI governance and privacy engineering applicant with training in behavioral science, technology ethics, quantitative research, and policy analysis. Develops traceable governance artifacts that connect legal sources, machine-readable controls, operational evidence, risk workflows, and human review.</p>
+    </section>
+
+    <section>
+      <h2>Selected Privacy Engineering &amp; AI Governance Projects</h2>
+      <div class="entry">
+        <div class="row"><h3>AI-Generated Actor Compliance Assessment</h3><p>Privacy Engineering Project | 2026</p></div>
+        <ul>
+          <li>Designed a privacy engineering prototype for managing synthetic-media compliance cases from intake and risk assessment to evidence review, remediation, approval, reporting, and audit logging.</li>
+          <li>Implemented a FastAPI reference backend with Pydantic validation, a traceable and versioned rules engine, SQLAlchemy/SQLite persistence, role-aware review actions, soft deletion, and audit logs.</li>
+          <li>Developed canonical schemas for consent scope, identity verification, evidence status, purpose limitation, retention, training use, secondary use, and revocation.</li>
+          <li>Built explainable assessment outputs containing triggered rules, hard stops, missing information, recommended controls, reviewer routing, and Markdown reports.</li>
+          <li>Developed a static case-management workflow covering dashboard, review queue, intake, risks, evidence, findings, tasks, approvals, activity history, and reports.</li>
+          <li>Applied LINDDUN threat modeling and added pytest coverage for authorization, sensitive contexts, labeling, provenance, rule precedence, access roles, audit logging, retention, and deletion.</li>
+          <li><b>Technologies:</b> Python, FastAPI, Pydantic, SQLAlchemy, SQLite, pytest, JSON Schema, Docker, JavaScript, Git, and GitHub.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row"><h3>China AIGC Legal-Clause-to-Control Framework</h3><p>AI Governance Research Project | 2026</p></div>
+        <ul>
+          <li>Developed a research framework for transforming selected Chinese AIGC legal provisions into structured legal norms, traceable controls, runtime evidence schemas, and review-routed evaluation results.</li>
+          <li>Designed canonical YAML and JSON artifacts covering legal source, normative fragment, actor, modality, action, object, trigger, exception, timing, evidence requirements, ambiguity, automation profile, and review status.</li>
+          <li>Distinguished legal applicability, evidence-test execution, and final compliance conclusions to prevent deterministic field checks from being represented as automated legal interpretation.</li>
+          <li>Built schema, traceability, source-integrity, runtime-evidence, and evaluator validation across 11 canonical norms, 12 controls, and 21 designed cases.</li>
+          <li>Classified controls as direct legal requirements, derived organizational assurances, or technical implementations, with separate author and legal-expert review status.</li>
+          <li>Developed an IEEE-style research paper and independent-review protocol for second-coder review, qualified legal review, and transparent adjudication.</li>
+          <li><b>Technologies:</b> Python, YAML, JSON Schema, pytest, SHA-256 integrity validation, XeLaTeX, TikZ, and GitHub.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row"><h3>NIST AI RMF Compliance Dashboard</h3><p>AI Governance Project | 2026</p></div>
+        <ul><li>Mapped AI systems against Govern, Map, Measure, and Manage with maturity scoring, missing-control analysis, and reviewer-oriented evidence prompts.</li><li>Translated NIST AI RMF concepts into a compact, inspectable dashboard for structured governance review.</li></ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="page-break-before: always">Experience</h2>
+      <div class="entry"><div class="row"><p class="org">FaceMarket</p><p>Shenzhen, China</p></div><div class="row"><p class="role">Researcher</p><p>Jun 2026 - Present</p></div><ul><li>Research face identity, digital assets, synthetic-media markets, and digital-replica use cases to support product and compliance strategy.</li><li>Translate platform risks involving consent, provenance, identity misuse, deepfake abuse, and secondary commercialization into research briefs and governance recommendations.</li></ul></div>
+      <div class="entry"><div class="row"><p class="org">Best Top Consulting Pte Ltd</p><p>Singapore / Remote</p></div><div class="row"><p class="role">AI Product Development Intern</p><p>May 2025 - Aug 2025</p></div><ul><li>Revised AI prompt design around a 16-dimension psychological assessment framework and supported AI assessment workflows covering 1,800+ job records.</li><li>Tested prompt performance with engineering teams and documented system-response and workflow principles.</li></ul></div>
+      <div class="entry"><div class="row"><p class="org">The Chinese University of Hong Kong</p><p>Shenzhen, China</p></div><div class="row"><p class="role">Research Assistant, Organizational Behaviour</p><p>Jan 2026 - Present</p></div><ul><li>Support bilingual survey design, scale review, labor-market data preparation, and literature synthesis on AI, job search, and career behavior.</li></ul></div>
+    </section>
+
+    <section>
+      <h2>Education &amp; Research</h2>
+      <div class="entry"><div class="row"><p class="org">The University of Hong Kong</p><p>Hong Kong</p></div><div class="row"><p class="role">M.A. in AI, Ethics and Society</p><p>Sep 2025 - Jun 2026 (expected)</p></div></div>
+      <div class="entry"><div class="row"><p class="org">Lingnan University</p><p>Hong Kong</p></div><div class="row"><p class="role">B.Soc.Sc. in Business Psychology</p><p>Sep 2021 - Aug 2025</p></div><p>Dean's List (2023, 2024, 2025)</p></div>
+      <div class="entry"><p><b>Publication / Working Paper:</b> Wang, H.*, Cheng, Y.*, van Gool, P., &amp; Zhang, Z. <i>Navigating Diversity: The Role of Network Crafting in Resource Enrichment Across Work and Home.</i> Revise &amp; Resubmit, <i>Career Development International</i>. *Co-first authors.</p></div>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <p><b>Programming &amp; Data:</b> Python, pandas, SQL, JSON, JSON Schema, YAML</p>
+        <p><b>Backend &amp; Development:</b> FastAPI, Pydantic, SQLAlchemy, SQLite, pytest, Docker, Git, GitHub, JavaScript, Next.js</p>
+        <p><b>Privacy Engineering &amp; AI Governance:</b> Privacy-by-design, consent and purpose limitation, data lifecycle mapping, evidence mapping, retention and deletion, audit logging, LINDDUN, NIST AI RMF, rules as code, policy-to-control translation, synthetic-media governance</p>
+        <p><b>Research:</b> Survey design, longitudinal research, SEM, multilevel analysis, legal-source annotation, traceability validation</p>
+      </div>
+    </section>
+  </body>
+</html>

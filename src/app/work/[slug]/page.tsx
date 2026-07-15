@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { WorkDetail } from "@/components/detail/work-detail";
 import { getAdjacentItems, getWorkItem, workItems } from "@/data/content";
 import { createContentMetadata } from "@/lib/content-metadata";
@@ -20,8 +20,14 @@ export async function generateMetadata({ params }: WorkPageProps): Promise<Metad
 
 export default async function WorkPage({ params }: WorkPageProps) {
   const { slug } = await params;
+  if (slug === "china-ai-compliance-evidence") {
+    redirect("/research/china-aigc-legal-clause-to-control");
+  }
   const item = getWorkItem(slug);
   if (!item) notFound();
-  const { previous, next } = getAdjacentItems(workItems, slug);
+  const navigableWorkItems = workItems.filter(
+    (workItem) => workItem.slug !== "china-ai-compliance-evidence",
+  );
+  const { previous, next } = getAdjacentItems(navigableWorkItems, slug);
   return <WorkDetail item={item} previous={previous} next={next} />;
 }

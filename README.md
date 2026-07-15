@@ -11,7 +11,9 @@ Positioning:
 - `/` — portfolio landing page
 - `/about` — personal bio and life cards
 - `/contact` — CV, LinkedIn, and email
-- `/projects/china-ai-compliance` — China AI Compliance Evidence Framework
+- `/work/ai-generated-actor-compliance` — synthetic-media privacy engineering case-management prototype
+- `/research/china-aigc-legal-clause-to-control` — legal-clause-to-control governance research framework
+- `/projects/china-ai-compliance` — legacy redirect to the China framework
 - `/research` — current research focus
 
 ## Local Development
@@ -45,4 +47,3 @@ Vercel should automatically detect:
 - Framework: Next.js
 - Build command: `pnpm build`
 - Output: Next.js default
-

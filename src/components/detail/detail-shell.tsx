@@ -73,6 +73,7 @@ function MetadataGrid({ item }: { item: DetailItem }) {
           { label: "Focus", value: item.methods.join(" · ") },
         ]
       : [
+          ...(item.typeLabel ? [{ label: "Type", value: item.typeLabel }] : []),
           { label: "Year", value: item.year },
           { label: "Status", value: item.status },
           { label: item.roleLabel, value: item.role },
@@ -80,7 +81,7 @@ function MetadataGrid({ item }: { item: DetailItem }) {
         ];
 
   return (
-    <dl className="mt-8 grid border-y border-black/10 sm:grid-cols-2 lg:grid-cols-4">
+    <dl className="mt-8 grid border-y border-black/10 sm:grid-cols-2 lg:grid-cols-5">
       {items.map((meta, index) => (
         <div
           key={meta.label}

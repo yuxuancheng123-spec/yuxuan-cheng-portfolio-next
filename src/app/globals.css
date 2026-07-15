@@ -6,10 +6,9 @@
   --yc-ink: #17222a;
   --yc-muted: #334652;
   --yc-accent: #315f82;
-  /* Font switch notes:
-     Geist = clean technical portfolio; Inter = safe professional fallback;
-     Satoshi = more editorial if self-hosted later; Neue Montreal-style only if locally licensed. */
-  --yc-font-sans: var(--font-geist-sans), "Avenir Next", Avenir,
+  /* Geist is preferred when self-hosted later. The deployed site uses the
+     available system stack so production builds do not depend on Google Fonts. */
+  --yc-font-sans: "Avenir Next", Avenir,
     "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont,
     "Helvetica Neue", Arial, sans-serif;
   --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono",

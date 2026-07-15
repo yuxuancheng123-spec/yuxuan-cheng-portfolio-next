@@ -5,6 +5,7 @@ export type PortfolioProject = {
   title: string;
   description: string;
   type: string;
+  tags?: string[];
   href: string;
   external?: boolean;
   size: ProjectSize;
@@ -16,21 +17,22 @@ export const featuredProjects: PortfolioProject[] = [
   {
     title: "AI-Generated Actor Compliance Assessment",
     description:
-      "A working review system for consent, identity risk, labeling, and synthetic media evidence.",
-    type: "Synthetic media",
+      "Privacy engineering prototype for managing synthetic-media compliance cases across intake, risk assessment, evidence review, remediation, approval, and audit logging.",
+    type: "Privacy Engineering",
+    tags: ["AI Governance", "Synthetic Media", "Case Management"],
     href: "/work/ai-generated-actor-compliance",
     size: "hero",
     visual: "actor",
   },
   {
-    title: "China AI Compliance Evidence Framework",
+    title: "China AIGC Legal-Clause-to-Control Framework",
     description:
-      "A machine-readable evidence pipeline for China-facing AIGC platforms.",
-    type: "Framework",
-    href: "/work/china-ai-compliance-evidence",
+      "Research framework for transforming selected Chinese AIGC provisions into traceable legal norms, reviewed controls, and machine-executable evidence tests.",
+    type: "AI Governance Research",
+    tags: ["Legal Informatics", "Rules as Code", "Human Review"],
+    href: "/research/china-aigc-legal-clause-to-control",
     size: "standard",
     visual: "china",
-    artifactHref: "/china-compliance.pdf",
   },
   {
     title: "NIST AI RMF Compliance Dashboard",
@@ -62,6 +64,14 @@ export const featuredProjects: PortfolioProject[] = [
 ];
 
 export const researchWriting = [
+  {
+    year: "2026",
+    type: "Research / Legal Informatics",
+    title: "China AIGC Legal-Clause-to-Control Framework",
+    description:
+      "Examining how selected Chinese AIGC provisions can be represented as traceable legal norms, reviewed controls, and executable evidence tests without automating legal judgment.",
+    href: "/research/china-aigc-legal-clause-to-control",
+  },
   {
     year: "2026",
     type: "Research",

@@ -19,10 +19,10 @@ const notes = [
   },
   {
     title: "📄 Latest Project",
-    text: "China AI Compliance Evidence Framework",
+    text: "China AIGC Legal-Clause-to-Control Framework",
     mark: "PROJECT",
     visual: "project",
-    href: "/projects/china-ai-compliance",
+    href: "/research/china-aigc-legal-clause-to-control",
     external: false,
   },
   {

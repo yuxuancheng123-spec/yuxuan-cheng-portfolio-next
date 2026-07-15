@@ -64,9 +64,10 @@ function ProjectHeader({ project }: { project: PortfolioProject }) {
 
   return (
     <div className="relative z-10 flex items-start justify-between gap-4">
-      <span className={`text-xs font-semibold ${dark ? "text-white/48" : "text-[#273c43]/55"}`}>
-        {project.type}
-      </span>
+      <div className={`flex max-w-[82%] flex-wrap gap-1.5 text-[10px] font-semibold ${dark ? "text-white/56" : "text-[#273c43]/62"}`}>
+        <span className={`rounded-full border px-2 py-1 ${dark ? "border-white/12 bg-white/8" : "border-[#273c43]/10 bg-white/38"}`}>{project.type}</span>
+        {project.tags?.map((tag) => <span key={tag} className={`rounded-full border px-2 py-1 ${dark ? "border-white/12 bg-white/8" : "border-[#273c43]/10 bg-white/38"}`}>{tag}</span>)}
+      </div>
       <span
         className={`project-arrow grid h-10 w-10 shrink-0 place-items-center rounded-full border text-lg transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
           dark

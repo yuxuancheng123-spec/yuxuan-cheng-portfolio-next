@@ -12,8 +12,7 @@ const links = [
   },
   {
     label: "CV",
-    href: "https://yuxuancheng123-spec.github.io/yuxuan-cheng-portfolio/assets/Kenny_Cheng_Resume.pdf",
-    external: true,
+    href: "/cv/Yuxuan_Cheng_CMU_Privacy_Engineering_AI_Governance_CV.pdf",
   },
 ];
 

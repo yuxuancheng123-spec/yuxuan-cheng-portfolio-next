@@ -1,3 +1,5 @@
+import { chinaLegalFrameworkItem } from "@/data/china-legal-framework";
+
 export type ContentKind = "Work" | "Research" | "Writing";
 export type DetailVisual =
   | "actor-assessment"
@@ -23,6 +25,7 @@ export type ContentSection = {
 export type DetailBase = {
   slug: string;
   kind: ContentKind;
+  typeLabel?: string;
   title: string;
   subtitle: string;
   summary: string;
@@ -88,21 +91,22 @@ export const workItems: WorkItem[] = [
   {
     slug: "ai-generated-actor-compliance",
     kind: "Work",
+    typeLabel: "Privacy Engineering / AI Governance",
     title: "AI-Generated Actor Compliance Assessment",
-    subtitle: "A permission-aware review system for synthetic performance.",
+    subtitle: "A privacy engineering and AI governance prototype for synthetic-media compliance operations.",
     summary:
-      "A working prototype that turns consent, identity, voice, disclosure, and provenance questions into an inspectable pre-publication review.",
+      "A privacy engineering prototype for managing synthetic-media compliance cases across intake, risk assessment, evidence review, remediation, approval, and audit logging.",
     seoDescription:
-      "A product compliance case study for reviewing consent, identity, voice, labeling, and provenance risks in AI-generated actor content.",
+      "A privacy engineering and AI governance prototype for synthetic-media compliance case management, evidence review, approval, reporting, and audit logging.",
     year: "2026",
     status: "Working prototype",
     roleLabel: "My role",
-    role: "AI compliance analyst, researcher, and prototype designer",
-    methods: ["Risk mapping", "Rule-based assessment", "Evidence design", "Synthetic media governance"],
+    role: "Problem framing, privacy architecture, rule design, workflow design, development, and validation",
+    methods: ["Python", "FastAPI", "Pydantic", "SQLAlchemy", "SQLite", "pytest", "JSON Schema", "Docker", "JavaScript"],
     visual: "actor-assessment",
     links: [
       {
-        label: "Live project",
+        label: "Live workspace",
         href: "https://yuxuancheng123-spec.github.io/ai-generated-actor-compliance/web/",
         external: true,
       },
@@ -112,78 +116,109 @@ export const workItems: WorkItem[] = [
         external: true,
       },
     ],
-    relatedItems: ["/work/china-ai-compliance-evidence", "/writing/permission-first-infrastructure"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/writing/permission-first-infrastructure"],
     overview:
-      "The assessment is designed for a fictional synthetic media platform that accepts real-person face, voice, and video inputs. It asks whether a proposed use can proceed, what evidence is missing, and what controls must be applied before generation or distribution.",
-    workflowTitle: "Assessment workflow",
+      "The assessment is designed for a fictional synthetic-media platform that accepts face, voice, motion, video, and authorization records. It moves a compliance case toward an evidence-supported, accountable, and auditable decision instead of stopping at a questionnaire score.",
+    workflowTitle: "Compliance case workflow",
     workflow: [
-      { label: "Intake", detail: "Capture requester, person depicted, media type, use, and distribution context." },
-      { label: "Verify", detail: "Check authority, consent scope, voice and likeness rights, and evidence quality." },
-      { label: "Assess", detail: "Apply risk rules for sensitive context, public figures, commercial use, and minors." },
-      { label: "Control", detail: "Require labels, provenance, human review, restrictions, or rejection." },
-      { label: "Record", detail: "Produce a review result with reasons, obligations, and an evidence trail." },
+      { label: "Intake", detail: "Capture project facts, represented person, source media, intended use, and jurisdiction." },
+      { label: "Risk assessment", detail: "Run explainable, versioned rules and route hard stops or missing facts to reviewers." },
+      { label: "Evidence review", detail: "Request, submit, inspect, accept, reject, or clarify evidence against linked requirements." },
+      { label: "Remediation", detail: "Turn open findings into assigned tasks, due dates, and release-blocking actions." },
+      { label: "Approval", detail: "Move through business, privacy, legal, brand-safety, and final-approval gates." },
+      { label: "Audit trail", detail: "Retain activity history, report versions, evidence status, and decision reasoning." },
     ],
     signals: [
-      { label: "Consent", value: "Verified", note: "Specific person, purpose, term, and reuse rights" },
-      { label: "Identity", value: "Matched", note: "Source identity aligned with the authorization record" },
-      { label: "Voice", value: "Review", note: "Separate cloning permission required when voice is used" },
-      { label: "Disclosure", value: "Required", note: "Visible and machine-readable synthetic media notice" },
-      { label: "Provenance", value: "Attached", note: "Generation and publication events retained" },
-      { label: "Decision", value: "Conditional", note: "Release only after the open voice check is closed" },
+      { label: "Case", value: "Traceable", note: "A stable case record links facts, rules, evidence, owners, and outcomes" },
+      { label: "Consent", value: "Scoped", note: "Likeness, voice, training, territory, duration, and revocation stay distinct" },
+      { label: "Rules", value: "Explainable", note: "Triggered rules, hard stops, gaps, controls, and reviewer paths are visible" },
+      { label: "Evidence", value: "Lifecycle", note: "Artifacts move through requested, submitted, reviewed, accepted, or rejected states" },
+      { label: "Approval", value: "Gated", note: "Privacy and legal review remain explicit release gates" },
+      { label: "Audit", value: "Recorded", note: "Activity events and report output preserve the decision context" },
     ],
     evidenceChecklist: [
-      "Named performer or rights holder",
-      "Purpose-specific likeness authorization",
-      "Separate voice-cloning permission",
-      "Commercial-use and territory terms",
-      "Training and fine-tuning permissions",
-      "Visible disclosure specification",
-      "Machine-readable provenance record",
-      "Escalation owner and expiry date",
+      "Verified likeness or rights-holder authorization",
+      "Separate voice and digital-replica authorization",
+      "Purpose, commercial-use, territory, and duration scope",
+      "Training, fine-tuning, secondary-use, and revocation terms",
+      "Visible disclosure and machine-readable metadata plan",
+      "Watermark or provenance record where required",
+      "Vendor deletion commitment and retention date",
+      "Reviewer, remediation owner, and approval condition",
     ],
     sample: {
       label: "Sample result",
-      title: "Conditional approval",
+      title: "Evidence-supported decision",
       description:
-        "The likeness license covers paid short-form advertising, but the submitted agreement does not authorize voice cloning. Generation can continue without cloned voice or after a separate voice license is verified.",
+        "A case can expose the difference between a valid likeness license and a missing voice or training permission, then keep release blocked until the required evidence and reviewer gates are complete.",
       lines: [
+        '"case_id": "FM-2026-014"',
         '"risk_level": "high"',
-        '"decision": "conditional_approval"',
-        '"open_control": "voice_consent"',
-        '"label_required": true',
-        '"review_owner": "trust_and_safety"',
+        '"triggered_rule": "R-01"',
+        '"evidence_status": "under_review"',
+        '"release_gate": "legal_review"',
       ],
     },
     sections: [
       {
-        heading: "Why this project matters",
+        heading: "Why synthetic-media compliance becomes an operational problem",
         paragraphs: [
-          "Synthetic media moves identity material through upload, model processing, editing, publication, and redistribution. By the time an affected person discovers misuse, the content may already have been copied across platforms.",
-          "A credible control therefore needs to operate before publication. The product must connect permission records to the exact person, modality, purpose, market, duration, and downstream use being requested.",
+          "Synthetic-media risks do not end when a reviewer labels a request high or low risk. Face, voice, and motion data move through intake, generation, publication, redistribution, complaints, and remediation. Each step needs an accountable owner and an inspectable record.",
+          "The project therefore treats compliance as operational case management: a decision must be connected to the person represented, the intended use, the required evidence, the reviewer path, and the release gate.",
         ],
       },
       {
-        heading: "Key product decisions",
+        heading: "From risk assessment to compliance case management",
         paragraphs: [
-          "The prototype separates authorization from content labeling: a clear AI label does not cure missing consent, and a valid license does not remove transparency duties.",
+          "The original interaction pattern of filling a form and receiving a score is now embedded within a case workspace. Dashboard, Review Queue, Case Detail, Intake, Risks, Evidence, Findings, Tasks, Approvals, Activity, and Report each support a different decision step.",
         ],
         points: [
-          "Treat face, voice, and training rights as separate permissions.",
-          "Use conditional decisions when a remediable control is missing.",
-          "Preserve the reasoning and evidence behind each outcome.",
-          "Make distribution region part of the review rather than a passive intake field.",
+          "A risk label does not replace an evidence review.",
+          "A visible AI label does not cure missing authorization.",
+          "A completed task does not skip required approvals.",
+          "A report is a decision artifact, not the workflow itself.",
         ],
       },
       {
-        heading: "Limitations",
+        heading: "Canonical case, consent, and evidence schema",
         paragraphs: [
-          "The current engine is intentionally rule-based. It demonstrates how policy logic can be operationalized, but it does not verify the authenticity of a contract, determine legal ownership, or replace jurisdiction-specific legal review.",
+          "The reference backend models canonical intake, consent, evidence, assessment, triggered-rule, and audit-log records. Consent scope includes purpose limitation, likeness and voice coverage, territory, duration, training use, secondary use, revocation, and compensation rather than reducing authorization to a single checkbox.",
         ],
       },
       {
-        heading: "What I would improve next",
+        heading: "Explainable rules engine",
         paragraphs: [
-          "The next version would add signed consent credentials, expiry and revocation events, policy-version tracking, region-specific review packs, and stronger integration between publication labels and provenance records.",
+          "The rule engine returns total score, risk level, decision, triggered rules, hard stops, missing information, recommended controls, reviewer path, and a Markdown report. Rule reasoning and versioning make a result inspectable rather than presenting a hidden model verdict.",
+        ],
+      },
+      {
+        heading: "Evidence, findings, tasks, and approvals",
+        paragraphs: [
+          "Evidence is treated as a lifecycle object with owner, reviewer, status, collection date, expiry date, version, and linked requirement. Open evidence gaps become findings and remediation tasks; approval stages make release conditions explicit rather than implicit in a score.",
+        ],
+      },
+      {
+        heading: "Privacy controls and LINDDUN threat model",
+        paragraphs: [
+          "The privacy architecture maps face, voice, motion, consent, prompt, generated media, provenance metadata, and incident records through the lifecycle. LINDDUN misuse cases cover forged consent, label stripping, vendor training misuse, unauthorized likeness use, and insider access.",
+        ],
+      },
+      {
+        heading: "Testing and validation",
+        paragraphs: [
+          "The reference implementation uses pytest to exercise authorization failures, sensitive contexts, labeling and provenance controls, rule precedence, role checks, audit logging, retention, and soft deletion. The deployed GitHub Pages interface remains a static workflow prototype using demo data.",
+        ],
+      },
+      {
+        heading: "Prototype boundaries",
+        paragraphs: [
+          "GitHub Pages demonstrates case-management interaction with in-memory demo data. It is not connected to the FastAPI backend, does not provide authentication, persistent collaboration, real file upload, production access control, or jurisdiction-specific legal advice.",
+        ],
+      },
+      {
+        heading: "My contribution",
+        paragraphs: [
+          "I framed the synthetic-media problem, designed the privacy architecture and schemas, defined rules and controls, built the workflow and static interface, and developed the reference backend, documentation, validation approach, and evidence artifacts.",
         ],
       },
     ],
@@ -191,14 +226,14 @@ export const workItems: WorkItem[] = [
   {
     slug: "china-ai-compliance-evidence",
     kind: "Work",
-    title: "China AI Compliance Evidence Framework",
-    subtitle: "Turning policy obligations into records an organization can verify.",
+    title: "China AIGC Legal-Clause-to-Control Framework",
+    subtitle: "Legacy route for the research framework now presented in the Research section.",
     summary:
-      "A governance pipeline prototype that connects policy language to requirements, controls, evidence objects, and machine-readable compliance records.",
+      "A legacy route retained for existing links; it redirects to the current legal-clause-to-control research framework.",
     seoDescription:
-      "A machine-readable compliance evidence framework for translating China AIGC policy requirements into controls, evidence, and auditable records.",
+      "A legacy route retained for the China AIGC legal-clause-to-control research framework.",
     year: "2026",
-    status: "Concept prototype",
+    status: "Research prototype",
     roleLabel: "My role",
     role: "Governance researcher and evidence-system designer",
     methods: ["Policy mapping", "Evidence schema", "Control design", "Lifecycle modeling"],
@@ -209,7 +244,11 @@ export const workItems: WorkItem[] = [
         href: "https://github.com/yuxuancheng123-spec/china-aigc-compliance-evidence",
         external: true,
       },
-      { label: "Read the paper", href: "/china-compliance.pdf", external: true },
+      {
+        label: "View paper draft",
+        href: "https://github.com/yuxuancheng123-spec/china-aigc-compliance-evidence/tree/main/paper",
+        external: true,
+      },
     ],
     relatedItems: ["/work/ai-generated-actor-compliance", "/work/nist-ai-rmf-dashboard"],
     overview:
@@ -302,7 +341,7 @@ export const workItems: WorkItem[] = [
     methods: ["NIST AI RMF mapping", "Maturity scoring", "Gap analysis", "Dashboard prototyping"],
     visual: "nist-dashboard",
     links: [],
-    relatedItems: ["/work/china-ai-compliance-evidence", "/research/ai-awareness-job-crafting"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/research/ai-awareness-job-crafting"],
     overview:
       "The dashboard is designed for teams that need a structured view of AI risk-management practices without presenting a framework checklist as a formal audit opinion.",
     workflowTitle: "Assessment logic",
@@ -593,9 +632,9 @@ export const writingItems: WritingItem[] = [
     methods: ["AIGC governance", "Permission systems", "Compliance evidence"],
     visual: "permission-first",
     links: [
-      { label: "Evidence framework", href: "/work/china-ai-compliance-evidence" },
+      { label: "Legal-clause-to-control framework", href: "/research/china-aigc-legal-clause-to-control" },
     ],
-    relatedItems: ["/writing/ai-short-drama-face-theft", "/work/china-ai-compliance-evidence"],
+    relatedItems: ["/writing/ai-short-drama-face-theft", "/research/china-aigc-legal-clause-to-control"],
     published: "July 2026",
     readingTime: "7 min read",
     lede:
@@ -632,14 +671,14 @@ export const writingItems: WritingItem[] = [
       },
     ],
     references: [
-      "China AI Compliance Evidence Framework, project documentation.",
+      "China AIGC Legal-Clause-to-Control Framework, project documentation.",
       "NIST AI Risk Management Framework 1.0.",
       "C2PA technical specifications for content provenance and authenticity.",
     ],
   },
 ];
 
-export const allContent: DetailItem[] = [...workItems, ...researchItems, ...writingItems];
+export const allContent: DetailItem[] = [...workItems, ...researchItems, chinaLegalFrameworkItem, ...writingItems];
 
 export function getWorkItem(slug: string) {
   return workItems.find((item) => item.slug === slug);

@@ -85,6 +85,43 @@ function EvidenceAndSample({ item }: { item: WorkItem }) {
   );
 }
 
+function ActorComplianceSystem() {
+  const workspace = ["Dashboard", "Review Queue", "Case Detail", "Intake", "Risks", "Evidence", "Findings", "Tasks", "Approvals", "Activity", "Report"];
+  return (
+    <>
+      <section aria-labelledby="workspace-heading" className="mt-16 sm:mt-24">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#315f82]">Operational workspace</p>
+            <h2 id="workspace-heading" className="mt-2 max-w-[16ch] text-3xl font-medium leading-[0.98] tracking-[-0.04em] sm:text-5xl">A case moves toward an accountable decision</h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-[#334652]/62">The static interface demonstrates workflow and demo data. It does not connect to the reference backend in the deployed GitHub Pages site.</p>
+        </div>
+        <div className="mt-7 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+          {workspace.map((item, index) => (
+            <div key={item} className={`rounded-[16px] border border-black/8 p-4 ${index === 0 ? "bg-[#dcecf0]" : index === workspace.length - 1 ? "bg-[#17222a] text-white" : "bg-white/66"}`}>
+              <span className={`font-mono text-[9px] ${index === workspace.length - 1 ? "text-[#9cc2d8]" : "text-[#315f82]/48"}`}>{String(index + 1).padStart(2, "0")}</span>
+              <p className="mt-7 text-lg font-medium tracking-[-0.025em]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="architecture-heading" className="mt-16 overflow-hidden rounded-[24px] border border-black/8 bg-[#e5ece9] p-5 sm:mt-24 sm:p-8">
+        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#315f82]">System architecture</p>
+        <h2 id="architecture-heading" className="mt-2 text-3xl font-medium tracking-[-0.04em] sm:text-5xl">Static workflow, canonical schema, reference backend</h2>
+        <div className="mt-8 grid gap-3 lg:grid-cols-[1fr_auto_1.18fr_auto_0.86fr] lg:items-stretch">
+          <article className="rounded-[18px] border border-white/75 bg-white/70 p-5"><p className="font-mono text-[9px] text-[#315f82]">GITHUB PAGES</p><h3 className="mt-5 text-xl font-medium tracking-[-0.03em]">Static workflow prototype</h3><p className="mt-3 text-sm leading-6 text-[#334652]/68">Dashboard, case routing, review queue, evidence states, approval gates, activity, and report views powered by demo data.</p></article>
+          <span className="grid place-items-center text-2xl text-[#315f82]/40" aria-hidden="true">→</span>
+          <article className="rounded-[18px] bg-[#17222a] p-5 text-white"><p className="font-mono text-[9px] text-[#9cc2d8]">CANONICAL MODEL</p><h3 className="mt-5 text-xl font-medium tracking-[-0.03em]">Case, consent, evidence, assessment</h3><p className="mt-3 text-sm leading-6 text-white/62">JSON schema and Pydantic concepts preserve scope, verification, retention, revocation, provenance, and review context.</p></article>
+          <span className="grid place-items-center text-2xl text-[#315f82]/40" aria-hidden="true">→</span>
+          <article className="rounded-[18px] border border-white/75 bg-white/70 p-5"><p className="font-mono text-[9px] text-[#315f82]">FASTAPI REFERENCE</p><h3 className="mt-5 text-xl font-medium tracking-[-0.03em]">Validation, rules, persistence, audit</h3><p className="mt-3 text-sm leading-6 text-[#334652]/68">Pydantic validation, explainable rules, SQLAlchemy/SQLite records, reports, role-aware actions, retention, soft deletion, and audit logs.</p></article>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function WorkSections({ item }: { item: WorkItem }) {
   return (
     <div className="mt-16 sm:mt-24">
@@ -118,6 +155,7 @@ export function WorkDetail({ item, previous, next }: WorkDetailProps) {
         <p className="max-w-[50rem] text-2xl leading-[1.22] tracking-[-0.03em] text-[#17222a]/84 sm:text-3xl">{item.overview}</p>
       </section>
       <Workflow item={item} />
+      {item.slug === "ai-generated-actor-compliance" ? <ActorComplianceSystem /> : null}
       <SignalGrid item={item} />
       <EvidenceAndSample item={item} />
       <WorkSections item={item} />
