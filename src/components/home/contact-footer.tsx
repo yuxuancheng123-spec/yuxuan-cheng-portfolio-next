@@ -12,7 +12,7 @@ const links = [
   },
   {
     label: "CV",
-    href: "/cv/Yuxuan_Cheng_CMU_Privacy_Engineering_AI_Governance_CV.pdf",
+    href: "/cv/Yuxuan_Cheng_CV.pdf",
   },
 ];
 

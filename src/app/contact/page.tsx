@@ -13,7 +13,7 @@ const contactCards = [
     label: "Learn more",
     title: "View CV",
     mark: "CV",
-    href: "/cv/Yuxuan_Cheng_CMU_Privacy_Engineering_AI_Governance_CV.pdf",
+    href: "/cv/Yuxuan_Cheng_CV.pdf",
     visual: "cv",
   },
   {
