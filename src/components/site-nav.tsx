@@ -5,31 +5,61 @@ type SiteNavProps = {
 };
 
 const navItems = [
-  { label: "Home", href: "/" },
+  { label: "Work", href: "/#work" },
+  { label: "Research", href: "/#research-writing" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export function SiteNav({ active }: SiteNavProps) {
   return (
-    <nav
-      aria-label="Primary navigation"
-      className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 rounded-full border border-black/10 bg-white/88 p-1 shadow-[0_16px_44px_rgba(25,43,55,0.12)] backdrop-blur-xl sm:bottom-5"
-    >
-      {navItems.map((item) => (
+    <header className="sticky top-0 z-40 border-b border-line bg-background/90 backdrop-blur">
+      <div className="yc-container flex h-14 items-center justify-between gap-4">
         <Link
-          key={item.label}
-          href={item.href}
-          aria-current={active === item.label ? "page" : undefined}
-          className={`rounded-full px-4 py-2.5 text-sm font-medium transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#315f82] sm:px-5 ${
-            active === item.label
-              ? "bg-[#17222a] text-white"
-              : "text-black/68 hover:bg-[#e8eef1] hover:text-black"
-          }`}
+          href="/"
+          aria-current={active === "Home" ? "page" : undefined}
+          className="whitespace-nowrap text-[15px] font-semibold text-ink hover:text-accent"
         >
-          {item.label}
+          Yuxuan Cheng
         </Link>
-      ))}
-    </nav>
+        <nav aria-label="Primary navigation" className="flex items-center gap-0.5 text-sm sm:gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              aria-current={active === item.label ? "page" : undefined}
+              className={`rounded-md px-1.5 py-1.5 transition-colors sm:px-2.5 ${
+                active === item.label
+                  ? "font-medium text-ink"
+                  : "text-subtle hover:text-ink"
+              } ${item.label === "Research" ? "hidden sm:inline-flex" : ""}`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href="/cv/Yuxuan_Cheng_CV.pdf"
+            className="ml-1 rounded-md border border-line bg-white px-2.5 py-1 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+          >
+            CV
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-16 border-t border-line">
+      <div className="yc-container flex flex-col gap-3 py-6 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
+        <p>Yuxuan Cheng · AI governance, privacy engineering, responsible AI</p>
+        <div className="flex gap-4">
+          <a className="hover:text-accent" href="mailto:yuxuancheng123@gmail.com">Email</a>
+          <a className="hover:text-accent" href="https://www.linkedin.com/in/yuxuan-cheng-86743631a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a className="hover:text-accent" href="https://github.com/yuxuancheng123-spec" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
   );
 }

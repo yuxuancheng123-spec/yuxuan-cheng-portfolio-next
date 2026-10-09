@@ -1,32 +1,19 @@
-import { Reveal } from "@/components/reveal";
-import {
-  ProjectCard,
-  projectCardLayout,
-} from "@/components/home/project-card";
+import { ProjectCard } from "@/components/home/project-card";
 import { featuredProjects } from "@/data/portfolio";
 
 export function FeaturedWork() {
   return (
-    <section id="work" className="yc-section yc-section-compact scroll-mt-8">
-      <Reveal>
-        <div className="mb-7 sm:mb-9">
-          <h2 className="yc-section-title">Featured work</h2>
-          <p className="mt-3 max-w-xl text-base leading-6 text-[#334652]/68 sm:text-lg sm:leading-7">
-            Research questions translated into frameworks, working tools, and
-            evidence people can inspect.
-          </p>
-        </div>
-      </Reveal>
-
-      <div className="grid grid-flow-row-dense grid-cols-1 gap-3.5 md:grid-cols-12 lg:auto-rows-[minmax(300px,auto)] lg:gap-4">
+    <section id="work" className="yc-section">
+      <h2 className="yc-h2">Featured work</h2>
+      <p className="yc-body mt-1.5 max-w-xl">
+        Research questions translated into frameworks, working tools, and
+        evidence people can inspect.
+      </p>
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {featuredProjects.map((project, index) => (
-          <Reveal
-            key={project.title}
-            delay={Math.min(index * 55, 165)}
-            className={projectCardLayout[project.size]}
-          >
-            <ProjectCard project={project} />
-          </Reveal>
+          <div key={project.title} className={index === 0 ? "sm:col-span-2" : ""}>
+            <ProjectCard project={project} wide={index === 0} />
+          </div>
         ))}
       </div>
     </section>
