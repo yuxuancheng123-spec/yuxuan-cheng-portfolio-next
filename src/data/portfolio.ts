@@ -63,6 +63,7 @@ export const featuredProjects: PortfolioProject[] = [
       "Research, products, coffee, films, and the questions I keep returning to.",
     type: "About",
     href: "/about",
+    image: { src: "/images/about-lifestyle.jpg", alt: "Desk by a window with a notebook, headphones, and iced coffee overlooking the city" },
     size: "about",
     visual: "journey",
   },

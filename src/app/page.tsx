@@ -1,4 +1,3 @@
-import { ContactFooter } from "@/components/home/contact-footer";
 import { FeaturedWork } from "@/components/home/featured-work";
 import { Hero } from "@/components/home/hero";
 import { PersonalLayer } from "@/components/home/personal-layer";
@@ -14,7 +13,6 @@ export default function Home() {
         <FeaturedWork />
         <ResearchWriting />
         <PersonalLayer />
-        <ContactFooter />
       </main>
       <SiteFooter />
     </>

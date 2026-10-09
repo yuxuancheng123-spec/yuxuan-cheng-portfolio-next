@@ -58,6 +58,7 @@ export function SiteFooter() {
           <a className="hover:text-accent" href="mailto:yuxuancheng123@gmail.com">Email</a>
           <a className="hover:text-accent" href="https://www.linkedin.com/in/yuxuan-cheng-86743631a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a className="hover:text-accent" href="https://github.com/yuxuancheng123-spec" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a className="hover:text-accent" href="/cv/Yuxuan_Cheng_CV.pdf">CV</a>
         </div>
       </div>
     </footer>
