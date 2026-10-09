@@ -22,7 +22,7 @@ export const featuredProjects: PortfolioProject[] = [
     type: "Privacy Engineering",
     tags: ["AI Governance", "Synthetic Media", "Case Management"],
     href: "/work/ai-generated-actor-compliance",
-    image: { src: "/images/work/ai-actor-demo.jpg", alt: "Review queue screen from the live compliance workspace demo" },
+    image: { src: "/images/work/ai-actor-demo.jpg", alt: "Provenance chain for case FM-2026-014 in the live demo, with publishing blocked at the consent and authorization step" },
     size: "hero",
     visual: "actor",
   },
