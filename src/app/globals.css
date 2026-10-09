@@ -61,6 +61,7 @@ button:focus-visible {
   text-wrap: balance;
 }
 
+@layer components {
 /* Layout */
 .yc-container {
   width: 100%;
@@ -196,6 +197,7 @@ a.yc-card:hover {
 
 .yc-link:hover {
   text-decoration-color: var(--yc-accent);
+}
 }
 
 ::selection {

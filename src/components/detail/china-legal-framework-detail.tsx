@@ -38,7 +38,7 @@ function TransformationVisual() {
             <p className="yc-kicker">Boundary</p>
             <p className="mt-2 max-w-[52ch] text-sm leading-6 text-muted">Machine-readable does not mean machine-interpreted. The evaluator executes structured interpretations after the relevant human confirmations are recorded.</p>
           </div>
-          <div className="rounded-lg bg-white p-4">
+          <div className="rounded-lg border border-line bg-white p-4">
             <p className="yc-kicker">Integrity</p>
             <p className="mt-4 text-sm leading-6 text-muted">Source excerpts are stored with SHA-256 repository-integrity checks.</p>
           </div>

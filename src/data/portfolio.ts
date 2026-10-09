@@ -11,6 +11,7 @@ export type PortfolioProject = {
   size: ProjectSize;
   visual: ProjectVisual;
   artifactHref?: string;
+  image?: { src: string; alt: string };
 };
 
 export const featuredProjects: PortfolioProject[] = [
@@ -21,6 +22,7 @@ export const featuredProjects: PortfolioProject[] = [
     type: "Privacy Engineering",
     tags: ["AI Governance", "Synthetic Media", "Case Management"],
     href: "/work/ai-generated-actor-compliance",
+    image: { src: "/images/work/ai-actor-demo.jpg", alt: "Review queue screen from the live compliance workspace demo" },
     size: "hero",
     visual: "actor",
   },
@@ -31,6 +33,7 @@ export const featuredProjects: PortfolioProject[] = [
     type: "AI Governance Research",
     tags: ["Legal Informatics", "Rules as Code", "Human Review"],
     href: "/research/china-aigc-legal-clause-to-control",
+    image: { src: "/images/work/china-method.jpg", alt: "Six-step method from formal legal provision to human final conclusion" },
     size: "standard",
     visual: "china",
   },
@@ -40,6 +43,7 @@ export const featuredProjects: PortfolioProject[] = [
       "Control maturity and missing-evidence analysis across Govern, Map, Measure, and Manage.",
     type: "Governance tool",
     href: "/work/nist-ai-rmf-dashboard",
+    image: { src: "/images/work/nist-logic.jpg", alt: "Assessment logic: Scope, Map, Score, Diagnose, Act" },
     size: "wide",
     visual: "nist",
   },
@@ -49,6 +53,7 @@ export const featuredProjects: PortfolioProject[] = [
       "How people reshape workplace networks to access resources across work and home.",
     type: "Organizational behavior",
     href: "/research/network-crafting",
+    image: { src: "/images/work/network-model.jpg", alt: "Conceptual pathway from network crafting to work-to-family facilitation" },
     size: "research",
     visual: "network",
   },

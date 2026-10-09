@@ -12,7 +12,7 @@ export function FeaturedWork() {
       <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {featuredProjects.map((project, index) => (
           <div key={project.title} className={index === 0 ? "sm:col-span-2" : ""}>
-            <ProjectCard project={project} />
+            <ProjectCard project={project} wide={index === 0} />
           </div>
         ))}
       </div>
