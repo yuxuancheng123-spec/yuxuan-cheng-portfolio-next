@@ -240,6 +240,11 @@ export const workItems: WorkItem[] = [
     visual: "china-evidence",
     links: [
       {
+        label: "Open Norm Explorer",
+        href: "https://yuxuancheng123-spec.github.io/china-aigc-compliance-evidence/explorer/",
+        external: true,
+      },
+      {
         label: "GitHub repository",
         href: "https://github.com/yuxuancheng123-spec/china-aigc-compliance-evidence",
         external: true,

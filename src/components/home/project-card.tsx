@@ -44,8 +44,37 @@ function CardText({ project }: { project: PortfolioProject }) {
   );
 }
 
+function SecondaryLink({ link }: { link: NonNullable<PortfolioProject["secondaryLink"]> }) {
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative z-10 mt-3 inline-flex w-fit items-center gap-1 text-xs font-medium text-accent underline-offset-4 hover:underline"
+    >
+      {link.label}
+      <span aria-hidden="true">↗</span>
+    </a>
+  );
+}
+
 export function ProjectCard({ project, wide = false }: { project: PortfolioProject; wide?: boolean }) {
   const className = `yc-card group gap-4 ${wide ? "sm:flex-row sm:items-center sm:gap-5" : ""}`;
+
+  if (project.secondaryLink) {
+    // Stretched primary link with an independent secondary link (avoids nested anchors).
+    return (
+      <div className={`${className} relative transition-[border-color,box-shadow] hover:border-[rgba(49,95,130,0.45)] hover:shadow-[0_4px_16px_rgba(23,34,42,0.06)]`}>
+        <Thumb project={project} wide={wide} />
+        <div className="flex flex-1 flex-col">
+          <Link href={project.href} className="flex flex-1 flex-col after:absolute after:inset-0 after:rounded-[12px] after:content-['']">
+            <CardText project={project} />
+          </Link>
+          <SecondaryLink link={project.secondaryLink} />
+        </div>
+      </div>
+    );
+  }
   const body = (
     <>
       <Thumb project={project} wide={wide} />

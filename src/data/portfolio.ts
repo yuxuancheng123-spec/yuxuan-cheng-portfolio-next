@@ -11,6 +11,7 @@ export type PortfolioProject = {
   size: ProjectSize;
   visual: ProjectVisual;
   artifactHref?: string;
+  secondaryLink?: { label: string; href: string };
   image?: { src: string; alt: string };
 };
 
@@ -33,6 +34,7 @@ export const featuredProjects: PortfolioProject[] = [
     type: "AI Governance Research",
     tags: ["Legal Informatics", "Rules as Code", "Human Review"],
     href: "/research/china-aigc-legal-clause-to-control",
+    secondaryLink: { label: "Norm Explorer", href: "https://yuxuancheng123-spec.github.io/china-aigc-compliance-evidence/explorer/" },
     image: { src: "/images/work/china-method.jpg", alt: "Six-step method from formal legal provision to human final conclusion" },
     size: "standard",
     visual: "china",
