@@ -97,9 +97,9 @@ export function Intro() {
         , and evidence tests.
       </p>
       <p>
-        I studied AI, Ethics and Society at the University of Hong Kong and now research synthetic
-        media and likeness rights at FacesMarket. My training in business psychology still shapes
-        the work — my{" "}
+        At FacesMarket (元脸), I research synthetic media and likeness rights and help shape
+        permission-first workflows. I hold an M.A. in AI, Ethics and Society from the
+        University of Hong Kong, and my training in business psychology still shapes the work — my{" "}
         <Link href="/research/network-crafting" className="yc-underline">
           organizational behavior research
         </Link>{" "}

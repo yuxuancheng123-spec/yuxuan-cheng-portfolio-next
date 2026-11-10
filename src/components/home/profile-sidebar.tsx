@@ -17,7 +17,7 @@ function Portrait() {
       {profile.photo ? (
         <Image
           src={profile.photo}
-          alt={profile.name}
+          alt="Ink-wash landscape with a brush-stroke circle and a red YC seal"
           fill
           priority
           sizes="(max-width: 768px) 33vw, 220px"
@@ -53,14 +53,18 @@ export function ProfileSidebar() {
           <p className="mt-3 text-xs uppercase leading-relaxed tracking-wide text-subtle">
             {profile.role}
             <br />
-            <a
-              href={profile.affiliation.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors duration-300 hover:text-ink"
-            >
-              {profile.affiliation.label}
-            </a>
+            {profile.affiliation.href ? (
+              <a
+                href={profile.affiliation.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors duration-300 hover:text-ink"
+              >
+                {profile.affiliation.label}
+              </a>
+            ) : (
+              profile.affiliation.label
+            )}
           </p>
 
           <nav

@@ -4,11 +4,11 @@ export type LinkItem = { label: string; href: string; external?: boolean };
 
 export const profile = {
   name: "Yuxuan Cheng",
-  role: "AI Governance Researcher",
-  affiliation: { label: "M.A., The University of Hong Kong", href: "https://www.hku.hk" },
+  role: "Researcher, AI Governance",
+  affiliation: { label: "FacesMarket 元脸", href: null as string | null },
   location: "Hong Kong · Shenzhen",
-  // Drop a portrait at public/images/profile.jpg and set this to "/images/profile.jpg".
-  photo: null as string | null,
+  // Original ink-wash illustration; source at public/images/profile-source.svg.
+  photo: "/images/profile.jpg" as string | null,
   email: "yuxuancheng123@gmail.com",
   cv: "/cv/Yuxuan_Cheng_CV.pdf",
   socials: [
@@ -92,7 +92,7 @@ export const experience = [
   {
     period: "Jun 2026 — Present",
     title: "Researcher, AI Governance & Synthetic Media",
-    org: "FacesMarket · Shenzhen",
+    org: "FacesMarket (元脸) · Shenzhen",
     detail:
       "Research on AI-generated actors, likeness and voice rights, labeling, and provenance; helping shape permission-first workflows for likeness use.",
   },

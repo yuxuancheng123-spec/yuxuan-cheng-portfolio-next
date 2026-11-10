@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.48  0 0 0 0 0.38  0 0 0 0.07 0"/>
+      <feComposite in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.09" numOctaves="3" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wash" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="4" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="22" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="2.2"/>
+    </filter>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9c978f" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9c978f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d5852" stop-opacity="0.8"/>
+      <stop offset="0.75" stop-color="#5d5852" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#26231f" stop-opacity="0.95"/>
+      <stop offset="0.8" stop-color="#26231f" stop-opacity="0.25"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e9c9a4" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#e9c9a4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- paper -->
+  <rect width="600" height="800" fill="#f4eee3"/>
+  <rect width="600" height="800" fill="#f4eee3" filter="url(#paper)"/>
+
+  <!-- warm sun haze behind the circle -->
+  <circle cx="318" cy="300" r="190" fill="url(#glow)"/>
+
+  <!-- ensō: one broken brush circle -->
+  <g filter="url(#brush)" fill="none" stroke-linecap="round">
+    <path d="M 238 168 A 150 150 0 1 0 452 238" stroke="#1d1b18" stroke-width="30" opacity="0.92"/>
+    <path d="M 452 238 A 150 150 0 0 0 396 176" stroke="#1d1b18" stroke-width="14" opacity="0.75"/>
+    <path d="M 396 176 A 150 150 0 0 0 340 154" stroke="#1d1b18" stroke-width="5" opacity="0.5"/>
+  </g>
+
+  <!-- far ridge -->
+  <path filter="url(#wash)" fill="url(#far)"
+        d="M -20 470 C 40 440 70 420 110 428 C 150 436 170 400 210 396 C 250 392 270 430 320 418
+           C 370 406 400 372 440 380 C 490 390 520 420 620 410 L 620 600 L -20 600 Z"/>
+  <!-- middle ridge -->
+  <path filter="url(#wash)" fill="url(#mid)"
+        d="M -20 540 C 30 520 60 486 100 480 C 140 474 160 520 205 512 C 250 504 262 466 300 470
+           C 340 474 352 520 400 516 C 450 512 470 470 520 474 C 560 478 590 500 620 506 L 620 700 L -20 700 Z"/>
+  <!-- mist band -->
+  <rect x="-20" y="560" width="640" height="46" fill="#f4eee3" opacity="0.65" filter="url(#wash)"/>
+  <!-- near peak, left -->
+  <path filter="url(#wash)" fill="url(#near)"
+        d="M -20 800 L -20 620 C 20 600 50 560 80 546 C 104 536 118 560 140 590 C 160 616 176 610 200 640
+           C 228 676 250 700 300 720 C 340 736 380 760 420 800 Z"/>
+  <!-- near ridge, right -->
+  <path filter="url(#wash)" fill="url(#near)" opacity="0.7"
+        d="M 360 800 C 400 760 430 700 470 680 C 500 666 520 690 548 672 C 572 656 590 640 620 636 L 620 800 Z"/>
+
+  <!-- three birds -->
+  <g fill="none" stroke="#2a2724" stroke-width="2.4" stroke-linecap="round" opacity="0.8">
+    <path d="M 120 250 q 8 -7 14 0 q 6 -7 14 0"/>
+    <path d="M 150 228 q 6 -5 10 0 q 5 -5 10 0"/>
+    <path d="M 104 214 q 5 -4 8 0 q 4 -4 8 0"/>
+  </g>
+
+  <!-- vermilion seal -->
+  <g transform="translate(470 612) rotate(-2)">
+    <rect x="0" y="0" width="74" height="74" rx="5" fill="#b8352a" filter="url(#brush)"/>
+    <rect x="7" y="7" width="60" height="60" rx="3" fill="none" stroke="#f4eee3" stroke-width="2.4" opacity="0.9"/>
+    <text x="37" y="49" text-anchor="middle" font-family="Georgia, 'PT Serif', serif" font-size="30"
+          letter-spacing="1" fill="#f4eee3">YC</text>
+  </g>
+</svg>
