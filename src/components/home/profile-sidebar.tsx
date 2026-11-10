@@ -17,7 +17,7 @@ function Portrait() {
       {profile.photo ? (
         <Image
           src={profile.photo}
-          alt="Ink-wash landscape with a brush-stroke circle and a red YC seal"
+          alt={profile.name}
           fill
           priority
           sizes="(max-width: 768px) 33vw, 220px"

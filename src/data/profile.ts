@@ -7,8 +7,8 @@ export const profile = {
   role: "Researcher, AI Governance",
   affiliation: { label: "FacesMarket 元脸", href: null as string | null },
   location: "Hong Kong · Shenzhen",
-  // Original ink-wash illustration; source at public/images/profile-source.svg.
-  photo: "/images/profile.jpg" as string | null,
+  // Drop a portrait at public/images/profile.jpg and set this to "/images/profile.jpg".
+  photo: null as string | null,
   email: "yuxuancheng123@gmail.com",
   cv: "/cv/Yuxuan_Cheng_CV.pdf",
   socials: [
