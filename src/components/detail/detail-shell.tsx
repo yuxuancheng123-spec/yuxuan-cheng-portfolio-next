@@ -18,8 +18,8 @@ type DetailShellProps = {
 
 const categoryHref = {
   Work: "/#work",
-  Research: "/#research-writing",
-  Writing: "/#research-writing",
+  Research: "/#research",
+  Writing: "/",
 } as const;
 
 function DetailLink({ link }: { link: ContentLink }) {

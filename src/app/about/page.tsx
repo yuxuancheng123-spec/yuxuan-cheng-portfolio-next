@@ -34,7 +34,6 @@ const notes: Note[] = [
     text: "Organizational Behavior & AI Governance",
     mark: "RESEARCH",
     visual: "research",
-    href: "/research/ai-awareness-job-crafting",
   },
   {
     title: "📍 Based In",

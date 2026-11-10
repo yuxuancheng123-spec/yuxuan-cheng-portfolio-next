@@ -217,6 +217,149 @@ a.yc-card:hover {
 }
 }
 
+/* Lecture notes */
+.yc-prose {
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--yc-muted);
+}
+
+.yc-prose > * + * {
+  margin-top: 1.1em;
+}
+
+.yc-prose h2,
+.yc-prose h3,
+.yc-prose h4 {
+  font-family: var(--yc-font-serif);
+  font-weight: 400;
+  color: var(--yc-ink);
+  line-height: 1.35;
+  scroll-margin-top: 5rem;
+}
+
+.yc-prose h2 {
+  margin-top: 2.4em;
+  font-size: 1.375rem;
+}
+
+.yc-prose h3 {
+  margin-top: 2em;
+  font-size: 1.125rem;
+}
+
+.yc-prose h4 {
+  margin-top: 1.6em;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.yc-prose a {
+  color: var(--yc-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(47, 85, 116, 0.3);
+  text-underline-offset: 3px;
+}
+
+.yc-prose a:hover {
+  text-decoration-color: var(--yc-accent);
+}
+
+.yc-prose strong {
+  font-weight: 600;
+  color: var(--yc-ink);
+}
+
+.yc-prose ul,
+.yc-prose ol {
+  padding-left: 1.4em;
+}
+
+.yc-prose ul {
+  list-style: disc;
+}
+
+.yc-prose ol {
+  list-style: decimal;
+}
+
+.yc-prose li + li {
+  margin-top: 0.35em;
+}
+
+.yc-prose li::marker {
+  color: var(--yc-subtle);
+}
+
+.yc-prose blockquote {
+  border-left: 2px solid var(--yc-line);
+  padding-left: 1em;
+  font-style: italic;
+  color: var(--yc-subtle);
+}
+
+.yc-prose code {
+  border-radius: 4px;
+  background: #f1ede6;
+  padding: 0.1em 0.35em;
+  font-family: var(--yc-font-mono);
+  font-size: 0.875em;
+  color: var(--yc-ink);
+}
+
+.yc-prose pre {
+  overflow-x: auto;
+  border: 1px solid var(--yc-line);
+  border-radius: 8px;
+  background: #faf7f1;
+  padding: 0.9rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.yc-prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.yc-prose hr {
+  border: 0;
+  border-top: 1px solid var(--yc-line);
+  margin: 2.5em 0;
+}
+
+.yc-prose img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--yc-line);
+  border-radius: 8px;
+}
+
+.yc-table-wrap {
+  overflow-x: auto;
+}
+
+.yc-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.yc-prose th,
+.yc-prose td {
+  border-bottom: 1px solid var(--yc-line);
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.yc-prose th {
+  font-weight: 600;
+  color: var(--yc-ink);
+}
+
 ::selection {
   background: rgba(47, 85, 116, 0.18);
   color: var(--yc-ink);

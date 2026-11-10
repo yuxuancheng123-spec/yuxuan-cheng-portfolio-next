@@ -78,14 +78,6 @@ export const research: ResearchEntry[] = [
     href: "/research/network-crafting",
     links: [],
   },
-  {
-    venue: "In progress · 2026",
-    title: "AI Awareness and Job Crafting in Service Work",
-    summary:
-      "When does awareness of AI-driven change lead service employees to adapt their roles rather than defend them?",
-    href: "/research/ai-awareness-job-crafting",
-    links: [{ label: "Project", href: "/research/ai-awareness-job-crafting" }],
-  },
 ];
 
 export const experience = [
@@ -157,20 +149,5 @@ export const projects: ProjectEntry[] = [
     tags: ["NIST AI RMF", "Gap analysis", "Prototyping"],
     image: { src: "/images/work/nist-logic.jpg", alt: "Assessment logic: Scope, Map, Score, Diagnose, Act" },
     links: [{ label: "Project", href: "/work/nist-ai-rmf-dashboard" }],
-  },
-];
-
-export const writing = [
-  {
-    date: "Jul 2026",
-    title: "Why AI Short Dramas Became a Hotspot for Face Theft",
-    summary: "A platform-governance view of likeness abuse, rapid production, and commercial distribution.",
-    href: "/writing/ai-short-drama-face-theft",
-  },
-  {
-    date: "Jul 2026",
-    title: "From Post-hoc Enforcement to Permission-first Infrastructure",
-    summary: "Why consent records and identity controls need to exist before synthetic media is generated.",
-    href: "/writing/permission-first-infrastructure",
   },
 ];

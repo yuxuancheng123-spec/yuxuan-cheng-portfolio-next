@@ -3,9 +3,9 @@ import {
   EducationSection,
   ExperienceSection,
   Intro,
+  NotesSection,
   ProjectsSection,
   ResearchSection,
-  WritingSection,
 } from "@/components/home/sections";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
             <ResearchSection />
             <ExperienceSection />
             <ProjectsSection />
-            <WritingSection />
+            <NotesSection />
           </div>
         </div>
       </main>

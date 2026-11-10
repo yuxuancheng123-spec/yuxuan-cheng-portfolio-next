@@ -35,6 +35,7 @@ function Portrait() {
 export function ProfileSidebar() {
   const quickLinks = [
     { label: "CV", href: profile.cv, external: true },
+    { label: "Notes", href: "/notes" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];

@@ -6,10 +6,11 @@ import {
   experience,
   projects,
   research,
-  writing,
   type LinkItem,
 } from "@/data/profile";
 import { ArrowUpRight } from "@/components/home/icons";
+import { courses } from "@/data/notes";
+import { getNotes } from "@/lib/notes";
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
@@ -214,20 +215,28 @@ export function ProjectsSection() {
   );
 }
 
-export function WritingSection() {
+export function NotesSection() {
   return (
-    <Section id="writing" title="Writing">
+    <Section id="notes" title="Notes">
       <div className="space-y-8">
-        {writing.map((post) => (
-          <TimelineRow key={post.href} period={post.date}>
-            <h3 className="font-serif text-base leading-snug text-ink">
-              <Link href={post.href} className="transition-colors hover:text-accent">
-                {post.title}
-              </Link>
-            </h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{post.summary}</p>
-          </TimelineRow>
-        ))}
+        {courses.map((course) => {
+          const count = getNotes(course.slug).length;
+          return (
+            <TimelineRow key={course.slug} period={course.term}>
+              <h3 className="font-serif text-base leading-snug text-ink">
+                <Link href={`/notes/${course.slug}`} className="transition-colors hover:text-accent">
+                  {course.code}: {course.title}
+                </Link>
+              </h3>
+              <p className="mt-1 text-sm italic text-subtle">{course.school}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Lecture-by-lecture study notes on building agentic systems.{" "}
+                {count ? `${count} lecture${count === 1 ? "" : "s"} so far.` : "First notes coming soon."}
+              </p>
+              <LinkRow links={[{ label: "Read notes", href: `/notes/${course.slug}` }]} />
+            </TimelineRow>
+          );
+        })}
       </div>
     </Section>
   );

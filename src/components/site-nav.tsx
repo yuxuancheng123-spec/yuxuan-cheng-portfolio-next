@@ -1,12 +1,13 @@
 import Link from "next/link";
 
 type SiteNavProps = {
-  active?: "Home" | "About" | "Contact";
+  active?: "Home" | "Notes" | "About" | "Contact";
 };
 
 const navItems = [
   { label: "Work", href: "/#work" },
-  { label: "Research", href: "/#research-writing" },
+  { label: "Research", href: "/#research" },
+  { label: "Notes", href: "/notes" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
