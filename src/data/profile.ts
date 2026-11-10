@@ -56,10 +56,10 @@ export const research: ResearchEntry[] = [
     links: [{ label: "Project", href: "/research/network-crafting" }],
   },
   {
-    venue: "Paper draft · 2026",
+    venue: "Paper in revision · 2026",
     title: "China AIGC Legal-Clause-to-Control Framework",
     summary:
-      "Maps selected Chinese AIGC provisions to traceable legal norms, human-reviewed controls, and executable evidence tests — without automating legal judgment.",
+      "When can software close a legal check? Separates applicability, evidence testing, and final review for Chinese AIGC rules; targeted counterexamples found five defects that designed test cases missed.",
     href: "/research/china-aigc-legal-clause-to-control",
     image: { src: "/images/work/china-method.jpg", alt: "Six-step method from formal legal provision to human final conclusion" },
     links: [
