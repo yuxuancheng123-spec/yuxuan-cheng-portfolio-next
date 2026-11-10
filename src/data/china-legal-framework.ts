@@ -12,7 +12,7 @@ export const chinaLegalFrameworkItem: ResearchItem = {
   seoDescription:
     "Research framework for translating selected Chinese AIGC legal provisions into traceable legal norms, reviewed controls, and executable evidence tests.",
   year: "2026",
-  status: "Research prototype and paper draft",
+  status: "Research prototype; paper in revision",
   roleLabel: "My role",
   role:
     "Research design, legal-clause annotation, schema design, control derivation, validation, and writing",
@@ -45,51 +45,6 @@ export const chinaLegalFrameworkItem: ResearchItem = {
   model: ["Legal source", "Legal norm", "Reviewed control", "Evidence test", "Human conclusion"],
   insightLabel: "Research results",
   insights: [],
-  publicationStatus: "Paper draft with planned independent review",
+  publicationStatus: "Paper in revision; independent legal review pending",
   sections: [],
 };
-
-export const chinaFrameworkResults = [
-  { value: "5", label: "source instruments" },
-  { value: "11", label: "canonical norm artifacts" },
-  { value: "12", label: "machine-readable controls" },
-  { value: "21 / 21", label: "designed validation cases routed as expected" },
-  { value: "46", label: "pytest tests passed" },
-];
-
-export const chinaResearchQuestions = [
-  "Chinese AIGC legal and regulatory provisions can be decomposed into which semantic elements for machine-readable representation?",
-  "How can traceable mappings be established between source clauses, legal interpretations, control objectives, evidence requirements, and executable tests?",
-  "Which categories of legal obligations are fully automatable, partially automatable, or dependent on human legal review?",
-  "Can the proposed transformation method generate consistent and executable controls for a synthetic actor and digital human use case?",
-];
-
-export const chinaTransformationSteps = [
-  "Formal Chinese legal provision",
-  "Complete legal norm artifact",
-  "Human-confirmed interpretation and applicability",
-  "Machine-readable control",
-  "Evaluator execution",
-  "Machine result and human final conclusion",
-];
-
-export const automationBoundary = [
-  {
-    control: "Metadata label",
-    applicability: "Fully automatable",
-    evidenceTest: "Fully automatable",
-    finalDecision: "Fully automatable",
-  },
-  {
-    control: "Visible-label prominence",
-    applicability: "Human-confirmed",
-    evidenceTest: "Partially automatable",
-    finalDecision: "Human review required",
-  },
-  {
-    control: "PIPL separate-consent evidence",
-    applicability: "Human-confirmed",
-    evidenceTest: "Fully automatable",
-    finalDecision: "Human review required",
-  },
-];
