@@ -9,7 +9,10 @@ type WorkPageProps = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return workItems.map((item) => ({ slug: item.slug }));
+  // ai-generated-actor-compliance has its own page at work/ai-generated-actor-compliance.
+  return workItems
+    .filter((item) => item.slug !== "ai-generated-actor-compliance")
+    .map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }: WorkPageProps): Promise<Metadata> {

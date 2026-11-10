@@ -127,12 +127,12 @@ export const projects: ProjectEntry[] = [
     title: "AI-Generated Actor Compliance Assessment",
     status: "Working prototype",
     summary:
-      "Case management for synthetic-media compliance — intake, risk rules, evidence review, approvals, and an audit trail. Publishing stays blocked until consent is proven.",
+      "Can this face or voice be used — and who can prove it? Scoped consent records, evidence gates, and 13 rules with PRC legal bases; the browser demo and the backend share one rulebook, checked by a parity test.",
     href: "/work/ai-generated-actor-compliance",
     tags: ["FastAPI", "Pydantic", "SQLite", "JSON Schema"],
     image: {
-      src: "/images/work/ai-actor-demo.jpg",
-      alt: "Provenance chain for a demo case, with publishing blocked at the consent and authorization step",
+      src: "/images/work/actor-review-queue.jpg",
+      alt: "Compliance review queue of the demo workspace, with three cases blocked at consent and authorization",
     },
     links: [
       { label: "Project", href: "/work/ai-generated-actor-compliance" },
