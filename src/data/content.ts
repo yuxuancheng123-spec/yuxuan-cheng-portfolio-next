@@ -116,7 +116,7 @@ export const workItems: WorkItem[] = [
         external: true,
       },
     ],
-    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/writing/permission-first-infrastructure"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/work/nist-ai-rmf-dashboard"],
     overview:
       "The assessment is designed for a fictional synthetic-media platform that accepts face, voice, motion, video, and authorization records. It moves a compliance case toward an evidence-supported, accountable, and auditable decision instead of stopping at a questionnaire score.",
     workflowTitle: "Compliance case workflow",
@@ -346,7 +346,7 @@ export const workItems: WorkItem[] = [
     methods: ["NIST AI RMF mapping", "Maturity scoring", "Gap analysis", "Dashboard prototyping"],
     visual: "nist-dashboard",
     links: [],
-    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/research/ai-awareness-job-crafting"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/research/network-crafting"],
     overview:
       "The dashboard is designed for teams that need a structured view of AI risk-management practices without presenting a framework checklist as a formal audit opinion.",
     workflowTitle: "Assessment logic",
@@ -434,7 +434,7 @@ export const researchItems: ResearchItem[] = [
     methods: ["SEM", "PROCESS", "Multilevel analysis", "Diary study"],
     visual: "network-study",
     links: [],
-    relatedItems: ["/research/ai-awareness-job-crafting", "/work/nist-ai-rmf-dashboard"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/work/nist-ai-rmf-dashboard"],
     researchQuestion:
       "When and how does network crafting help employees in diverse workgroups acquire resources that improve performance at work and enrichment at home?",
     theoreticalBackground:
@@ -487,201 +487,10 @@ export const researchItems: ResearchItem[] = [
       },
     ],
   },
-  {
-    slug: "ai-awareness-job-crafting",
-    kind: "Research",
-    title: "AI Awareness and Job Crafting in Service Work",
-    subtitle: "A conceptual study of how employees interpret AI-related change and reshape their work.",
-    summary:
-      "Research in progress on AI awareness, perceived organizational obligations, job crafting, and the conditions that shape adaptive responses among service employees.",
-    seoDescription:
-      "A research-in-progress conceptual model of AI awareness, organizational obligation, job crafting, and adaptive employee responses in service work.",
-    year: "2026",
-    status: "Research in progress",
-    roleLabel: "Contribution",
-    role: "Concept development, literature synthesis, and proposed research design",
-    methods: ["Conceptual model", "Survey design", "Moderated mediation", "Service employees"],
-    visual: "ai-awareness",
-    links: [],
-    relatedItems: ["/research/network-crafting", "/work/nist-ai-rmf-dashboard"],
-    researchQuestion:
-      "How does awareness of AI-driven change shape service employees' job crafting, and when do organizational signals turn that awareness into adaptive rather than defensive behavior?",
-    theoreticalBackground:
-      "The project combines the Job Demands-Resources model, conservation of resources theory, and the transactional model of stress and coping. AI awareness can be interpreted as opportunity, demand, or threat depending on available resources and the perceived obligations of the organization.",
-    theories: ["JD-R", "Conservation of resources", "Lazarus and Folkman", "Person-organization obligations"],
-    studies: [
-      {
-        label: "Proposed phase 1",
-        title: "Construct validation",
-        description:
-          "Clarify the distinction between general AI awareness, role-specific exposure, opportunity appraisal, and perceived organizational obligations.",
-        meta: "Design stage",
-      },
-      {
-        label: "Proposed phase 2",
-        title: "Field survey",
-        description:
-          "Test the indirect relationship between AI awareness and job crafting, with POAIS as a proposed boundary condition.",
-        meta: "Not yet fielded",
-      },
-    ],
-    model: [
-      "AI awareness",
-      "Perceived P-O obligation",
-      "Job crafting",
-      "Adaptive work outcomes",
-      "POAIS moderator",
-    ],
-    insightLabel: "Research questions",
-    insights: [
-      "Does AI awareness increase job crafting directly, or only through resource and obligation appraisals?",
-      "When does POAIS strengthen adaptive responses to AI-related change?",
-      "Which forms of job crafting are constructive for service employees and customers?",
-      "How should organizations communicate responsibilities during AI-enabled work redesign?",
-    ],
-    publicationStatus: "Conceptual model under development",
-    sections: [
-      {
-        heading: "Potential contribution",
-        paragraphs: [
-          "The study aims to move beyond treating AI awareness as a uniformly positive or negative attitude. It frames employee adaptation as a process shaped by organizational resources, reciprocal obligations, and opportunities to redesign work.",
-        ],
-      },
-      {
-        heading: "Current stage",
-        paragraphs: [
-          "The model and proposed methodology are still being refined. No empirical results are claimed at this stage, and construct definitions, sampling strategy, and measurement timing remain open design decisions.",
-        ],
-      },
-    ],
-  },
 ];
 
-export const writingItems: WritingItem[] = [
-  {
-    slug: "ai-short-drama-face-theft",
-    kind: "Writing",
-    title: "Why AI Short Dramas Became a Hotspot for Face Theft",
-    subtitle: "Fast production exposed a slow permission system.",
-    summary:
-      "An editorial note on why low-cost synthetic production, identity reuse, and fragmented distribution make short-form drama especially vulnerable to likeness abuse.",
-    seoDescription:
-      "An editorial analysis of face theft, likeness abuse, synthetic media production, and platform governance in AI short dramas.",
-    year: "2026",
-    status: "Working note",
-    roleLabel: "Author",
-    role: "Yuxuan Cheng",
-    methods: ["Platform governance", "Synthetic media", "Identity rights"],
-    visual: "face-theft",
-    links: [
-      {
-        label: "Related project",
-        href: "/work/ai-generated-actor-compliance",
-      },
-    ],
-    relatedItems: ["/writing/permission-first-infrastructure", "/work/ai-generated-actor-compliance"],
-    published: "July 2026",
-    readingTime: "6 min read",
-    lede:
-      "AI short drama did not create the problem of stolen identity. It compressed the cost and time needed to turn a face, voice, or performance into a commercial asset.",
-    pullQuote:
-      "The central governance problem is not whether the pixels are synthetic. It is whether the identity behind them entered the production chain with valid permission.",
-    sections: [
-      {
-        heading: "A production model built for speed",
-        paragraphs: [
-          "Short-form drama rewards rapid iteration, recognizable characters, and high-volume distribution. Generative tools fit that model unusually well: a small team can test scripts, replace performers, localize dialogue, and publish variants at a fraction of traditional production cost.",
-          "That speed also makes weak rights checks more consequential. A creator can move from a downloaded image or voice sample to monetized distribution before a platform, rights holder, or affected person has a meaningful chance to intervene.",
-        ],
-      },
-      {
-        heading: "Why faces become reusable production inputs",
-        paragraphs: [
-          "Identity material is easy to collect and difficult to govern once separated from its original context. A public photograph may be visible online, but visibility is not the same as permission to train, clone, endorse, or commercialize.",
-          "The risk becomes sharper when the output places a real person in intimate, political, defamatory, or misleading scenes. The harm is not limited to economic loss; it can affect dignity, reputation, safety, and the ability to control one's public identity.",
-        ],
-      },
-      {
-        heading: "Platforms sit inside the permission chain",
-        paragraphs: [
-          "Upload forms, model interfaces, payment systems, publication tools, and recommendation systems all shape what misuse is easy or difficult. A platform that asks only whether content is AI-generated misses the more important questions: whose identity is present, who authorized the use, and what evidence supports that claim?",
-        ],
-      },
-      {
-        heading: "What a credible control could look like",
-        paragraphs: [
-          "A stronger workflow would verify authority before high-risk generation, separate face and voice permissions, restrict sensitive contexts, bind licenses to specific uses, retain provenance, and make takedown paths accessible to people who never created an account.",
-          "Labels remain necessary for audience transparency, but labeling alone cannot transform an unauthorized digital replica into an authorized one.",
-        ],
-      },
-    ],
-    references: [
-      "AI-Generated Actor Compliance Assessment, project documentation.",
-      "EU AI Act, transparency obligations for generated and manipulated content.",
-      "China synthetic content labeling and deep synthesis governance materials.",
-    ],
-  },
-  {
-    slug: "permission-first-infrastructure",
-    kind: "Writing",
-    title: "From Post-hoc Enforcement to Permission-first Infrastructure",
-    subtitle: "Authorization, disclosure, and provenance should begin before generation.",
-    summary:
-      "An argument for moving consent records, identity controls, and machine-readable evidence from complaint handling into the core synthetic media production stack.",
-    seoDescription:
-      "An editorial argument for permission-first AIGC infrastructure built around authorization, disclosure, provenance, and machine-readable compliance evidence.",
-    year: "2026",
-    status: "Working note",
-    roleLabel: "Author",
-    role: "Yuxuan Cheng",
-    methods: ["AIGC governance", "Permission systems", "Compliance evidence"],
-    visual: "permission-first",
-    links: [
-      { label: "Legal-clause-to-control framework", href: "/research/china-aigc-legal-clause-to-control" },
-    ],
-    relatedItems: ["/writing/ai-short-drama-face-theft", "/research/china-aigc-legal-clause-to-control"],
-    published: "July 2026",
-    readingTime: "7 min read",
-    lede:
-      "Most synthetic media governance still begins after something has gone wrong: a person discovers a replica, files a complaint, and tries to prove that the use was never authorized.",
-    pullQuote:
-      "Permission should travel with identity material as operational evidence, not remain buried in a contract that the generation system cannot read.",
-    sections: [
-      {
-        heading: "The limits of post-hoc enforcement",
-        paragraphs: [
-          "Complaint and takedown systems are essential, but they ask the affected person to find the misuse, identify the responsible service, preserve evidence, and wait for a decision. During that time, copies may spread and commercial value may already have been captured.",
-          "This model is especially weak for people with limited visibility, legal resources, or access to the platform where the content was created.",
-        ],
-      },
-      {
-        heading: "Permission as infrastructure",
-        paragraphs: [
-          "A permission-first system would bind authorization to the identity asset before it enters a high-risk generation workflow. The record would specify the person, modality, purpose, geography, duration, compensation, training rights, and conditions for reuse or revocation.",
-          "The product could then evaluate a request against that record instead of relying on a user checkbox that says consent exists somewhere else.",
-        ],
-      },
-      {
-        heading: "Disclosure and provenance are different controls",
-        paragraphs: [
-          "Disclosure tells an audience that media is generated or manipulated. Provenance records how it was created, modified, and published. Authorization establishes whether the identity could be used in the first place. A trustworthy stack needs all three, and each must remain independently verifiable.",
-        ],
-      },
-      {
-        heading: "Machine-readable evidence closes the loop",
-        paragraphs: [
-          "Operational systems need evidence objects they can inspect: a permission ID, policy version, validation status, owner, timestamp, source event, and revocation state. These fields make it possible to stop a request, explain a decision, audit a workflow, or propagate a withdrawal across downstream uses.",
-          "The goal is not to automate every legal judgment. It is to make basic permission conditions visible to the systems that create and distribute synthetic media.",
-        ],
-      },
-    ],
-    references: [
-      "China AIGC Legal-Clause-to-Control Framework, project documentation.",
-      "NIST AI Risk Management Framework 1.0.",
-      "C2PA technical specifications for content provenance and authenticity.",
-    ],
-  },
-];
+// Writing pages were retired from the site; restore entries from git history if needed.
+export const writingItems: WritingItem[] = [];
 
 export const allContent: DetailItem[] = [...workItems, ...researchItems, chinaLegalFrameworkItem, ...writingItems];
 

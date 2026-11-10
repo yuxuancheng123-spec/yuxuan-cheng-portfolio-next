@@ -1,22 +1,20 @@
 import Link from "next/link";
 import { SiteFooter, SiteNav } from "@/components/site-nav";
 
-const notes = [
+type Note = { title: string; text: string; mark: string; visual: string; href?: string };
+
+const notes: Note[] = [
   {
     title: "🎬 Favorite Film",
     text: "La La Land",
     mark: "FILM",
     visual: "film",
-    href: "https://letterboxd.com/",
-    external: true,
   },
   {
     title: "🎮 Playing",
     text: "Apex Legends & CS2",
     mark: "PLAY",
     visual: "play",
-    href: "https://store.steampowered.com/",
-    external: true,
   },
   {
     title: "📄 Latest Project",
@@ -24,31 +22,24 @@ const notes = [
     mark: "PROJECT",
     visual: "project",
     href: "/research/china-aigc-legal-clause-to-control",
-    external: false,
   },
   {
     title: "☕ Coffee",
     text: "Iced Americano",
     mark: "COFFEE",
     visual: "coffee",
-    href: "https://maps.google.com/",
-    external: true,
   },
   {
     title: "🧠 Current Research",
     text: "Organizational Behavior & AI Governance",
     mark: "RESEARCH",
     visual: "research",
-    href: "/research",
-    external: false,
   },
   {
     title: "📍 Based In",
     text: "Hong Kong · Shenzhen",
     mark: "CITY",
     visual: "city",
-    href: "https://maps.google.com/",
-    external: true,
   },
 ];
 
@@ -110,14 +101,14 @@ export default function AboutPage() {
                   </span>
                 </>
               );
-              return note.external ? (
-                <a key={note.title} href={note.href} target="_blank" rel="noopener noreferrer" className="yc-card group">
-                  {body}
-                </a>
-              ) : (
+              return note.href ? (
                 <Link key={note.title} href={note.href} className="yc-card group">
                   {body}
                 </Link>
+              ) : (
+                <div key={note.title} className="yc-card">
+                  {body}
+                </div>
               );
             })}
           </div>
