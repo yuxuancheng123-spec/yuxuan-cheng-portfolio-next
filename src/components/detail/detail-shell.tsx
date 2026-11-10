@@ -47,7 +47,7 @@ function MetadataGrid({ item }: { item: DetailItem }) {
   const items =
     item.kind === "Writing"
       ? [
-          { label: "Published", value: item.published },
+          { label: "Date", value: item.published },
           { label: "Reading time", value: item.readingTime },
           { label: item.roleLabel, value: item.role },
           { label: "Focus", value: item.methods.join(" · ") },
