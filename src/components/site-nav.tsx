@@ -29,7 +29,7 @@ export function SiteNav({ active }: SiteNavProps) {
               key={item.label}
               href={item.href}
               aria-current={active === item.label ? "page" : undefined}
-              className={`rounded-md px-1.5 py-1.5 transition-colors sm:px-2.5 ${
+              className={`rounded-md px-1 py-1.5 transition-colors sm:px-2.5 ${
                 active === item.label
                   ? "font-medium text-ink"
                   : "text-subtle hover:text-ink"
@@ -40,7 +40,7 @@ export function SiteNav({ active }: SiteNavProps) {
           ))}
           <a
             href="/cv/Yuxuan_Cheng_CV.pdf"
-            className="ml-1 rounded-md border border-line bg-white px-2.5 py-1 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            className="ml-0.5 rounded-md border border-line bg-white px-2 py-1 sm:ml-1 sm:px-2.5 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
           >
             CV
           </a>

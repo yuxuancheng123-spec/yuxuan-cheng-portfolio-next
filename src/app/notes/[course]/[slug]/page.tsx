@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter, SiteNav } from "@/components/site-nav";
 import { courses, getCourse } from "@/data/notes";
-import { renderMarkdown } from "@/lib/markdown";
+import { renderMarkdown, slugify } from "@/lib/markdown";
 import { getNote, getNotes } from "@/lib/notes";
 
 type NotePageProps = { params: Promise<{ course: string; slug: string }> };
@@ -33,6 +33,7 @@ export default async function NotePage({ params }: NotePageProps) {
   const note = getNote(courseSlug, slug);
   if (!course || !note) notFound();
 
+  const sections = [...note.body.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1].trim());
   const notes = getNotes(course.slug);
   const index = notes.findIndex((entry) => entry.slug === note.slug);
   const previous = index > 0 ? notes[index - 1] : undefined;
@@ -54,6 +55,19 @@ export default async function NotePage({ params }: NotePageProps) {
             <h1 className="yc-h1 mt-2">{note.title}</h1>
             {note.summary ? <p className="yc-lead mt-3">{note.summary}</p> : null}
           </header>
+
+          {sections.length >= 4 ? (
+            <nav aria-label="Contents" className="yc-toc mt-8">
+              <p className="yc-meta uppercase tracking-wide">Contents</p>
+              <ol>
+                {sections.map((title) => (
+                  <li key={title}>
+                    <a href={`#${slugify(title)}`}>{title.replace(/[`*_]/g, "")}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
 
           <div className="yc-prose mt-10">{renderMarkdown(note.body)}</div>
         </article>

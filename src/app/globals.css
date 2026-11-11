@@ -11,7 +11,8 @@
   --yc-accent-soft: #eef2f5;
   --yc-font-sans: ui-sans-serif, system-ui, "Inter", "Avenir Next", Avenir, "SF Pro Text", -apple-system,
     BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", sans-serif;
-  --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, serif;
+  --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, "Songti SC", "Noto Serif SC",
+    "Source Han Serif SC", serif;
   --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono",
     monospace;
 }
@@ -293,10 +294,58 @@ a.yc-card:hover {
 }
 
 .yc-prose blockquote {
-  border-left: 2px solid var(--yc-line);
-  padding-left: 1em;
-  font-style: italic;
-  color: var(--yc-subtle);
+  border-left: 3px solid var(--yc-accent);
+  border-radius: 0 8px 8px 0;
+  background: var(--yc-accent-soft);
+  padding: 0.75rem 1rem;
+  color: var(--yc-ink);
+}
+
+.yc-prose blockquote > * + * {
+  margin-top: 0.6em;
+}
+
+.yc-prose h2 + .yc-table-wrap,
+.yc-prose h3 + .yc-table-wrap {
+  margin-top: 0.9em;
+}
+
+.yc-prose td:first-child {
+  color: var(--yc-ink);
+  font-weight: 500;
+}
+
+/* Table of contents on long notes */
+.yc-toc {
+  max-width: 42rem;
+  border-top: 1px solid var(--yc-line);
+  border-bottom: 1px solid var(--yc-line);
+  padding: 1rem 0;
+}
+
+.yc-toc ol {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+@media (min-width: 640px) {
+  .yc-toc ol {
+    columns: 2;
+    column-gap: 1.5rem;
+  }
+}
+
+.yc-toc li {
+  break-inside: avoid;
+}
+
+.yc-toc a {
+  color: var(--yc-muted);
+}
+
+.yc-toc a:hover {
+  color: var(--yc-accent);
 }
 
 .yc-prose code {
@@ -356,8 +405,14 @@ a.yc-card:hover {
 }
 
 .yc-prose th {
+  border-bottom: 1.5px solid var(--yc-ink);
   font-weight: 600;
   color: var(--yc-ink);
+  white-space: nowrap;
+}
+
+.yc-prose tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 ::selection {
