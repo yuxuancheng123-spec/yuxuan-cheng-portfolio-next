@@ -13,7 +13,7 @@ const socialIcons = { github: GithubIcon, linkedin: LinkedinIcon } as const;
 
 function Portrait() {
   return (
-    <div className="relative aspect-square w-full overflow-hidden rounded-xl md:w-[65%]">
+    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl md:w-[65%]">
       {profile.photo ? (
         <Image
           src={profile.photo}
