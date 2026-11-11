@@ -13,7 +13,7 @@ const socialIcons = { github: GithubIcon, linkedin: LinkedinIcon } as const;
 
 function Portrait() {
   return (
-    <div className="relative aspect-[3/4] max-h-[45vh] w-full overflow-hidden rounded-xl md:w-[65%]">
+    <div className="relative aspect-square w-full overflow-hidden rounded-xl md:w-[65%]">
       {profile.photo ? (
         <Image
           src={profile.photo}
@@ -21,7 +21,7 @@ function Portrait() {
           fill
           priority
           sizes="(max-width: 768px) 33vw, 220px"
-          className="object-cover"
+          className="object-cover object-center"
         />
       ) : (
         <div className="grid h-full w-full place-items-center bg-[#efe9df] font-serif text-4xl font-light tracking-wider text-[#8a7f70]">
