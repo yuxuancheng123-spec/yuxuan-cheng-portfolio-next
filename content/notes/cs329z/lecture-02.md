@@ -61,15 +61,15 @@ Self-attention 让序列中任意两个位置可以直接交换信息。最初�
 
 一个 decoder-only 模型处理文本的步骤：
 
-1. **Tokenization**：把文本切成 token
-2. **Embedding**：把 token 映射成向量
-3. **Positional embedding**：加入位置信息
-4. **Attention**：每个 token 按相关性汇聚前文的信息，因果掩码让它只看见左边的 token
-5. **Multi-head attention**：多个头并行，不同的头可以关注不同类型的关系，如语义和语法
-6. **Residual connection**：把子层的输入加回输出
-7. **Layer normalization**：稳定中间表示；课件中的结构在每个子层之前先做 layer norm（pre-norm）
-8. **Feed-forward network（FFN）**：对每个 token 的表示做进一步变换
-9. **Residual connection**：再次与输入相加
+1. Tokenization：把文本切成 token
+2. Embedding：把 token 映射成向量
+3. Positional embedding：加入位置信息
+4. Attention：每个 token 按相关性汇聚前文的信息，因果掩码让它只看见左边的 token
+5. Multi-head attention：多个头并行，不同的头可以关注不同类型的关系，如语义和语法
+6. Residual connection：把子层的输入加回输出
+7. Layer normalization：稳定中间表示；课件中的结构在每个子层之前先做 layer norm（pre-norm）
+8. Feed-forward network（FFN）：对每个 token 的表示做进一步变换
+9. Residual connection：再次与输入相加
 
 第 4 到 9 步构成一个 Transformer block。模型把许多 block 堆叠起来，每一层在上一层的基础上继续加工表示，最后经 LM head 和 softmax 得到下一个 token 的概率。
 
@@ -84,7 +84,7 @@ Full attention 的计算和内存开销随上下文长度快速增长。几种�
 | Hybrid attention | 混合使用 full（多头）attention 与线性或窗口 attention | 在效果和成本之间折中 |
 | Multi-Head Latent Attention（MLA） | 把 K/V 压缩成低维潜在表示 | 减少 KV cache 占用；课上以 Kimi K3 为例 |
 
-模型能用多长的上下文，取决于 attention 的计算复杂度、位置编码，以及训练时使用的上下文长度。检验长上下文能力的常用方法是 **needle-in-a-haystack**：在长文中藏一条信息，看模型能否找到。
+模型能用多长的上下文，取决于 attention 的计算复杂度、位置编码，以及训练时使用的上下文长度。检验长上下文能力的常用方法是 needle-in-a-haystack：在长文中藏一条信息，看模型能否找到。
 
 > 设计 agent 时要测试三件事：模型能否在长材料中定位具体内容，能否把第 2 页和第 200 页的信息联系起来，以及能否保留原始证据。
 
@@ -119,11 +119,11 @@ V 是词表大小，y 是真实 token 的 one-hot 向量，p 是模型预测的�
 5. 去重
 6. 基于模型的过滤（model-based filtering）
 
-**数据配比（data mixing）** 决定不同来源的数据各占多少。课上介绍的方法分三步：
+数据配比（data mixing）决定不同来源的数据各占多少。课上介绍的方法分三步：
 
-1. **Swarm**：尝试多组不同比例，用小的代理模型（proxy model）分别训练，得到各自的表现
-2. **Regression**：拟合回归模型，预测比例变化会怎样影响表现
-3. **Optimization**：在可行的比例集合 S 中，找让预测损失最小的比例
+1. Swarm：尝试多组不同比例，用小的代理模型（proxy model）分别训练，得到各自的表现
+2. Regression：拟合回归模型，预测比例变化会怎样影响表现
+3. Optimization：在可行的比例集合 S 中，找让预测损失最小的比例
 
 ```
 p* = argmin f̂(p),   p ∈ S
@@ -143,7 +143,7 @@ p* = argmin f̂(p),   p ∈ S
 | RLVR | 可以客观检查的结果 | 用单元测试、证明检查、精确匹配等结果作为奖励，特别适合数学和代码；验证器要设计得足够严格 |
 | Agent 专项训练 | 真实环境中的任务 | 如 SWE-smith：基于真实代码仓库搭建环境，生成任务和新的任务实例 |
 
-**RLHF（基于人类反馈的强化学习）** 有三步：
+RLHF（基于人类反馈的强化学习）有三步：
 
 1. 收集示范答案，做 SFT
 2. 收集偏好比较，例如“准确但冗长”和“简短”哪个更好，并据此训练奖励模型
@@ -164,7 +164,7 @@ p* = argmin f̂(p),   p ∈ S
 
 ### Roofline 模型
 
-GPU 擅长大规模并行矩阵运算，速度同时受算力和显存带宽限制。**计算强度**（arithmetic intensity）是每读取一字节数据执行的运算量，即 FLOPs / Bytes。
+GPU 擅长大规模并行矩阵运算，速度同时受算力和显存带宽限制。计算强度（arithmetic intensity）是每读取一字节数据执行的运算量，即 FLOPs / Bytes。
 
 ![Roofline 模型：斜坡部分受带宽限制，平顶部分受算力限制](/notes/cs329z/lecture-02/roofline.svg)
 
@@ -208,7 +208,7 @@ KV cache 保存已处理 token 的 Key 和 Value。Decode 时，新 token 的 Qu
 | Repeated sampling | 同一问题生成多个候选，提高至少一个正确的概率（coverage），再用验证器（单元测试、精确匹配）挑选 | 成本随采样数增长，依赖可靠的验证器 |
 | Self-consistency | 没有可靠验证器时，对多条推理路径的答案投票 | 多条路径可能犯同一个错，多数答案也会出错 |
 
-**多教师蒸馏**（multi-teacher distillation）：用不同任务、不同推理强度的教师模型示例来训练学生模型。
+多教师蒸馏（multi-teacher distillation）：用不同任务、不同推理强度的教师模型示例来训练学生模型。
 
 ## 6. 面向 Agent 的 LLM 能力
 
@@ -222,8 +222,8 @@ KV cache 保存已处理 token 的 Key 和 Value。Decode 时，新 token 的 Qu
 
 在生成过程中限制哪些 token 合法，保证输出符合指定结构。它在生成时起作用，schema 校验在生成后检查。
 
-- **FSM（有限状态机）**：根据当前生成状态，决定下一步哪些 token 合法。例如 `"status"` 只允许 `APPROVED` 或 `REJECTED`，不合法候选的概率置零后重新归一化。FSM 保证格式合法；具体选哪个值由模型判断，判断本身仍可能出错。
-- **SGLang**：用来编写和高效运行 LLM 程序的推理框架。它用压缩 FSM 合并连续的确定性状态转换，并用 jump forward 跳过结构里固定的部分，减少逐 token 生成的开销。
+- FSM（有限状态机）：根据当前生成状态，决定下一步哪些 token 合法。例如 `"status"` 只允许 `APPROVED` 或 `REJECTED`，不合法候选的概率置零后重新归一化。FSM 保证格式合法；具体选哪个值由模型判断，判断本身仍可能出错。
+- SGLang：用来编写和高效运行 LLM 程序的推理框架。它用压缩 FSM 合并连续的确定性状态转换，并用 jump forward 跳过结构里固定的部分，减少逐 token 生成的开销。
 
 ### DSPy Signatures
 
@@ -253,7 +253,7 @@ Prompt engineering 关心指令怎么写，context engineering 关心每次调�
 
 原始合同、页码和证据放在外部可检索的存储里，摘要只作索引。
 
-**递归语言模型**（Recursive Language Models，RLM）：长文本放在外部环境，由程序检索和拆分，对局部内容分别处理后再汇总。它与 RNN 无关，长文件始终留在外部，按需读取片段。代价是额外的工具和模型调用、跨片段的关系可能遗漏，以及整合结果的成本。
+递归语言模型（Recursive Language Models，RLM）：长文本放在外部环境，由程序检索和拆分，对局部内容分别处理后再汇总。它与 RNN 无关，长文件始终留在外部，按需读取片段。代价是额外的工具和模型调用、跨片段的关系可能遗漏，以及整合结果的成本。
 
 ## 小结：设计 agent 时要记住的几点
 
@@ -265,4 +265,6 @@ Prompt engineering 关心指令怎么写，context engineering 关心每次调�
 
 ---
 
-**来源与致谢**：本笔记整理自 Stanford CS 329Z: Engineering AI Agents 第二讲 “LLMs for Builders” 的课件（Diyi Yang、Michael Ryan、John Yang，2026 年秋季）。文中图示是我根据课件内容重新绘制的，概率示例的数值取自课件。课件中引用的论文和图表请参见课件原文的出处标注。
+### 来源与致谢
+
+本笔记整理自 Stanford CS 329Z: Engineering AI Agents 第二讲 “LLMs for Builders” 的课件（Diyi Yang、Michael Ryan、John Yang，2026 年秋季）。文中图示是我根据课件内容重新绘制的，概率示例的数值取自课件。课件中引用的论文和图表请参见课件原文的出处标注。
