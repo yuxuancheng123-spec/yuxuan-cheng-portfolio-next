@@ -36,7 +36,8 @@ export type ResearchEntry = {
   authors?: string;
   note?: string;
   summary: string;
-  href: string;
+  /** Detail page; omit for entries listed on the homepage only. */
+  href?: string;
   image?: { src: string; alt: string };
   links: LinkItem[];
 };
@@ -74,7 +75,6 @@ export const research: ResearchEntry[] = [
     title: "Enhancing Creativity in Diverse Workgroups: The Role of Network Crafting",
     authors: "Cheng, Y., Wang, H., van Gool, P., & Zhang, Z.",
     summary: "Presented at the Chinese Association of Social Psychology Annual Meeting.",
-    href: "/research/network-crafting",
     links: [],
   },
 ];
