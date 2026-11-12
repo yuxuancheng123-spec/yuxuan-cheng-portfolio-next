@@ -35,7 +35,7 @@ export const chinaLegalFrameworkItem: ResearchItem = {
       external: true,
     },
   ],
-  relatedItems: ["/work/ai-generated-actor-compliance", "/work/nist-ai-rmf-dashboard"],
+  relatedItems: ["/work/ai-generated-actor-compliance"],
   researchQuestion:
     "How can selected Chinese AIGC provisions be represented as traceable legal norms and reviewed controls without presenting machine evidence checks as automated legal judgment?",
   theoreticalBackground:
