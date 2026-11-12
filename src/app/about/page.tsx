@@ -9,17 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-type Fact = { label: string; value: string; href?: string };
-
-const facts: Fact[] = [
-  { label: "Based in", value: "Hong Kong · Shenzhen" },
-  { label: "Working on", value: "When can software close a legal check?", href: "/research/china-aigc-legal-clause-to-control" },
-  { label: "Learning", value: "CS 329Z: Engineering AI Agents", href: "/notes/cs329z" },
-  { label: "Favorite film", value: "La La Land" },
-  { label: "Playing", value: "Apex Legends and CS2" },
-  { label: "Coffee", value: "Iced Americano" },
-];
-
 const contactLinks = [
   { label: profile.email, href: `mailto:${profile.email}` },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/yuxuan-cheng-86743631a" },
@@ -35,7 +24,7 @@ export default function AboutPage() {
         <p className="yc-kicker">About</p>
         <h1 className="yc-h1 mt-3">Hi, I&apos;m Yuxuan.</h1>
 
-        <div className="yc-lead mt-6 max-w-[40rem] space-y-4">
+        <div className="mt-6 max-w-[40rem] space-y-4 font-serif text-[15px] leading-relaxed text-muted">
           <p>
             I&apos;m an AI governance researcher at FacesMarket (元脸), where I work on synthetic
             media: who may use a person&apos;s face or voice, how AI-generated content should be
@@ -68,33 +57,13 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <section className="yc-section">
-          <h2 className="yc-h2">A few things about me</h2>
-          <dl className="mt-4 grid max-w-[40rem] grid-cols-1 border-t border-line sm:grid-cols-2 sm:gap-x-8">
-            {facts.map((fact) => (
-              <div key={fact.label} className="border-b border-line py-3">
-                <dt className="yc-meta">{fact.label}</dt>
-                <dd className="mt-0.5 text-[15px] text-ink">
-                  {fact.href ? (
-                    <Link href={fact.href} className="hover:text-accent">
-                      {fact.value}
-                    </Link>
-                  ) : (
-                    fact.value
-                  )}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
         <section id="contact" className="yc-section scroll-mt-20">
           <h2 className="yc-h2">Get in touch</h2>
-          <p className="yc-body mt-3 max-w-[40rem]">
+          <p className="mt-3 max-w-[40rem] font-serif text-[15px] leading-relaxed text-muted">
             I&apos;m glad to talk about AI governance, synthetic media, privacy engineering, or a
             research collaboration. Email is the fastest way to reach me.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-serif text-[15px]">
             {contactLinks.map((link) => {
               const external = link.href.startsWith("http");
               return (
