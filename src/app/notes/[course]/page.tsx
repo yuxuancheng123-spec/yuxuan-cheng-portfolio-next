@@ -41,7 +41,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
         <h1 className="yc-h1 mt-2">
           {course.code}: {course.title}
         </h1>
-        <p className="yc-lead mt-3 max-w-[40rem]">{course.description}</p>
         <p className="yc-meta mt-3">
           Instructors: {course.instructors} ·{" "}
           <a href={course.url} target="_blank" rel="noopener noreferrer" className="yc-link">
