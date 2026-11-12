@@ -139,14 +139,4 @@ export const projects: ProjectEntry[] = [
       { label: "Code", href: "https://github.com/yuxuancheng123-spec/ai-generated-actor-compliance", external: true },
     ],
   },
-  {
-    title: "NIST AI RMF Compliance Dashboard",
-    status: "Dashboard concept",
-    summary:
-      "Turns Govern, Map, Measure, and Manage into an assessment flow that scores control maturity and surfaces missing evidence.",
-    href: "/work/nist-ai-rmf-dashboard",
-    tags: ["NIST AI RMF", "Gap analysis", "Prototyping"],
-    image: { src: "/images/work/nist-logic.jpg", alt: "Assessment logic: Scope, Map, Score, Diagnose, Act" },
-    links: [{ label: "Project", href: "/work/nist-ai-rmf-dashboard" }],
-  },
 ];

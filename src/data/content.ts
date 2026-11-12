@@ -116,7 +116,7 @@ export const workItems: WorkItem[] = [
         external: true,
       },
     ],
-    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/work/nist-ai-rmf-dashboard"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control"],
     overview:
       "The assessment is designed for a fictional synthetic-media platform that accepts face, voice, motion, video, and authorization records. It moves a compliance case toward an evidence-supported, accountable, and auditable decision instead of stopping at a questionnaire score.",
     workflowTitle: "Compliance case workflow",
@@ -255,7 +255,7 @@ export const workItems: WorkItem[] = [
         external: true,
       },
     ],
-    relatedItems: ["/work/ai-generated-actor-compliance", "/work/nist-ai-rmf-dashboard"],
+    relatedItems: ["/work/ai-generated-actor-compliance"],
     overview:
       "The framework addresses a recurring governance gap: policy documents describe what an organization should do, but they rarely show whether a specific request, model run, publication, or incident actually satisfied the requirement.",
     workflowTitle: "Evidence pipeline",
@@ -330,91 +330,6 @@ export const workItems: WorkItem[] = [
       },
     ],
   },
-  {
-    slug: "nist-ai-rmf-dashboard",
-    kind: "Work",
-    title: "NIST AI RMF Compliance Dashboard",
-    subtitle: "A maturity view of governance functions, evidence coverage, and missing controls.",
-    summary:
-      "A dashboard concept that translates Govern, Map, Measure, and Manage into an assessment workflow with maturity scores and evidence gaps.",
-    seoDescription:
-      "A NIST AI RMF dashboard concept for assessing Govern, Map, Measure, and Manage maturity, evidence coverage, missing controls, and risk status.",
-    year: "2026",
-    status: "Dashboard concept",
-    roleLabel: "My role",
-    role: "AI governance researcher and interaction designer",
-    methods: ["NIST AI RMF mapping", "Maturity scoring", "Gap analysis", "Dashboard prototyping"],
-    visual: "nist-dashboard",
-    links: [],
-    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/research/network-crafting"],
-    overview:
-      "The dashboard is designed for teams that need a structured view of AI risk-management practices without presenting a framework checklist as a formal audit opinion.",
-    workflowTitle: "Assessment logic",
-    workflow: [
-      { label: "Scope", detail: "Define the AI system, decision context, owners, users, and affected groups." },
-      { label: "Map", detail: "Connect assessment questions to RMF functions, categories, and organizational controls." },
-      { label: "Score", detail: "Rate implementation maturity and confidence in the supporting evidence." },
-      { label: "Diagnose", detail: "Identify control gaps, weak evidence, overdue actions, and concentrated risk." },
-      { label: "Act", detail: "Assign priorities, owners, due dates, and evidence needed for closure." },
-    ],
-    signals: [
-      { label: "Govern", value: "82 / 100", note: "Policies, roles, accountability, and oversight" },
-      { label: "Map", value: "76 / 100", note: "Context, impacts, stakeholders, and risk framing" },
-      { label: "Measure", value: "64 / 100", note: "Testing, metrics, uncertainty, and monitoring" },
-      { label: "Manage", value: "71 / 100", note: "Prioritization, treatment, response, and recovery" },
-      { label: "Coverage", value: "73%", note: "Controls with acceptable supporting evidence" },
-      { label: "Risk status", value: "Attention", note: "Four priority gaps remain open" },
-    ],
-    evidenceChecklist: [
-      "System owner and governance charter",
-      "Intended use and impacted-stakeholder map",
-      "Evaluation plan and metric rationale",
-      "Model and data documentation",
-      "Human oversight and escalation design",
-      "Monitoring and incident response records",
-      "Third-party assurance evidence",
-      "Risk acceptance and remediation decisions",
-    ],
-    sample: {
-      label: "Sample assessment",
-      title: "Evidence coverage needs attention",
-      description:
-        "Governance ownership is well documented, but vendor evidence, appeal service levels, model-event logging, and post-deployment test cadence remain below the target maturity level.",
-      lines: [
-        '"overall_maturity": 2.9',
-        '"evidence_coverage": 0.73',
-        '"priority_gaps": 4',
-        '"risk_status": "attention"',
-        '"next_review": "2026-Q4"',
-      ],
-    },
-    sections: [
-      {
-        heading: "Who could use it",
-        paragraphs: [
-          "The concept is aimed at product governance, model risk, privacy, safety, internal audit, and operational owners who need a shared view of risk treatment and evidence readiness.",
-        ],
-      },
-      {
-        heading: "How maturity is interpreted",
-        paragraphs: [
-          "A score represents the demonstrated maturity of a practice, not the inherent safety of the AI system. Evidence confidence is shown separately so a polished policy cannot receive the same treatment as an implemented and monitored control.",
-        ],
-      },
-      {
-        heading: "Key decisions",
-        paragraphs: [
-          "The dashboard keeps RMF functions visible while prioritizing action. Missing controls are presented with owners and evidence requests rather than as abstract compliance failures.",
-        ],
-      },
-      {
-        heading: "Limitations and next steps",
-        paragraphs: [
-          "This is not a NIST-endorsed assessment or formal audit tool. A production version would require organization-specific scoring criteria, calibrated reviewer guidance, access controls, evidence provenance, and integrations with issue-management systems.",
-        ],
-      },
-    ],
-  },
 ];
 
 export const researchItems: ResearchItem[] = [
@@ -434,7 +349,7 @@ export const researchItems: ResearchItem[] = [
     methods: ["SEM", "PROCESS", "Multilevel analysis", "Diary study"],
     visual: "network-study",
     links: [],
-    relatedItems: ["/research/china-aigc-legal-clause-to-control", "/work/nist-ai-rmf-dashboard"],
+    relatedItems: ["/research/china-aigc-legal-clause-to-control"],
     researchQuestion:
       "When and how does network crafting help employees in diverse workgroups acquire resources that improve performance at work and enrichment at home?",
     theoreticalBackground:
