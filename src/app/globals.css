@@ -306,7 +306,25 @@ a.yc-card:hover {
 }
 
 .yc-prose h2 + .yc-table-wrap,
-.yc-prose h3 + .yc-table-wrap {
+.yc-prose h3 + .yc-prose figure {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+}
+
+.yc-prose figure img {
+  display: block;
+  width: 100%;
+  background: #fff;
+}
+
+.yc-prose figcaption {
+  margin-top: 0.6rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--yc-subtle);
+}
+
+.yc-table-wrap {
   margin-top: 0.9em;
 }
 

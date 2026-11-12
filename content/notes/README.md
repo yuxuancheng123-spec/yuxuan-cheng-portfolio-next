@@ -16,7 +16,8 @@ Notes are Markdown files in `content/notes/<course>/`. Courses are listed in `sr
 `##` / `###` / `####` headings, paragraphs, `-` bullet and `1.` numbered lists, `>` quotes,
 fenced code blocks, tables, `---` rules, `**bold**`, `*italic*`, `` `code` ``, `[links](url)`,
 and images. Put images in `public/notes/<course>/` and reference them as
-`![alt](/notes/cs329z/figure.png)`. Raw HTML and nested lists are not supported.
+`![alt](/notes/cs329z/figure.png)`. An image on its own line becomes a figure, with the
+alt text shown as its caption. Raw HTML and nested lists are not supported.
 
 ## Add a course
 

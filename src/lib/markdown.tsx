@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 /*
  * Small Markdown renderer for lecture notes. No dependencies, no raw HTML.
  * Supports: headings, paragraphs, bullet/numbered lists, blockquotes, fenced code,
- * tables, horizontal rules, images, and inline code / bold / italic / links.
+ * tables, horizontal rules, images (a paragraph holding only an image becomes a captioned
+ * figure), and inline code / bold / italic / links.
  */
 
 const INLINE =
@@ -181,7 +182,20 @@ export function renderMarkdown(source: string): ReactNode[] {
     while (i < lines.length && lines[i].trim() && !(paragraph.length && startsBlock(lines, i))) {
       paragraph.push(lines[i++].trim());
     }
-    blocks.push(<p key={key}>{renderInline(paragraph.join(" "), key)}</p>);
+    const text = paragraph.join(" ");
+    const figure = /^!\[([^\]]*)\]\(([^)\s]+)\)$/.exec(text);
+    if (figure) {
+      // A paragraph that is only an image becomes a figure; the alt text doubles as the caption.
+      blocks.push(
+        <figure key={key}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={figure[2]} alt={figure[1]} loading="lazy" />
+          {figure[1] ? <figcaption>{figure[1]}</figcaption> : null}
+        </figure>,
+      );
+      continue;
+    }
+    blocks.push(<p key={key}>{renderInline(text, key)}</p>);
   }
 
   return blocks;
