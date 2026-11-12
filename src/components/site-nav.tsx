@@ -13,16 +13,16 @@ const navItems = [
 
 export function SiteNav({ active }: SiteNavProps) {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-line bg-background/90 font-serif backdrop-blur">
       <div className="yc-container flex h-14 items-center justify-between gap-4">
         <Link
           href="/"
           aria-current={active === "Home" ? "page" : undefined}
-          className="whitespace-nowrap text-[15px] font-semibold text-ink hover:text-accent"
+          className="whitespace-nowrap text-[17px] text-ink hover:text-accent"
         >
           Yuxuan Cheng
         </Link>
-        <nav aria-label="Primary navigation" className="flex items-center gap-0.5 text-sm sm:gap-1">
+        <nav aria-label="Primary navigation" className="flex items-center gap-0.5 text-[15px] sm:gap-1">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -39,7 +39,7 @@ export function SiteNav({ active }: SiteNavProps) {
           ))}
           <a
             href="/cv/Yuxuan_Cheng_CV.pdf"
-            className="ml-0.5 rounded-md border border-line bg-white px-2 py-1 sm:ml-1 sm:px-2.5 font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            className="ml-0.5 rounded-md border border-line bg-white px-2 py-1 sm:ml-1 sm:px-2.5 text-ink transition-colors hover:border-accent hover:text-accent"
           >
             CV
           </a>
@@ -51,7 +51,7 @@ export function SiteNav({ active }: SiteNavProps) {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-line">
+    <footer className="mt-16 border-t border-line font-serif">
       <div className="yc-container flex flex-col gap-3 py-6 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
         <p>Yuxuan Cheng · AI governance, privacy engineering, responsible AI</p>
         <div className="flex gap-4">
