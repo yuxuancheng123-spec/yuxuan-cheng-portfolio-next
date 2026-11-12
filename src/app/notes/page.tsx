@@ -40,7 +40,6 @@ export default function NotesPage() {
                   <h2 className="font-serif text-lg text-ink group-hover:text-accent">
                     {course.code}: {course.title}
                   </h2>
-                  <p className="yc-body mt-1.5">{course.description}</p>
                   <p className="mt-2 text-xs uppercase tracking-wider text-subtle">
                     {count ? `${count} lecture${count === 1 ? "" : "s"}` : "Notes coming soon"}
                   </p>

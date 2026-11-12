@@ -17,7 +17,7 @@ export const courses: Course[] = [
     code: "CS 329Z",
     title: "Engineering AI Agents",
     school: "Stanford University",
-    term: "Fall 2026",
+    term: "2026",
     instructors: "Diyi Yang, Michael Ryan, John Yang",
     url: "https://cs329z.stanford.edu/",
     description:
