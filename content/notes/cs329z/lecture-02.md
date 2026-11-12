@@ -1,7 +1,6 @@
 ---
 title: LLMs for Builders：训练、推理与面向 Agent 的能力
 lecture: 2
-summary: 语言模型如何生成文本、如何训练、如何高效推理，以及这些机制对设计 agent 意味着什么。
 ---
 
 ## 1. LLM 技术栈
