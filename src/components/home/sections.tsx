@@ -135,7 +135,7 @@ export function ResearchSection() {
             key={entry.title}
             className="flex flex-col gap-5 py-8 first:pt-0 last:pb-0 sm:flex-row"
           >
-            {entry.image ? <Thumb src={entry.image.src} alt={entry.image.alt} href={entry.href} /> : null}
+            {entry.image && entry.href ? <Thumb src={entry.image.src} alt={entry.image.alt} href={entry.href} /> : null}
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 <p className="text-xs text-subtle">{entry.venue}</p>
@@ -146,9 +146,13 @@ export function ResearchSection() {
                 ) : null}
               </div>
               <h3 className="mt-2 font-serif text-base leading-snug text-ink">
-                <Link href={entry.href} className="transition-colors hover:text-accent">
-                  {entry.title}
-                </Link>
+                {entry.href ? (
+                  <Link href={entry.href} className="transition-colors hover:text-accent">
+                    {entry.title}
+                  </Link>
+                ) : (
+                  entry.title
+                )}
               </h3>
               {entry.authors ? (
                 <p className="mt-1.5 text-sm text-muted">

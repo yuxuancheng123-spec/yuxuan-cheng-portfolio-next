@@ -37,7 +37,6 @@ export function ProfileSidebar() {
     { label: "CV", href: profile.cv, external: true },
     { label: "Notes", href: "/notes" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
   ];
 
   return (

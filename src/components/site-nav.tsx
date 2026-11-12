@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 type SiteNavProps = {
-  active?: "Home" | "Notes" | "About" | "Contact";
+  active?: "Home" | "Notes" | "About";
 };
 
 const navItems = [
@@ -9,7 +9,6 @@ const navItems = [
   { label: "Research", href: "/#research" },
   { label: "Notes", href: "/notes" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ] as const;
 
 export function SiteNav({ active }: SiteNavProps) {
