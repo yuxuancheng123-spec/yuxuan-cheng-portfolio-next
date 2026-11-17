@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { SiteFooter, SiteNav } from "@/components/site-nav";
 import { courses, getCourse } from "@/data/notes";
 import { renderMarkdown, slugify } from "@/lib/markdown";
+import { BlurText } from "@/components/motion/blur-text";
+import { NoteReading } from "@/components/motion/note-reading";
 import { getNote, getNotes } from "@/lib/notes";
 
 type NotePageProps = { params: Promise<{ course: string; slug: string }> };
@@ -52,12 +54,14 @@ export default async function NotePage({ params }: NotePageProps) {
               {note.lecture !== undefined ? `Lecture ${note.lecture}` : "Note"}
               {note.date ? <span className="yc-meta normal-case tracking-normal"> · {note.date}</span> : null}
             </p>
-            <h1 className="yc-h1 mt-2">{note.title}</h1>
+            <h1 className="yc-h1 mt-2">
+              <BlurText text={note.title} step={28} className="yc-gradient-text" />
+            </h1>
             {note.summary ? <p className="yc-lead mt-3">{note.summary}</p> : null}
           </header>
 
           {sections.length >= 4 ? (
-            <nav aria-label="Contents" className="yc-toc mt-8">
+            <nav aria-label="Contents" className="yc-toc yc-toc-inline mt-8">
               <p className="yc-meta uppercase tracking-wide">Contents</p>
               <ol>
                 {sections.map((title) => (
@@ -71,6 +75,7 @@ export default async function NotePage({ params }: NotePageProps) {
 
           <div className="yc-prose mt-10">{renderMarkdown(note.body)}</div>
         </article>
+
 
         {previous || next ? (
           <nav aria-label="Adjacent lectures" className="mt-14 grid auto-rows-fr gap-3 border-t border-line pt-6 sm:grid-cols-2">
@@ -95,6 +100,20 @@ export default async function NotePage({ params }: NotePageProps) {
           </nav>
         ) : null}
       </main>
+      {/* Outside <main>: its entrance animation uses a transform, which would anchor fixed elements to it. */}
+      <NoteReading ids={sections.map((title) => slugify(title))} />
+      {sections.length >= 4 ? (
+        <nav aria-label="On this page" className="yc-side-toc">
+          <p className="yc-meta uppercase tracking-wide">On this page</p>
+          <ol>
+            {sections.map((title) => (
+              <li key={title}>
+                <a href={`#${slugify(title)}`}>{title.replace(/[`*_]/g, "")}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      ) : null}
       <SiteFooter />
     </>
   );

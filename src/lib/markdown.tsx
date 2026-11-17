@@ -102,7 +102,7 @@ export function renderMarkdown(source: string): ReactNode[] {
       while (i < lines.length && !isFence(lines[i])) code.push(lines[i++]);
       i++; // closing fence
       blocks.push(
-        <pre key={key} data-lang={lang || undefined}>
+        <pre key={key} data-lang={lang || undefined} data-reveal>
           <code>{code.join("\n")}</code>
         </pre>,
       );
@@ -116,7 +116,17 @@ export function renderMarkdown(source: string): ReactNode[] {
       const id = slugify(text);
       const content = renderInline(text, key);
       blocks.push(
-        level <= 2 ? <h2 key={key} id={id}>{content}</h2> : level === 3 ? <h3 key={key} id={id}>{content}</h3> : <h4 key={key} id={id}>{content}</h4>,
+        level <= 2 ? (
+          <h2 key={key} id={id} data-reveal>
+            {content}
+          </h2>
+        ) : level === 3 ? (
+          <h3 key={key} id={id} data-reveal>
+            {content}
+          </h3>
+        ) : (
+          <h4 key={key} id={id}>{content}</h4>
+        ),
       );
       i++;
       continue;
@@ -131,7 +141,7 @@ export function renderMarkdown(source: string): ReactNode[] {
     if (isQuote(line)) {
       const quote: string[] = [];
       while (i < lines.length && isQuote(lines[i])) quote.push(lines[i++].replace(/^\s*>\s?/, ""));
-      blocks.push(<blockquote key={key}>{renderMarkdown(quote.join("\n"))}</blockquote>);
+      blocks.push(<blockquote key={key} data-reveal>{renderMarkdown(quote.join("\n"))}</blockquote>);
       continue;
     }
 
@@ -162,7 +172,7 @@ export function renderMarkdown(source: string): ReactNode[] {
       const rows: string[][] = [];
       while (i < lines.length && isTableRow(lines[i])) rows.push(splitRow(lines[i++]));
       blocks.push(
-        <div key={key} className="yc-table-wrap">
+        <div key={key} className="yc-table-wrap" data-reveal>
           <table>
             <thead>
               <tr>{header.map((cell, n) => <th key={n}>{renderInline(cell, `${key}-h${n}`)}</th>)}</tr>
@@ -187,7 +197,7 @@ export function renderMarkdown(source: string): ReactNode[] {
     if (figure) {
       // A paragraph that is only an image becomes a figure; the alt text doubles as the caption.
       blocks.push(
-        <figure key={key}>
+        <figure key={key} data-reveal>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={figure[2]} alt={figure[1]} loading="lazy" />
           {figure[1] ? <figcaption>{figure[1]}</figcaption> : null}

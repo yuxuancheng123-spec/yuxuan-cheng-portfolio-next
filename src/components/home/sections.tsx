@@ -9,7 +9,6 @@ import {
   type LinkItem,
 } from "@/data/profile";
 import { ArrowUpRight } from "@/components/home/icons";
-import { ActorStatusCard } from "@/components/home/actor-status-card";
 import { courses } from "@/data/notes";
 import { getNotes } from "@/lib/notes";
 
@@ -219,7 +218,6 @@ export function ProjectsSection() {
               </div>
               <LinkRow links={project.links} />
               <p className="mt-3 text-sm italic leading-relaxed text-subtle">{project.summary}</p>
-              {project.statusDemo ? <ActorStatusCard /> : null}
             </div>
           </article>
         ))}
