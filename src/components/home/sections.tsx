@@ -75,7 +75,7 @@ function Thumb({ src, alt, href }: { src: string; alt: string; href: string }) {
 /** Date column on the left, entry on the right — the template's timeline row. */
 function TimelineRow({ period, children }: { period: string; children: ReactNode }) {
   return (
-    <div className="grid grid-cols-1 gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-6">
+    <div data-reveal className="grid grid-cols-1 gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-6">
       <p className="pt-0.5 text-xs text-subtle">{period}</p>
       <div>{children}</div>
     </div>
@@ -133,6 +133,8 @@ export function ResearchSection() {
         {research.map((entry) => (
           <article
             key={entry.title}
+            data-reveal
+            data-spotlight
             className="flex flex-col gap-5 py-8 first:pt-0 last:pb-0 sm:flex-row"
           >
             {entry.image && entry.href ? <Thumb src={entry.image.src} alt={entry.image.alt} href={entry.href} /> : null}
@@ -193,7 +195,12 @@ export function ProjectsSection() {
     <Section id="work" title="Projects">
       <div className="divide-y divide-line">
         {projects.map((project) => (
-          <article key={project.title} className="flex flex-col gap-5 py-8 first:pt-0 last:pb-0 sm:flex-row">
+          <article
+            key={project.title}
+            data-reveal
+            data-spotlight
+            className="flex flex-col gap-5 py-8 first:pt-0 last:pb-0 sm:flex-row"
+          >
             <Thumb src={project.image.src} alt={project.image.alt} href={project.href} />
             <div className="min-w-0 flex-1">
               <p className="text-xs text-subtle">{project.status}</p>

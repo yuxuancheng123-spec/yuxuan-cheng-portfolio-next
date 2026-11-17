@@ -26,7 +26,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <footer className="border-t border-line">
+      <footer className="border-t border-line font-serif">
         <div className="mx-auto flex max-w-screen-lg flex-col gap-2 px-6 py-6 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>© {new Date().getFullYear()} Yuxuan Cheng.</p>
           <p>AI governance · privacy engineering · responsible AI</p>
