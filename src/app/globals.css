@@ -148,6 +148,73 @@ a.yc-card:hover {
   transform: translateY(-2px);
 }
 
+/* Blur-in letters (BlurText) */
+.yc-blur-char {
+  display: inline-block;
+  animation: yc-blur-in 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes yc-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+/* Scroll reveal ([data-reveal]) */
+.js [data-reveal] {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(14px);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 650ms ease;
+}
+
+.js [data-reveal].is-revealed,
+.reveal-fallback [data-reveal] {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* Pointer spotlight ([data-spotlight] and cards) */
+[data-spotlight],
+.yc-card {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before,
+.yc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    360px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(47, 85, 116, 0.09),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+}
+
+[data-spotlight]:hover::before,
+.yc-card:hover::before {
+  opacity: 1;
+}
+
+[data-spotlight] {
+  border-radius: 14px;
+}
+
 /* Subtle motion: page content fades in on each navigation; links ease their colour. */
 main {
   animation: yc-page-in 220ms ease-out both;
@@ -472,5 +539,16 @@ main {
   *::after {
     transition-duration: 0.01ms !important;
     animation: none !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  [data-spotlight]::before,
+  .yc-card::before {
+    display: none;
   }
 }

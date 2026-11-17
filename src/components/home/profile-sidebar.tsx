@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { profile } from "@/data/profile";
+import { BlurText } from "@/components/motion/blur-text";
 import {
   ArrowUpRight,
   GithubIcon,
@@ -48,7 +49,7 @@ export function ProfileSidebar() {
 
         <div className="w-2/3 md:w-full">
           <h1 className="font-serif text-3xl font-light tracking-wide text-ink">
-            {profile.name}
+            <BlurText text={profile.name} />
           </h1>
           <p className="mt-3 text-xs uppercase leading-relaxed tracking-wide text-subtle">
             {profile.role}

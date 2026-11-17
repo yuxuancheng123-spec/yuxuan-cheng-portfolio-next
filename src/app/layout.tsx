@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PT_Serif } from "next/font/google";
 import "./globals.css";
+import { MotionEffects } from "@/components/motion/motion-effects";
 
 const ptSerif = PT_Serif({
   subsets: ["latin"],
@@ -23,8 +24,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ptSerif.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-background text-ink">{children}</body>
+    <html lang="en" className={`${ptSerif.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        {/* Hide reveal targets only when scripts run; show everything after 3s if hydration stalls. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('reveal-fallback')},3000);",
+          }}
+        />
+      </head>
+      <body className="flex min-h-full flex-col bg-background text-ink">
+        {children}
+        <MotionEffects />
+      </body>
     </html>
   );
 }
