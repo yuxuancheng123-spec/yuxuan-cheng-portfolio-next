@@ -139,12 +139,36 @@ button:focus-visible {
   border-radius: 12px;
   background: #fff;
   padding: 1.125rem 1.25rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 a.yc-card:hover {
   border-color: rgba(47, 85, 116, 0.45);
   box-shadow: 0 4px 16px rgba(23, 34, 42, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Subtle motion: page content fades in on each navigation; links ease their colour. */
+main {
+  animation: yc-page-in 220ms ease-out both;
+}
+
+@keyframes yc-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.yc-link,
+.yc-underline,
+.yc-prose a,
+.yc-toc a {
+  transition: color 150ms ease, text-decoration-color 150ms ease;
 }
 
 .yc-tag {
@@ -447,5 +471,6 @@ a.yc-card:hover {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation: none !important;
   }
 }
