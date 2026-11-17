@@ -530,6 +530,8 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Reduced motion: no movement or blur, but gentle opacity fades and the
+     pointer spotlight stay, since they do not move content around. */
   html {
     scroll-behavior: auto;
   }
@@ -538,17 +540,29 @@ main {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
-    animation: none !important;
+  }
+
+  main,
+  .yc-blur-char {
+    animation-name: yc-fade-only;
   }
 
   .js [data-reveal] {
-    opacity: 1;
     filter: none;
     transform: none;
+    transition: opacity 500ms ease !important;
   }
 
-  [data-spotlight]::before,
-  .yc-card::before {
-    display: none;
+  a.yc-card:hover {
+    transform: none;
+  }
+}
+
+@keyframes yc-fade-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
