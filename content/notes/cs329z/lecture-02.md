@@ -7,11 +7,6 @@ lecture: 2
 
 ![LLM 技术栈：越往上越接近产品，越往下越接近模型本身](/notes/cs329z/lecture-02/llm-stack.svg)
 
-| 层次 | 关注什么 | 对应 |
-| --- | --- | --- |
-| LLM 应用 | 用模型搭建系统 | Agent |
-| LLM 适配（adaptation） | 让模型适应特定任务 | 微调 |
-| LLM 工程 | 从零训练模型 | 预训练 |
 
 ## 2. 语言模型是什么
 
@@ -19,24 +14,26 @@ lecture: 2
 
 ### 生成模型与判别模型
 
-| 类型 | 学什么 | 例子 |
-| --- | --- | --- |
-| 判别模型（discriminative） | 学习区分类别的边界 | 逻辑回归、SVM |
-| 生成模型（generative） | 学习数据本身的分布，可以生成新样本 | 朴素贝叶斯、扩散模型、语言模型 |
+:::cards
+- 判别模型 discriminative | 学习区分类别的边界。例子：逻辑回归、SVM
+- 生成模型 generative | 学习数据本身的分布，可以生成新样本。例子：朴素贝叶斯、扩散模型、语言模型
+:::
 
 ### 解码与采样
 
 模型每一步输出一个概率分布，解码策略决定从中选哪个 token。
 
-![解码策略示意：以 “The class was about” 为例](/notes/cs329z/lecture-02/sampling.svg)
+拖动下面的滑块，看看每种策略怎么改变候选 token，再点“抽一个 token”试试：
 
-| 策略 | 做法 | 特点 |
-| --- | --- | --- |
-| Greedy decoding | 每一步选概率最高的 token | 简单，但只是局部最优 |
-| Top-K sampling | 只保留概率最高的 K 个 token，重新归一化后抽样 | 固定候选数量 |
-| Top-P sampling | 保留累积概率达到 P 的最小 token 集合，再抽样 | 候选数量随分布自适应 |
-| Temperature | 调整概率分布的平滑程度 | 越接近 0 越接近 greedy，越高越随机 |
-| Beam search | 同时保留 K 条候选序列，比较每条路径的累计分数 | 算力和内存开销大；偏向常见、重复和较短的表达 |
+[[sampling-demo]]
+
+:::cards
+- Greedy | 每一步选概率最高的 token。简单，但只是局部最优
+- Top-K | 只保留概率最高的 K 个，重新归一化后抽样，固定候选数量
+- Top-P | 保留累积概率达到 P 的最小集合，候选数量随分布自适应
+- Temperature | 调整分布的平滑程度：越接近 0 越接近 greedy，越高越随机
+- Beam search | 同时保留 K 条候选序列比较累计分数；开销大，偏向常见、重复、较短的表达
+:::
 
 Top-K 和 Top-P 决定哪些 token 有资格被抽中，temperature 决定抽中的概率怎么分配。选哪种策略取决于任务和预算：数学和代码适合更确定的输出，创意写作适合更高的多样性。
 
@@ -66,16 +63,18 @@ Self-attention 让序列中任意两个位置可以直接交换信息。最初�
 
 Full attention 的计算和内存开销随上下文长度快速增长。几种常见的折中：
 
-| 方案 | 思路 | 代价 |
-| --- | --- | --- |
-| Linear attention | 去掉 softmax、调整矩阵乘法的顺序，把历史压缩进固定大小的状态 | 长上下文表现弱于 full attention |
-| Sliding window attention | 每个 token 只关注附近一段窗口 | 远处的信息要靠层层传递 |
-| Hybrid attention | 混合使用 full（多头）attention 与线性或窗口 attention | 在效果和成本之间折中 |
-| Multi-Head Latent Attention（MLA） | 把 K/V 压缩成低维潜在表示 | 减少 KV cache 占用；课上以 Kimi K3 为例 |
+:::cards
+- Linear attention | 去掉 softmax、调整矩阵乘法的顺序，把历史压缩进固定大小的状态。代价：长上下文表现弱于 full attention
+- Sliding window | 每个 token 只关注附近一段窗口。代价：远处的信息要靠层层传递
+- Hybrid attention | 混合 full（多头）attention 与线性或窗口 attention，在效果和成本之间折中
+- MLA | 把 K/V 压缩成低维潜在表示，减少 KV cache 占用。课上以 Kimi K3 为例
+:::
 
 模型能用多长的上下文，取决于 attention 的计算复杂度、位置编码，以及训练时使用的上下文长度。检验长上下文能力的常用方法是 needle-in-a-haystack：在长文中藏一条信息，看模型能否找到。
 
-> 设计 agent 时要测试三件事：模型能否在长材料中定位具体内容，能否把第 2 页和第 200 页的信息联系起来，以及能否保留原始证据。
+:::tip 设计 agent 时
+要测试三件事：模型能否在长材料中定位具体内容，能否把第 2 页和第 200 页的信息联系起来，以及能否保留原始证据。
+:::
 
 ## 4. 训练
 
@@ -93,26 +92,25 @@ V 是词表大小，y 是真实 token 的 one-hot 向量，p 是模型预测的�
 
 ![训练的三个阶段，以及预训练的数据处理流程](/notes/cs329z/lecture-02/training-stages.svg)
 
-| 阶段 | 目的 | 做法 |
-| --- | --- | --- |
-| Pretraining 预训练 | 学习语言规律、知识和通用能力 | 在大规模数据上做 next-token prediction |
-| Midtraining 中期训练 | 强化目标领域，同时保留通用能力 | 调整数据配比，加入更多领域数据 |
-| Posttraining 后训练 | 让模型听指令、有用、安全 | SFT、偏好学习、RLVR 等 |
+:::cards
+- 预训练 Pretraining | 在大规模数据上做 next-token prediction，学习语言规律、知识和通用能力
+- 中期训练 Midtraining | 调整数据配比、加入更多领域数据，强化目标领域并保留通用能力
+- 后训练 Posttraining | 用 SFT、偏好学习、RLVR 等让模型听指令、有用、安全
+:::
 
 ### 预训练数据处理
 
-1. 文本提取
-2. 语言识别
-3. 规则过滤（heuristic cleaning）：按长度、符号、格式等预设规则筛选
-4. 质量过滤：去掉广告、垃圾评论、无意义文本
-5. 去重
-6. 基于模型的过滤（model-based filtering）
+[[data-pipeline]]
+
+规则过滤（heuristic cleaning）按长度、符号、格式等预设规则筛选；质量过滤去掉广告、垃圾评论和无意义文本；最后一步是基于模型的过滤（model-based filtering）。
 
 数据配比（data mixing）决定不同来源的数据各占多少。课上介绍的方法分三步：
 
-1. Swarm：尝试多组不同比例，用小的代理模型（proxy model）分别训练，得到各自的表现
-2. Regression：拟合回归模型，预测比例变化会怎样影响表现
-3. Optimization：在可行的比例集合 S 中，找让预测损失最小的比例
+:::cards
+- Swarm | 尝试多组不同比例，用小的代理模型（proxy model）分别训练，得到各自的表现
+- Regression | 拟合回归模型，预测比例变化会怎样影响表现
+- Optimization | 在可行的比例集合 S 中，找让预测损失最小的比例
+:::
 
 ```
 p* = argmin f̂(p),   p ∈ S
@@ -124,13 +122,13 @@ p* = argmin f̂(p),   p ∈ S
 
 ### 后训练
 
-| 方法 | 训练信号 | 说明 |
-| --- | --- | --- |
-| Instruction fine-tuning | 明确的指令和回答 | 用于监督微调（SFT） |
-| CoT fine-tuning | 带中间解题步骤的答案 | 让模型学会分步推理 |
-| RLHF | 人类的偏好比较 | 见下文 |
-| RLVR | 可以客观检查的结果 | 用单元测试、证明检查、精确匹配等结果作为奖励，特别适合数学和代码；验证器要设计得足够严格 |
-| Agent 专项训练 | 真实环境中的任务 | 如 SWE-smith：基于真实代码仓库搭建环境，生成任务和新的任务实例 |
+:::cards
+- Instruction fine-tuning | 用明确的指令和回答做监督微调（SFT）
+- CoT fine-tuning | 用带中间解题步骤的答案训练，让模型学会分步推理
+- RLHF | 从人类的偏好比较中学习，见下文
+- RLVR | 用单元测试、证明检查、精确匹配等可客观检查的结果作为奖励，特别适合数学和代码；验证器要设计得足够严格
+- Agent 专项训练 | 在真实环境中训练，如 SWE-smith：基于真实代码仓库搭环境，生成任务和新的任务实例
+:::
 
 RLHF（基于人类反馈的强化学习）有三步：
 
@@ -138,7 +136,9 @@ RLHF（基于人类反馈的强化学习）有三步：
 2. 收集偏好比较，例如“准确但冗长”和“简短”哪个更好，并据此训练奖励模型
 3. 用 PPO（proximal policy optimization）优化模型，使它倾向于产出奖励高的回答
 
-人类偏好的问题：标注人员会出错，不同人的偏好各异，模型还可能学会迎合用户（sycophancy）和表现得过度自信（authoritativeness）。
+:::warn 人类偏好的问题
+标注人员会出错，不同人的偏好各异，模型还可能学会迎合用户（sycophancy）和表现得过度自信（authoritativeness）。
+:::
 
 ## 5. 推理
 
@@ -146,10 +146,10 @@ RLHF（基于人类反馈的强化学习）有三步：
 
 ![Prefill 并行处理输入并写入 KV cache；decode 逐个生成输出](/notes/cs329z/lecture-02/prefill-decode.svg)
 
-| 阶段 | 做什么 | 常见瓶颈 |
-| --- | --- | --- |
-| Prefill | 一次性并行处理所有输入 token，构建 KV cache | 计算（compute-bound） |
-| Decode | 逐个生成新 token，每一步依赖前面的输出 | 显存带宽（memory-bandwidth-bound），小 batch 时尤其明显 |
+:::cards
+- Prefill | 一次性并行处理所有输入 token，构建 KV cache。瓶颈通常在计算（compute-bound）
+- Decode | 逐个生成新 token，每一步依赖前面的输出。瓶颈通常在显存带宽（memory-bandwidth-bound），小 batch 时尤其明显
+:::
 
 ### Roofline 模型
 
@@ -171,16 +171,16 @@ KV cache 保存已处理 token 的 Key 和 Value。Decode 时，新 token 的 Qu
 
 ### 推理指标
 
-| 指标 | 含义 |
-| --- | --- |
-| TTFT（time to first token） | 首个 token 的延迟，主要受 prefill 影响 |
-| TPOT（time per output token） | 之后每个输出 token 的平均耗时 |
-| Throughput | 单位时间处理的 token 数或请求数 |
-| End-to-end latency | 从发出请求到拿到完整结果的总时间；agent 还要算上工具执行时间 |
+:::cards
+- TTFT | Time to first token：首个 token 的延迟，主要受 prefill 影响
+- TPOT | Time per output token：之后每个输出 token 的平均耗时
+- Throughput | 单位时间处理的 token 数或请求数
+- End-to-end latency | 从发出请求到拿到完整结果的总时间；agent 还要算上工具执行时间
+:::
 
 ### 推测式解码（speculative decoding）
 
-![推测式解码：草稿模型连续猜测，目标模型一次批量验证](/notes/cs329z/lecture-02/speculative-decoding.svg)
+[[speculative-demo]]
 
 小的草稿模型先生成若干候选 token，大的目标模型一次性批量验证。被接受的候选越多，大模型需要串行生成的步数越少。实现正确时，输出分布与只用大模型一致。草稿错误率高或草稿本身开销大时，加速效果会消失。有些领域的文本更容易预测，接受率也更高。
 
@@ -190,12 +190,12 @@ KV cache 保存已处理 token 的 Key 和 Value。Decode 时，新 token 的 Qu
 
 模型权重保持不变，在推理阶段多花计算来解决更难的任务。
 
-| 方法 | 做法 | 局限 |
-| --- | --- | --- |
-| Chain-of-thought | 分步推理 | 推理过程看似合理，答案仍可能出错 |
-| Reasoning LLM | 投入额外计算做多步分析、检查和修正；可设 low、medium、high 等推理强度 | 增加延迟和成本，准确率的提升因任务而异 |
-| Repeated sampling | 同一问题生成多个候选，提高至少一个正确的概率（coverage），再用验证器（单元测试、精确匹配）挑选 | 成本随采样数增长，依赖可靠的验证器 |
-| Self-consistency | 没有可靠验证器时，对多条推理路径的答案投票 | 多条路径可能犯同一个错，多数答案也会出错 |
+:::cards
+- Chain-of-thought | 分步推理。推理过程看似合理，答案仍可能出错
+- Reasoning LLM | 投入额外计算做多步分析、检查和修正，可设 low / medium / high 推理强度。会增加延迟和成本，准确率的提升因任务而异
+- Repeated sampling | 生成多个候选提高 coverage，再用验证器（单元测试、精确匹配）挑选。成本随采样数增长，依赖可靠的验证器
+- Self-consistency | 没有可靠验证器时，对多条推理路径的答案投票。多条路径可能犯同一个错，多数答案也会出错
+:::
 
 多教师蒸馏（multi-teacher distillation）：用不同任务、不同推理强度的教师模型示例来训练学生模型。
 
@@ -205,7 +205,9 @@ KV cache 保存已处理 token 的 Key 和 Value。Decode 时，新 token 的 Qu
 
 复合 AI 系统（compound AI system）由多个组件组成，组件之间需要共享的接口约定（shared contract）。常用 JSON Schema 规定字段、类型、必填项和枚举值。
 
-> Schema 校验只检查格式。字段的业务含义和证据要单独验证。
+:::tip 要点
+Schema 校验只检查格式。字段的业务含义和证据要单独验证。
+:::
 
 ### 约束解码（constrained decoding）
 
@@ -232,13 +234,13 @@ Prompt engineering 关心指令怎么写，context engineering 关心每次调�
 
 ![上下文工程：按需拼装上下文，在末尾追加以复用 KV cache](/notes/cs329z/lecture-02/context-engineering.svg)
 
-| 原则 | 说明 |
-| --- | --- |
-| 警惕 context rot | 上下文变长后，定位和综合信息的能力可能下降；有效的上下文能力通常小于最大窗口 |
-| 避免膨胀 | 只保留当前任务需要的工具、历史和资料；用 RAG 按需检索（just-in-time retrieval） |
-| 顺序追加 | 尽量在末尾追加，保持已缓存的前缀不变；在开头插入内容会让 KV cache 失效 |
-| 实证评估 | 用 benchmark 和 eval 比较准确率、证据完整性、token 成本和延迟 |
-| 压缩（compaction） | 长任务中保留已确认的事实、关键证据、当前状态和待解决的问题；保留太多很快又会超长，删太多会丢失关键信息 |
+:::cards
+- 警惕 context rot | 上下文变长后，定位和综合信息的能力可能下降；有效的上下文能力通常小于最大窗口
+- 避免膨胀 | 只保留当前任务需要的工具、历史和资料；用 RAG 按需检索（just-in-time retrieval）
+- 顺序追加 | 尽量在末尾追加，保持已缓存的前缀不变；在开头插入内容会让 KV cache 失效
+- 实证评估 | 用 benchmark 和 eval 比较准确率、证据完整性、token 成本和延迟
+- 压缩 compaction | 保留已确认的事实、关键证据、当前状态和待解决的问题；留太多会再次超长，删太多会丢失关键信息
+:::
 
 原始合同、页码和证据放在外部可检索的存储里，摘要只作索引。
 
@@ -246,8 +248,10 @@ Prompt engineering 关心指令怎么写，context engineering 关心每次调�
 
 ## 小结：设计 agent 时要记住的几点
 
-1. 先测模型能否在长材料里找到并关联具体内容，再决定能否把整份材料交给它。
-2. 原始证据放在外部可检索的存储里，摘要只作索引。
-3. Schema、约束解码和工具参数校验负责格式；业务含义和事实要另外验证。
-4. 重复采样要配可靠的验证器；没有验证器时，多数投票也可能选错。
-5. 上下文按需提供、在末尾追加，并用 eval 衡量准确率、成本和延迟。
+:::cards
+- 先测长材料 | 先测模型能否在长材料里找到并关联具体内容，再决定能否把整份材料交给它
+- 证据放外部 | 原始证据放在外部可检索的存储里，摘要只作索引
+- 格式之外再验证 | Schema、约束解码和工具参数校验负责格式；业务含义和事实要另外验证
+- 配可靠的验证器 | 重复采样要配可靠的验证器；没有验证器时，多数投票也可能选错
+- 上下文按需提供 | 在末尾追加，并用 eval 衡量准确率、成本和延迟
+:::
