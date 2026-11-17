@@ -268,7 +268,7 @@ a.yc-card:hover {
 @keyframes yc-step-2 { 0%, 22% { opacity: 0; transform: translateY(4px); } 28%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes yc-step-3 { 0%, 46% { opacity: 0; transform: translateY(4px); } 52%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
 @keyframes yc-step-4 { 0%, 62% { opacity: 0; transform: scale(0.96); } 68%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
-@keyframes yc-bar { 0%, 6% { width: 0; } 58%, 92% { width: 100%; } 100% { width: 100%; opacity: 0; } }
+@keyframes yc-bar { 0%, 6% { width: 0; opacity: 1; } 58%, 92% { width: 100%; opacity: 1; } 100% { width: 100%; opacity: 0; } }
 
 /* Blur-in letters (BlurText) */
 .yc-blur-char {
