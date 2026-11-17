@@ -7,7 +7,6 @@ import { useEffect } from "react";
  * Site-wide motion helpers, driven by data attributes so pages stay server components.
  * - [data-reveal]: fades in when it scrolls into view (after React Bits' FadeContent).
  * - [data-spotlight] and .yc-card: a soft light follows the pointer (after React Bits' SpotlightCard).
- * CSS in globals.css turns all of this off for visitors who prefer reduced motion.
  */
 export function MotionEffects() {
   const pathname = usePathname();
