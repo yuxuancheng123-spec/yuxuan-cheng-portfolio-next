@@ -119,6 +119,8 @@ export type ProjectEntry = {
   tags: string[];
   image: { src: string; alt: string };
   links: LinkItem[];
+  /** Show the animated review demo under the summary. */
+  statusDemo?: boolean;
 };
 
 export const projects: ProjectEntry[] = [
@@ -128,6 +130,7 @@ export const projects: ProjectEntry[] = [
     summary:
       "Can this face or voice be used — and who can prove it? Scoped consent records, evidence gates, and 13 rules with PRC legal bases; the browser demo and the backend share one rulebook, checked by a parity test.",
     href: "/work/ai-generated-actor-compliance",
+    statusDemo: true,
     tags: ["FastAPI", "Pydantic", "SQLite", "JSON Schema"],
     image: {
       src: "/images/work/actor-review-queue.jpg",

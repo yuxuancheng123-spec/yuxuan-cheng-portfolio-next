@@ -9,6 +9,14 @@
   --yc-line: #ebe6de;
   --yc-accent: #2f5574;
   --yc-accent-soft: #eef2f5;
+  /* Accent gradient: name, pointer spotlight, status card. */
+  --yc-g1: #60a5fa;
+  --yc-g2: #bae6fd;
+  --yc-g1-rgb: 96, 165, 250;
+  --yc-g2-rgb: 186, 230, 253;
+  /* Text needs more contrast on the cream background than the light end allows. */
+  --yc-gt1: #2f5574;
+  --yc-gt2: #60a5fa;
   --yc-font-sans: ui-sans-serif, system-ui, "Inter", "Avenir Next", Avenir, "SF Pro Text", -apple-system,
     BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", sans-serif;
   --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, "Songti SC", "Noto Serif SC",
@@ -148,6 +156,120 @@ a.yc-card:hover {
   transform: translateY(-2px);
 }
 
+/* Gradient text: each letter shows its slice of one gradient. */
+.yc-gradient-text .yc-blur-char {
+  background-image: linear-gradient(90deg, var(--yc-gt1), var(--yc-gt2));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated status card (AI actor project) */
+.yc-status {
+  margin-top: 1rem;
+  border: 1px solid var(--yc-line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0.85rem 1rem;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--yc-muted);
+}
+
+.yc-status-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--yc-font-mono);
+  font-size: 11px;
+  color: var(--yc-subtle);
+}
+
+.yc-status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--yc-g1), var(--yc-g2));
+  animation: yc-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes yc-pulse {
+  50% {
+    transform: scale(1.6);
+    opacity: 0.55;
+  }
+}
+
+.yc-status-steps {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.yc-status-step {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: 9s ease-in-out infinite both;
+}
+
+.yc-status-step::before {
+  content: "✓";
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--yc-g1);
+}
+
+.yc-status-step.is-alert::before {
+  content: "!";
+  color: #c2410c;
+}
+
+.yc-status-step:nth-child(1) { animation-name: yc-step-1; }
+.yc-status-step:nth-child(2) { animation-name: yc-step-2; }
+.yc-status-step:nth-child(3) { animation-name: yc-step-3; }
+
+.yc-status-bar {
+  margin-top: 0.65rem;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f4f1ec;
+}
+
+.yc-status-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--yc-gt2), var(--yc-g1), var(--yc-g2));
+  animation: yc-bar 9s ease-in-out infinite both;
+}
+
+.yc-status-result {
+  margin-top: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: #fdecea;
+  padding: 0.15rem 0.6rem;
+  font-weight: 600;
+  color: #b42318;
+  opacity: 0;
+  animation: yc-step-4 9s ease-in-out infinite both;
+}
+
+@keyframes yc-step-1 { 0%, 4% { opacity: 0; transform: translateY(4px); } 10%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes yc-step-2 { 0%, 22% { opacity: 0; transform: translateY(4px); } 28%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes yc-step-3 { 0%, 46% { opacity: 0; transform: translateY(4px); } 52%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes yc-step-4 { 0%, 62% { opacity: 0; transform: scale(0.96); } 68%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+@keyframes yc-bar { 0%, 6% { width: 0; } 58%, 92% { width: 100%; } 100% { width: 100%; opacity: 0; } }
+
 /* Blur-in letters (BlurText) */
 .yc-blur-char {
   display: inline-block;
@@ -196,11 +318,17 @@ a.yc-card:hover {
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: radial-gradient(
-    360px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-    rgba(47, 85, 116, 0.09),
-    transparent 70%
-  );
+  background:
+    radial-gradient(
+      260px circle at calc(var(--spot-x, 50%) - 60px) var(--spot-y, 50%),
+      rgba(var(--yc-g1-rgb), 0.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      300px circle at calc(var(--spot-x, 50%) + 70px) calc(var(--spot-y, 50%) + 20px),
+      rgba(var(--yc-g2-rgb), 0.22),
+      transparent 70%
+    );
   opacity: 0;
   transition: opacity 250ms ease;
   pointer-events: none;
