@@ -49,7 +49,7 @@ export function ProfileSidebar() {
 
         <div className="w-2/3 md:w-full">
           <h1 className="font-serif text-3xl font-light tracking-wide text-ink">
-            <BlurText text={profile.name} />
+            <BlurText text={profile.name} className="yc-gradient-text" />
           </h1>
           <p className="mt-3 text-xs uppercase leading-relaxed tracking-wide text-subtle">
             {profile.role}

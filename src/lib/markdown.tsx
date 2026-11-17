@@ -1,7 +1,19 @@
 import type { ReactNode } from "react";
+import { DataPipeline } from "@/components/notes/data-pipeline";
+import { SamplingDemo } from "@/components/notes/sampling-demo";
+import { SpeculativeDemo } from "@/components/notes/speculative-demo";
+
+/** Interactive pieces a note can drop in with a line like [[sampling-demo]]. */
+const WIDGETS: Record<string, () => ReactNode> = {
+  "sampling-demo": () => <SamplingDemo />,
+  "speculative-demo": () => <SpeculativeDemo />,
+  "data-pipeline": () => <DataPipeline />,
+};
 
 /*
  * Small Markdown renderer for lecture notes. No dependencies, no raw HTML.
+ * Note extras: [[widget-name]] on its own line; ":::cards" blocks with "- Title | text" items;
+ * ":::tip Title" / ":::note Title" callout blocks. All blocks close with ":::".
  * Supports: headings, paragraphs, bullet/numbered lists, blockquotes, fenced code,
  * tables, horizontal rules, images (a paragraph holding only an image becomes a captioned
  * figure), and inline code / bold / italic / links.
@@ -48,6 +60,8 @@ function renderInline(text: string, key = "i"): ReactNode[] {
 }
 
 const isFence = (line: string) => /^\s*```/.test(line);
+const isWidget = (line: string) => /^\s*\[\[[a-z-]+\]\]\s*$/.test(line);
+const isDirective = (line: string) => /^\s*:::[a-z]/.test(line);
 const isHeading = (line: string) => /^#{1,4}\s+/.test(line);
 const isRule = (line: string) => /^\s*([-*_])(\s*\1){2,}\s*$/.test(line);
 const isQuote = (line: string) => /^\s*>/.test(line);
@@ -64,6 +78,8 @@ function startsBlock(lines: string[], i: number) {
   const line = lines[i];
   return (
     isFence(line) ||
+    isWidget(line) ||
+    isDirective(line) ||
     isHeading(line) ||
     isRule(line) ||
     isQuote(line) ||
@@ -95,6 +111,47 @@ export function renderMarkdown(source: string): ReactNode[] {
       continue;
     }
 
+    if (isWidget(line)) {
+      const name = line.trim().slice(2, -2);
+      const widget = WIDGETS[name];
+      if (widget) blocks.push(<div key={key}>{widget()}</div>);
+      i++;
+      continue;
+    }
+
+    const directive = /^\s*:::([a-z]+)\s*(.*)$/.exec(line);
+    if (directive) {
+      const [, kind, title] = directive;
+      const inner: string[] = [];
+      i++;
+      while (i < lines.length && !/^\s*:::\s*$/.test(lines[i])) inner.push(lines[i++]);
+      i++; // closing :::
+      if (kind === "cards") {
+        const items = inner
+          .filter((row) => isBullet(row))
+          .map((row) => row.replace(/^\s*[-*+]\s+/, "").split("|").map((part) => part.trim()));
+        blocks.push(
+          <div key={key} className={`yc-cards ${items.length === 2 || items.length === 4 ? "is-two" : ""}`}>
+            {items.map(([cardTitle, ...rest], n) => (
+              <div key={n} className="yc-mini-card" data-reveal data-spotlight style={{ transitionDelay: `${n * 70}ms` }}>
+                <span className="yc-mini-index">{String(n + 1).padStart(2, "0")}</span>
+                <strong>{renderInline(cardTitle, `${key}-t${n}`)}</strong>
+                {rest.length ? <span>{renderInline(rest.join(" | "), `${key}-b${n}`)}</span> : null}
+              </div>
+            ))}
+          </div>,
+        );
+      } else {
+        blocks.push(
+          <aside key={key} className={`yc-callout is-${kind}`} data-reveal>
+            {title ? <p className="yc-callout-title">{renderInline(title, `${key}-ct`)}</p> : null}
+            {renderMarkdown(inner.join("\n"))}
+          </aside>,
+        );
+      }
+      continue;
+    }
+
     if (isFence(line)) {
       const lang = line.trim().slice(3).trim();
       const code: string[] = [];
@@ -102,7 +159,7 @@ export function renderMarkdown(source: string): ReactNode[] {
       while (i < lines.length && !isFence(lines[i])) code.push(lines[i++]);
       i++; // closing fence
       blocks.push(
-        <pre key={key} data-lang={lang || undefined}>
+        <pre key={key} data-lang={lang || undefined} data-reveal>
           <code>{code.join("\n")}</code>
         </pre>,
       );
@@ -116,7 +173,17 @@ export function renderMarkdown(source: string): ReactNode[] {
       const id = slugify(text);
       const content = renderInline(text, key);
       blocks.push(
-        level <= 2 ? <h2 key={key} id={id}>{content}</h2> : level === 3 ? <h3 key={key} id={id}>{content}</h3> : <h4 key={key} id={id}>{content}</h4>,
+        level <= 2 ? (
+          <h2 key={key} id={id} data-reveal>
+            {content}
+          </h2>
+        ) : level === 3 ? (
+          <h3 key={key} id={id} data-reveal>
+            {content}
+          </h3>
+        ) : (
+          <h4 key={key} id={id}>{content}</h4>
+        ),
       );
       i++;
       continue;
@@ -131,7 +198,7 @@ export function renderMarkdown(source: string): ReactNode[] {
     if (isQuote(line)) {
       const quote: string[] = [];
       while (i < lines.length && isQuote(lines[i])) quote.push(lines[i++].replace(/^\s*>\s?/, ""));
-      blocks.push(<blockquote key={key}>{renderMarkdown(quote.join("\n"))}</blockquote>);
+      blocks.push(<blockquote key={key} data-reveal>{renderMarkdown(quote.join("\n"))}</blockquote>);
       continue;
     }
 
@@ -162,7 +229,7 @@ export function renderMarkdown(source: string): ReactNode[] {
       const rows: string[][] = [];
       while (i < lines.length && isTableRow(lines[i])) rows.push(splitRow(lines[i++]));
       blocks.push(
-        <div key={key} className="yc-table-wrap">
+        <div key={key} className="yc-table-wrap" data-reveal>
           <table>
             <thead>
               <tr>{header.map((cell, n) => <th key={n}>{renderInline(cell, `${key}-h${n}`)}</th>)}</tr>
@@ -187,7 +254,7 @@ export function renderMarkdown(source: string): ReactNode[] {
     if (figure) {
       // A paragraph that is only an image becomes a figure; the alt text doubles as the caption.
       blocks.push(
-        <figure key={key}>
+        <figure key={key} data-reveal>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={figure[2]} alt={figure[1]} loading="lazy" />
           {figure[1] ? <figcaption>{figure[1]}</figcaption> : null}
