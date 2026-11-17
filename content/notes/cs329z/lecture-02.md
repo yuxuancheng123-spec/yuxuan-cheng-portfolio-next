@@ -41,39 +41,33 @@ Top-K 和 Top-P 决定哪些 token 有资格被抽中，temperature 决定抽中
 
 ### Transformer
 
-Self-attention 让序列中任意两个位置可以直接交换信息。最初的 Transformer 是 encoder-decoder 结构，现在主流 LLM 多为 decoder-only。
+Self-attention 让序列中任意两个位置直接交换信息。现在主流 LLM 多为 decoder-only 结构。
 
 ![Decoder-only Transformer：一个 block 由 attention 和 FFN 两个子层组成，堆叠 N 层](/notes/cs329z/lecture-02/decoder-only.svg)
 
-一个 decoder-only 模型处理文本的步骤：
+:::cards
+- 输入 | 文本切成 token，映射成向量（embedding），再加上位置编码
+- Transformer block × N | Layer norm → 多头因果自注意力 → 残差相加 → Layer norm → FFN → 残差相加
+- 输出 | LM head 投影到词表，softmax 得到下一个 token 的概率
+:::
 
-1. Tokenization：把文本切成 token
-2. Embedding：把 token 映射成向量
-3. Positional embedding：加入位置信息
-4. Attention：每个 token 按相关性汇聚前文的信息，因果掩码让它只看见左边的 token
-5. Multi-head attention：多个头并行，不同的头可以关注不同类型的关系，如语义和语法
-6. Residual connection：把子层的输入加回输出
-7. Layer normalization：稳定中间表示；课件中的结构在每个子层之前先做 layer norm（pre-norm）
-8. Feed-forward network（FFN）：对每个 token 的表示做进一步变换
-9. Residual connection：再次与输入相加
-
-第 4 到 9 步构成一个 Transformer block。模型把许多 block 堆叠起来，每一层在上一层的基础上继续加工表示，最后经 LM head 和 softmax 得到下一个 token 的概率。
+因果掩码让每个 token 只看见左边的内容；多个注意力头各自关注不同的关系，比如语义和语法。课件用的是 pre-norm 结构，每个子层之前先做 layer norm。
 
 ### 长上下文的成本
 
-Full attention 的计算和内存开销随上下文长度快速增长。几种常见的折中：
+Full attention 的开销随上下文长度快速增长，常见的折中有四种：
 
 :::cards
-- Linear attention | 去掉 softmax、调整矩阵乘法的顺序，把历史压缩进固定大小的状态。代价：长上下文表现弱于 full attention
-- Sliding window | 每个 token 只关注附近一段窗口。代价：远处的信息要靠层层传递
-- Hybrid attention | 混合 full（多头）attention 与线性或窗口 attention，在效果和成本之间折中
-- MLA | 把 K/V 压缩成低维潜在表示，减少 KV cache 占用。课上以 Kimi K3 为例
+- Linear attention | 把历史压进固定大小的状态；更快，但长上下文表现变弱
+- Sliding window | 只看附近一段窗口；远处的信息要层层传递
+- Hybrid | 混用 full 与线性或窗口 attention，平衡效果和成本
+- MLA | 压缩 K/V，减少 KV cache；课上以 Kimi K3 为例
 :::
 
-模型能用多长的上下文，取决于 attention 的计算复杂度、位置编码，以及训练时使用的上下文长度。检验长上下文能力的常用方法是 needle-in-a-haystack：在长文中藏一条信息，看模型能否找到。
+能用多长的上下文，还取决于位置编码和训练时的上下文长度。常用的测试是 needle-in-a-haystack：在长文里藏一条信息，看模型能否找到。
 
 :::tip 设计 agent 时
-要测试三件事：模型能否在长材料中定位具体内容，能否把第 2 页和第 200 页的信息联系起来，以及能否保留原始证据。
+要测三件事：能否在长材料中定位具体内容，能否把第 2 页和第 200 页联系起来，能否保留原始证据。
 :::
 
 ## 4. 训练

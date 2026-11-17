@@ -17,10 +17,13 @@
   /* Text needs more contrast on the cream background than the light end allows. */
   --yc-gt1: #2f5574;
   --yc-gt2: #60a5fa;
+  /* Latin face first, then one CJK face per platform so Chinese renders the same everywhere:
+     sans for body text, serif for headings. */
   --yc-font-sans: ui-sans-serif, system-ui, "Inter", "Avenir Next", Avenir, "SF Pro Text", -apple-system,
-    BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", sans-serif;
-  --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, "Songti SC", "Noto Serif SC",
-    "Source Han Serif SC", serif;
+    BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, "Songti SC", "STSong",
+    "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
   --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono",
     monospace;
 }
@@ -258,6 +261,29 @@ a.yc-card:hover {
   border-image: linear-gradient(180deg, var(--yc-g1), var(--yc-g2)) 1;
 }
 
+/* Notes: headings use the serif, everything else uses the sans. */
+.yc-prose,
+.yc-prose figcaption,
+.yc-prose table,
+.yc-mini-card,
+.yc-callout,
+.yc-widget,
+.yc-toc,
+.yc-side-toc {
+  font-family: var(--yc-font-sans);
+}
+
+.yc-prose h2,
+.yc-prose h3,
+.yc-prose h4,
+.yc-h1 {
+  font-family: var(--yc-font-serif);
+}
+
+.yc-blank {
+  font-family: var(--yc-font-mono);
+}
+
 /* Note cards and callouts */
 .yc-prose .yc-cards {
   display: grid;
@@ -364,7 +390,6 @@ a.yc-card:hover {
 }
 
 .yc-widget-head {
-  font-family: var(--yc-font-mono);
   font-size: 13px;
   color: var(--yc-ink);
 }
