@@ -17,15 +17,13 @@
   /* Text needs more contrast on the cream background than the light end allows. */
   --yc-gt1: #2f5574;
   --yc-gt2: #60a5fa;
-  /* Latin face first, then one CJK face per platform so Chinese renders the same everywhere:
-     sans for body text, serif for headings. */
-  --yc-font-sans: ui-sans-serif, system-ui, "Inter", "Avenir Next", Avenir, "SF Pro Text", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
-  --yc-font-serif: var(--font-pt-serif), "PT Serif", "Noto Serif", Georgia, "Songti SC", "STSong",
-    "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
-  --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono",
-    monospace;
+  /* Web fonts first so every platform renders the same faces: Inter + Noto Sans SC for body
+     text, PT Serif + Noto Serif SC for headings. System faces are only fallbacks. */
+  --yc-font-sans: var(--font-inter), "Inter", var(--font-noto-sans-sc), "PingFang SC", "Microsoft YaHei",
+    "Noto Sans SC", system-ui, sans-serif;
+  --yc-font-serif: var(--font-pt-serif), "PT Serif", var(--font-noto-serif-sc), "Songti SC", "Noto Serif SC",
+    Georgia, serif;
+  --yc-font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", var(--font-noto-sans-sc), monospace;
 }
 
 @theme inline {
