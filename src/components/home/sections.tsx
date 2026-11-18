@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import {
   education,
   experience,
+  news,
   projects,
   research,
   type LinkItem,
@@ -108,6 +109,35 @@ export function Intro() {
       </p>
       <p>Open to conversations about responsible AI, privacy engineering, and research collaboration.</p>
     </div>
+  );
+}
+
+export function NewsSection() {
+  return (
+    <Section id="news" title="News">
+      <ul className="space-y-3">
+        {news.map((item) => (
+          <li
+            key={`${item.date}-${item.text}`}
+            data-reveal
+            className="grid grid-cols-1 gap-0.5 sm:grid-cols-[7.5rem_1fr] sm:gap-6"
+          >
+            <span className="pt-0.5 text-xs tabular-nums text-subtle">{item.date}</span>
+            <p className="font-serif text-[15px] leading-relaxed text-muted">
+              {item.text}
+              {item.link ? (
+                <>
+                  {" "}
+                  <SmartLink link={item.link} className="yc-underline text-ink">
+                    {item.link.label}
+                  </SmartLink>
+                </>
+              ) : null}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }
 

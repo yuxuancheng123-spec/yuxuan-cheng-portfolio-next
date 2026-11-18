@@ -3,6 +3,7 @@ import {
   EducationSection,
   ExperienceSection,
   Intro,
+  NewsSection,
   NotesSection,
   ProjectsSection,
   ResearchSection,
@@ -18,6 +19,7 @@ export default function Home() {
           </aside>
           <div className="space-y-24 md:col-span-7 md:col-start-6">
             <Intro />
+            <NewsSection />
             <EducationSection />
             <ResearchSection />
             <ExperienceSection />

@@ -16,6 +16,29 @@ export const profile = {
   ],
 } as const;
 
+export type NewsItem = { date: string; text: string; link?: LinkItem };
+
+// Newest first. One line each; add an entry whenever something ships.
+export const news: NewsItem[] = [
+  {
+    date: "Nov 2026",
+    text: "Started publishing lecture notes for Stanford CS 329Z, Engineering AI Agents.",
+    link: { label: "Notes", href: "/notes/cs329z" },
+  },
+  {
+    date: "Jun 2026",
+    text: "Joined FacesMarket (元脸) as an AI governance researcher.",
+  },
+  {
+    date: "Jun 2026",
+    text: "Graduated from the University of Hong Kong with an M.A. in AI, Ethics and Society.",
+  },
+  {
+    date: "2024",
+    text: "Gave a first-author talk on network crafting at the CASP Annual Meeting in Guilin.",
+  },
+];
+
 export const education = [
   {
     period: "2025 — 2026",
