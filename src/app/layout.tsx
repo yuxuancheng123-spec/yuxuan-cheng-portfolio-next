@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PT_Serif } from "next/font/google";
+import { Inter, Noto_Sans_SC, Noto_Serif_SC, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { MotionEffects } from "@/components/motion/motion-effects";
 
@@ -9,6 +9,27 @@ const ptSerif = PT_Serif({
   style: ["normal", "italic"],
   variable: "--font-pt-serif",
   display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+// Chinese faces: one for headings (serif), one for body text (sans), the same on every platform.
+const notoSerifSC = Noto_Serif_SC({
+  weight: ["400", "600"],
+  variable: "--font-noto-serif-sc",
+  display: "swap",
+  preload: false,
+});
+
+const notoSansSC = Noto_Sans_SC({
+  weight: ["400", "500", "600"],
+  variable: "--font-noto-sans-sc",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -24,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${ptSerif.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${ptSerif.variable} ${inter.variable} ${notoSerifSC.variable} ${notoSansSC.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         {/* Hide reveal targets only when scripts run; show everything after 3s if hydration stalls. */}
         <script
